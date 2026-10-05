@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ajay Kumar Garg University (AKGU) – Empowering Innovation & Education 4.0. UG, PG & Ph.D. admissions open for 2026–27 in Ghaziabad, Delhi-NCR." />
+  <title>Ajay Kumar Garg University (AKGU) | Education 4.0 | Ghaziabad, Delhi-NCR</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy:    { DEFAULT: '#0B2545', dark: '#0F172A', light: '#1E3A5F' },
+            amber:   { DEFAULT: '#D97706', light: '#F59E0B', pale: '#FEF3C7' },
+            slate:   { DEFAULT: '#64748B' },
+            offwhite:{ DEFAULT: '#F8FAFC' },
+          },
+          fontFamily: {
+            sans:    ['Inter', 'Plus Jakarta Sans', 'sans-serif'],
+            display: ['Playfair Display', 'Cormorant Garamond', 'serif'],
+          },
+          backdropBlur: { xs: '2px' },
+          animation: {
+            'ticker':    'ticker 30s linear infinite',
+            'pulse-slow':'pulse 3s cubic-bezier(0.4,0,0.6,1) infinite',
+            'fade-in':   'fadeIn .6s ease forwards',
+          },
+          keyframes: {
+            ticker:  { '0%':{ transform:'translateX(0)' }, '100%':{ transform:'translateX(-50%)' } },
+            fadeIn:  { from:{ opacity:0, transform:'translateY(16px)' }, to:{ opacity:1, transform:'translateY(0)' } },
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="font-sans bg-offwhite text-gray-800 antialiased">
+
+<!-- ============================================================
+     UTILITY TOP BAR
+     ============================================================ -->
+<div id="topbar" class="bg-navy-dark text-white text-xs py-2 px-4">
+  <div class="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between gap-y-1">
+    <!-- Left: quick contacts -->
+    <div class="flex items-center gap-4">
+      <span class="flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5 text-amber-light" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+        Toll-Free: <a href="tel:18002548864" class="text-amber-light hover:text-white font-medium transition">1800-AKGU-UNI</a>
+      </span>
+      <span class="hidden sm:flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5 text-amber-light" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+        <a href="mailto:info@akgu.ac.in" class="text-amber-light hover:text-white transition">info@akgu.ac.in</a>
+      </span>
+    </div>
+    <!-- Right: portal links -->
+    <div class="flex items-center gap-3 flex-wrap">
+      <a href="#" class="hover:text-amber-light transition">Student ERP</a>
+      <span class="opacity-30">|</span>
+      <a href="#" class="hover:text-amber-light transition">Staff ERP</a>
+      <span class="opacity-30">|</span>
+      <a href="#" class="hover:text-amber-light transition">Research Portal</a>
+      <span class="opacity-30">|</span>
+      <a href="#" class="hover:text-amber-light transition">IQAC</a>
+      <span class="opacity-30">|</span>
+      <a href="#" class="hover:text-amber-light transition">Alumni Network</a>
+      <span class="opacity-30">|</span>
+      <a href="#" class="hover:text-amber-light transition">Careers</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     MAIN NAVIGATION (Sticky Glassmorphic)
+     ============================================================ -->
+<header id="mainNav" class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/60 shadow-sm transition-all duration-300">
+  <div class="max-w-screen-xl mx-auto px-4 lg:px-6 flex items-center justify-between h-16 lg:h-20">
+
+    <!-- Brand Logo -->
+    <a href="#" class="flex items-center gap-3 group shrink-0">
+      <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-navy flex items-center justify-center shadow-md group-hover:shadow-lg transition">
+        <span class="text-white font-display font-black text-base lg:text-lg leading-none">AK</span>
+      </div>
+      <div class="leading-tight">
+        <div class="font-display font-bold text-navy text-sm lg:text-base tracking-wide uppercase">Ajay Kumar Garg University</div>
+        <div class="text-[10px] lg:text-xs text-slate tracking-widest uppercase">AKGU • Estd. 1998 • Education 4.0</div>
+      </div>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden xl:flex items-center gap-1" aria-label="Main navigation">
+      <!-- About -->
+      <div class="nav-item group relative">
+        <button class="nav-link">About AKGU <svg class="inline w-3 h-3 ml-0.5 transition group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="mega-menu absolute top-full left-0 w-56 bg-white rounded-xl shadow-2xl border border-gray-100 py-2 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <a href="#" class="mega-link">Vision &amp; Mission</a>
+          <a href="#" class="mega-link">Governing Bodies</a>
+          <a href="#" class="mega-link">Approvals &amp; Recognition</a>
+          <a href="#" class="mega-link">Campus Infrastructure</a>
+        </div>
+      </div>
+
+      <!-- Schools -->
+      <div class="nav-item group relative">
+        <button class="nav-link">Schools &amp; Academics <svg class="inline w-3 h-3 ml-0.5 transition group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="mega-menu absolute top-full left-0 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 py-2 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <a href="#" class="mega-link">School of Computer Science &amp; AI</a>
+          <a href="#" class="mega-link">School of Engineering</a>
+          <a href="#" class="mega-link">School of Management</a>
+          <a href="#" class="mega-link">School of Computer Applications</a>
+          <a href="#" class="mega-link">School of Basic &amp; Applied Sciences</a>
+          <a href="#" class="mega-link">Value Education Cell</a>
+        </div>
+      </div>
+
+      <!-- Admissions -->
+      <div class="nav-item group relative">
+        <button class="nav-link">Admissions <svg class="inline w-3 h-3 ml-0.5 transition group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="mega-menu absolute top-full left-0 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 py-2 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <a href="#" class="mega-link">UG Programs</a>
+          <a href="#" class="mega-link">PG Programs</a>
+          <a href="#" class="mega-link">Ph.D. Doctoral Admissions</a>
+          <a href="#" class="mega-link">Fee Structure &amp; Loans</a>
+          <a href="#" class="mega-link">Super-30 &amp; Merit Scholarships</a>
+        </div>
+      </div>
+
+      <!-- Research -->
+      <div class="nav-item group relative">
+        <button class="nav-link">Research <svg class="inline w-3 h-3 ml-0.5 transition group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="mega-menu absolute top-full left-0 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 py-2 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <a href="#" class="mega-link">Research Council</a>
+          <a href="#" class="mega-link">Ph.D. Ordinances</a>
+          <a href="#" class="mega-link">Patents</a>
+          <a href="#" class="mega-link">University Journals</a>
+          <a href="#" class="mega-link">IDEA Lab &amp; Startup Incubation</a>
+        </div>
+      </div>
+
+      <!-- CoE -->
+      <div class="nav-item group relative">
+        <button class="nav-link">Centres of Excellence <svg class="inline w-3 h-3 ml-0.5 transition group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="mega-menu absolute top-full left-0 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 py-2 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <a href="#" class="mega-link">Industrial Robotics – KUKA</a>
+          <a href="#" class="mega-link">Automation – Siemens/Bosch Rexroth</a>
+          <a href="#" class="mega-link">Additive Manufacturing (3D)</a>
+          <a href="#" class="mega-link">Virtual Instrumentation</a>
+        </div>
+      </div>
+
+      <!-- Placements -->
+      <div class="nav-item group relative">
+        <button class="nav-link">Placements <svg class="inline w-3 h-3 ml-0.5 transition group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="mega-menu absolute top-full left-0 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 py-2 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <a href="#" class="mega-link">Placement Records</a>
+          <a href="#" class="mega-link">Recruiters</a>
+          <a href="#" class="mega-link">Student Readiness Program</a>
+          <a href="#" class="mega-link">Corporate Alliances</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Right CTAs -->
+    <div class="hidden lg:flex items-center gap-3">
+      <!-- Search -->
+      <button id="searchBtn" aria-label="Open search" class="w-9 h-9 rounded-lg flex items-center justify-center text-slate hover:text-navy hover:bg-gray-100 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/></svg>
+      </button>
+      <!-- Ph.D. badge -->
+      <a href="#" class="relative flex items-center gap-1.5 bg-navy/10 text-navy text-xs font-semibold px-3 py-1.5 rounded-full border border-navy/20 hover:bg-navy hover:text-white transition">
+        <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse-slow border-2 border-white"></span>
+        Ph.D. Admissions Open
+      </a>
+      <!-- Apply Now -->
+      <a href="#" id="applyNowBtn" class="bg-amber hover:bg-amber-light text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-200">
+        Apply Now →
+      </a>
+    </div>
+
+    <!-- Hamburger (mobile) -->
+    <button id="hamburger" aria-label="Toggle menu" aria-expanded="false" class="xl:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-gray-100 transition">
+      <span class="hamburger-bar w-6 h-0.5 bg-navy transition-all"></span>
+      <span class="hamburger-bar w-6 h-0.5 bg-navy transition-all"></span>
+      <span class="hamburger-bar w-6 h-0.5 bg-navy transition-all"></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============================================================
+     MOBILE NAV DRAWER
+     ============================================================ -->
+<div id="mobileDrawer" class="mobile-drawer fixed inset-0 z-40 xl:hidden pointer-events-none">
+  <!-- Backdrop -->
+  <div id="drawerBackdrop" class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300"></div>
+  <!-- Panel -->
+  <aside class="drawer-panel absolute top-0 right-0 h-full w-80 max-w-full bg-white shadow-2xl overflow-y-auto transform translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="flex items-center justify-between p-4 border-b">
+      <span class="font-display font-bold text-navy text-lg">Menu</span>
+      <button id="drawerClose" aria-label="Close menu" class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-gray-100 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <nav class="p-4 space-y-1" aria-label="Mobile navigation">
+      <!-- Accordion items -->
+      <div class="mobile-acc">
+        <button class="mobile-acc-btn">About AKGU</button>
+        <div class="mobile-acc-panel">
+          <a href="#" class="mobile-acc-link">Vision &amp; Mission</a>
+          <a href="#" class="mobile-acc-link">Governing Bodies</a>
+          <a href="#" class="mobile-acc-link">Approvals &amp; Recognition</a>
+          <a href="#" class="mobile-acc-link">Campus Infrastructure</a>
+        </div>
+      </div>
+      <div class="mobile-acc">
+        <button class="mobile-acc-btn">Schools &amp; Academics</button>
+        <div class="mobile-acc-panel">
+          <a href="#" class="mobile-acc-link">School of Computer Science &amp; AI</a>
+          <a href="#" class="mobile-acc-link">School of Engineering</a>
+          <a href="#" class="mobile-acc-link">School of Management</a>
+          <a href="#" class="mobile-acc-link">School of Computer Applications</a>
+          <a href="#" class="mobile-acc-link">School of Basic &amp; Applied Sciences</a>
+        </div>
+      </div>
+      <div class="mobile-acc">
+        <button class="mobile-acc-btn">Admissions</button>
+        <div class="mobile-acc-panel">
+          <a href="#" class="mobile-acc-link">UG Programs</a>
+          <a href="#" class="mobile-acc-link">PG Programs</a>
+          <a href="#" class="mobile-acc-link">Ph.D. Doctoral Admissions</a>
+          <a href="#" class="mobile-acc-link">Fee Structure &amp; Loans</a>
+          <a href="#" class="mobile-acc-link">Super-30 &amp; Merit Scholarships</a>
+        </div>
+      </div>
+      <div class="mobile-acc">
+        <button class="mobile-acc-btn">Research &amp; Innovation</button>
+        <div class="mobile-acc-panel">
+          <a href="#" class="mobile-acc-link">Research Council</a>
+          <a href="#" class="mobile-acc-link">Ph.D. Ordinances</a>
+          <a href="#" class="mobile-acc-link">Patents</a>
+          <a href="#" class="mobile-acc-link">IDEA Lab &amp; Startup Incubation</a>
+        </div>
+      </div>
+      <div class="mobile-acc">
+        <button class="mobile-acc-btn">Centres of Excellence</button>
+        <div class="mobile-acc-panel">
+          <a href="#" class="mobile-acc-link">Industrial Robotics – KUKA</a>
+          <a href="#" class="mobile-acc-link">Automation – Siemens/Bosch Rexroth</a>
+          <a href="#" class="mobile-acc-link">Additive Manufacturing (3D)</a>
+          <a href="#" class="mobile-acc-link">Virtual Instrumentation</a>
+        </div>
+      </div>
+      <div class="mobile-acc">
+        <button class="mobile-acc-btn">Placements</button>
+        <div class="mobile-acc-panel">
+          <a href="#" class="mobile-acc-link">Placement Records</a>
+          <a href="#" class="mobile-acc-link">Recruiters</a>
+          <a href="#" class="mobile-acc-link">Corporate Alliances</a>
+        </div>
+      </div>
+    </nav>
+    <div class="p-4 border-t space-y-3">
+      <a href="#" class="block w-full text-center bg-amber hover:bg-amber-light text-white font-bold py-3 rounded-xl transition">Apply Now →</a>
+      <a href="#" class="block w-full text-center bg-navy hover:bg-navy-light text-white font-semibold py-3 rounded-xl transition">Ph.D. Admissions Open</a>
+    </div>
+  </aside>
+</div>
+
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section id="hero" class="hero-section relative overflow-hidden bg-navy-dark min-h-screen flex flex-col justify-center">
+  <!-- Animated gradient backdrop -->
+  <div class="hero-gradient absolute inset-0 z-0"></div>
+  <!-- Decorative blobs -->
+  <div class="absolute top-20 right-10 w-72 h-72 bg-amber/10 rounded-full blur-3xl animate-pulse-slow z-0"></div>
+  <div class="absolute bottom-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl z-0"></div>
+
+  <div class="relative z-10 max-w-screen-xl mx-auto px-4 lg:px-6 py-20 lg:py-28 text-white">
+    <!-- Floating alert badge -->
+    <div class="inline-flex items-center gap-2 bg-amber/20 border border-amber/40 text-amber-light text-xs sm:text-sm font-semibold px-4 py-2 rounded-full mb-8 backdrop-blur-sm">
+      <span class="w-2 h-2 bg-amber-light rounded-full animate-pulse"></span>
+      Ph.D. &amp; UG/PG Admissions Open for 2026–27 | Super-30 Scholarship Applications Active
+    </div>
+
+    <!-- Headline carousel -->
+    <div class="hero-headlines mb-6">
+      <h1 class="font-display font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight">
+        <span id="heroHeadline" class="block transition-all duration-700">
+          Pioneering Education 4.0<br class="hidden md:block" />&amp; Next-Gen Innovation
+        </span>
+      </h1>
+    </div>
+
+    <p class="text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
+      A multidisciplinary autonomous university in Ghaziabad, Delhi-NCR — where industry-led learning, advanced research, and transformative values converge.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 mb-14">
+      <a href="#programs" class="inline-flex items-center justify-center gap-2 bg-amber hover:bg-amber-light text-white font-bold text-base px-7 py-4 rounded-xl shadow-lg hover:shadow-amber/40 transition-all duration-300">
+        Explore Academic Programs
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <a href="#" id="heroApplyBtn" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold text-base px-7 py-4 rounded-xl backdrop-blur-sm transition-all duration-300">
+        Apply Online Now
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+      </a>
+    </div>
+
+    <!-- Quick Access Cards Bar -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <a href="#" class="quick-card group flex items-center gap-3 bg-white/8 hover:bg-white/15 border border-white/15 rounded-xl px-4 py-3.5 backdrop-blur-sm transition-all duration-300">
+        <div class="w-9 h-9 bg-amber/20 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-amber/40 transition">
+          <svg class="w-5 h-5 text-amber-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.069A1 1 0 0121 8.845v6.31a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+        </div>
+        <span class="text-sm font-semibold text-white/90">Virtual Campus Tour</span>
+      </a>
+      <a href="#calculator" class="quick-card group flex items-center gap-3 bg-white/8 hover:bg-white/15 border border-white/15 rounded-xl px-4 py-3.5 backdrop-blur-sm transition-all duration-300">
+        <div class="w-9 h-9 bg-amber/20 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-amber/40 transition">
+          <svg class="w-5 h-5 text-amber-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        </div>
+        <span class="text-sm font-semibold text-white/90">Fee Calculator</span>
+      </a>
+      <a href="#" class="quick-card group flex items-center gap-3 bg-white/8 hover:bg-white/15 border border-white/15 rounded-xl px-4 py-3.5 backdrop-blur-sm transition-all duration-300">
+        <div class="w-9 h-9 bg-amber/20 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-amber/40 transition">
+          <svg class="w-5 h-5 text-amber-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <span class="text-sm font-semibold text-white/90">Download Prospectus</span>
+      </a>
+      <a href="#" id="contactAdmissionsBtn" class="quick-card group flex items-center gap-3 bg-white/8 hover:bg-white/15 border border-white/15 rounded-xl px-4 py-3.5 backdrop-blur-sm transition-all duration-300">
+        <div class="w-9 h-9 bg-amber/20 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-amber/40 transition">
+          <svg class="w-5 h-5 text-amber-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+        </div>
+        <span class="text-sm font-semibold text-white/90">Contact Admissions</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+    <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     IMPACT TICKER (Animated Counters)
+     ============================================================ -->
+<section class="bg-navy py-12 lg:py-16">
+  <div class="max-w-screen-xl mx-auto px-4 lg:px-6">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-4 text-center text-white">
+      <div class="stat-item">
+        <div class="text-3xl lg:text-4xl font-display font-black text-amber-light" data-target="6000" data-suffix="+">0</div>
+        <div class="text-xs sm:text-sm text-gray-300 mt-1 font-medium">Students &amp; Doctoral Scholars</div>
+      </div>
+      <div class="stat-item">
+        <div class="text-3xl lg:text-4xl font-display font-black text-amber-light" data-target="20" data-suffix="+">0</div>
+        <div class="text-xs sm:text-sm text-gray-300 mt-1 font-medium">Multidisciplinary Programs</div>
+      </div>
+      <div class="stat-item">
+        <div class="text-3xl lg:text-4xl font-display font-black text-amber-light" data-target="15" data-suffix="+">0</div>
+        <div class="text-xs sm:text-sm text-gray-300 mt-1 font-medium">Industrial Centres of Excellence</div>
+      </div>
+      <div class="stat-item">
+        <div class="text-3xl lg:text-4xl font-display font-black text-amber-light" data-target="200" data-suffix="+">0</div>
+        <div class="text-xs sm:text-sm text-gray-300 mt-1 font-medium">Global Corporate Recruiters</div>
+      </div>
+      <div class="stat-item col-span-2 md:col-span-1 lg:col-span-1">
+        <div class="text-3xl lg:text-4xl font-display font-black text-amber-light" data-target="500" data-suffix="+">0</div>
+        <div class="text-xs sm:text-sm text-gray-300 mt-1 font-medium">Patents &amp; Research Papers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ACADEMIC PROGRAMS (Filterable Grid)
+     ============================================================ -->
+<section id="programs" class="py-16 lg:py-24 bg-offwhite">
+  <div class="max-w-screen-xl mx-auto px-4 lg:px-6">
+    <!-- Section header -->
+    <div class="text-center mb-10">
+      <span class="inline-block text-amber font-semibold text-sm uppercase tracking-widest mb-3">Academic Pathways</span>
+      <h2 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-navy mb-4">Education 4.0 Programs</h2>
+      <p class="text-slate max-w-2xl mx-auto text-base md:text-lg">Discover industry-aligned programs designed for the future of technology, business, and science.</p>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="flex flex-wrap justify-center gap-2 mb-10" role="tablist" aria-label="Program filters">
+      <button class="filter-btn active-filter" data-filter="all" role="tab" aria-selected="true">All Programs</button>
+      <button class="filter-btn" data-filter="ug" role="tab" aria-selected="false">Undergraduate (B.Tech, BBA, BCA)</button>
+      <button class="filter-btn" data-filter="pg" role="tab" aria-selected="false">Postgraduate (M.Tech, MBA, MCA)</button>
+      <button class="filter-btn" data-filter="phd" role="tab" aria-selected="false">Doctoral (Ph.D.)</button>
+    </div>
+
+    <!-- Program cards grid -->
+    <div id="programGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+
+      <!-- UG Cards -->
+      <div class="program-card" data-category="ug">
+        <div class="prog-icon bg-blue-50"><svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg></div>
+        <span class="prog-badge ug">B.Tech</span>
+        <h3 class="prog-title">Computer Science &amp; Engineering (AI/ML)</h3>
+        <p class="prog-meta">4 Years | Intake: 120 | Specializations: AI, ML, Deep Learning</p>
+        <a href="#" class="prog-link">Apply Now →</a>
+      </div>
+
+      <div class="program-card" data-category="ug">
+        <div class="prog-icon bg-purple-50"><svg class="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></div>
+        <span class="prog-badge ug">B.Tech</span>
+        <h3 class="prog-title">Cyber Security &amp; Ethical Hacking</h3>
+        <p class="prog-meta">4 Years | Intake: 60 | Specializations: Network Security, Forensics</p>
+        <a href="#" class="prog-link">Apply Now →</a>
+      </div>
+
+      <div class="program-card" data-category="ug">
+        <div class="prog-icon bg-orange-50"><svg class="w-7 h-7 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+        <span class="prog-badge ug">B.Tech</span>
+        <h3 class="prog-title">Mechanical Engineering (Robotics)</h3>
+        <p class="prog-meta">4 Years | Intake: 120 | Specializations: Robotics, Automation, Industry 4.0</p>
+        <a href="#" class="prog-link">Apply Now →</a>
+      </div>
+
+      <div class="program-card" data-category="ug">
+        <div class="prog-icon bg-green-50"><svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div>
+        <span class="prog-badge ug">BBA</span>
+        <h3 class="prog-title">Business Administration (Analytics)</h3>
+        <p class="prog-meta">3 Years | Intake: 60 | Specializations: Business Analytics, FinTech</p>
+        <a href="#" class="prog-link">Apply Now →</a>
+      </div>
+
+      <div class="program-card" data-category="ug">
+        <div class="prog-icon bg-teal-50"><svg class="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+        <span class="prog-badge ug">BCA</span>
+        <h3 class="prog-title">Computer Applications (Cloud &amp; DevOps)</h3>
+        <p class="prog-meta">3 Years | Intake: 60 | Specializations: Cloud, DevOps, Full-Stack</p>
+        <a href="#" class="prog-link">Apply Now →</a>
+      </div>
+
+      <div class="program-card" data-category="ug">
+        <div class="prog-icon bg-indigo-50"><svg class="w-7 h-7 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+        <span class="prog-badge ug">B.Tech</span>
+        <h3 class="prog-title">Electrical &amp; Electronics Eng.</h3>
+        <p class="prog-meta">4 Years | Intake: 60 | Specializations: Smart Grid, IoT, Embedded</p>
+        <a href="#" class="prog-link">Apply Now →</a>
+      </div>
+
+      <!-- PG Cards -->
+      <div class="program-card" data-category="pg">
+        <div class="prog-icon bg-blue-50"><svg class="w-7 h-7 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg></div>
+        <span class="prog-badge pg">M.Tech</span>
+        <h3 class="prog-title">Data Science &amp; Artificial Intelligence</h3>
+        <p class="prog-meta">2 Years | Intake: 30 | Specializations: NLP, Computer Vision, GenAI</p>
+        <a href="#" class="prog-link">Apply Now →</a>
+      </div>
+
+      <div class="program-card" data-category="pg">
+        <div class="prog-icon bg-rose-50"><svg class="w-7 h-7 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+        <span class="prog-badge pg">MBA</span>
+        <h3 class="prog-title">MBA – Digital Business &amp; Strategy</h3>
+        <p class="prog-meta">2 Years | Intake: 60 | Specializations: Digital Marketing, Strategy</p>
+        <a href="#" class="prog-link">Apply Now →</a>
+      </div>
+
+      <div class="program-card" data-category="pg">
+        <div class="prog-icon bg-amber-50"><svg class="w-7 h-7 text-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+        <span class="prog-badge pg">MCA</span>
+        <h3 class="prog-title">MCA – Advanced Computing</h3>
+        <p class="prog-meta">2 Years | Intake: 30 | Specializations: Cloud, Blockchain, AI</p>
+        <a href="#" class="prog-link">Apply Now →</a>
+      </div>
+
+      <div class="program-card" data-category="pg">
+        <div class="prog-icon bg-orange-50"><svg class="w-7 h-7 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+        <span class="prog-badge pg">M.Tech</span>
+        <h3 class="prog-title">M.Tech – Robotics &amp; Automation</h3>
+        <p class="prog-meta">2 Years | Intake: 18 | Specializations: Industrial Robotics, KUKA</p>
+        <a href="#" class="prog-link">Apply Now →</a>
+      </div>
+
+      <!-- Ph.D. Cards -->
+      <div class="program-card" data-category="phd">
+        <div class="prog-icon bg-navy/10"><svg class="w-7 h-7 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
+        <span class="prog-badge phd">Ph.D.</span>
+        <h3 class="prog-title">Ph.D. – Computer Science &amp; AI</h3>
+        <p class="prog-meta">3–5 Years | Part-time &amp; Full-time | Domains: GenAI, NLP, CV</p>
+        <a href="#" class="prog-link">Apply Now →</a>
+      </div>
+
+      <div class="program-card" data-category="phd">
+        <div class="prog-icon bg-navy/10"><svg class="w-7 h-7 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></div>
+        <span class="prog-badge phd">Ph.D.</span>
+        <h3 class="prog-title">Ph.D. – Mechanical &amp; Robotics Engineering</h3>
+        <p class="prog-meta">3–5 Years | Domains: Smart Manufacturing, Additive Mfg.</p>
+        <a href="#" class="prog-link">Apply Now →</a>
+      </div>
+
+      <div class="program-card" data-category="phd">
+        <div class="prog-icon bg-navy/10"><svg class="w-7 h-7 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg></div>
+        <span class="prog-badge phd">Ph.D.</span>
+        <h3 class="prog-title">Ph.D. – Management &amp; Business Studies</h3>
+        <p class="prog-meta">3–5 Years | Domains: Organizational Behavior, Strategy</p>
+        <a href="#" class="prog-link">Apply Now →</a>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="#" class="inline-flex items-center gap-2 border-2 border-navy text-navy hover:bg-navy hover:text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300">
+        View All Programs
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CENTRES OF EXCELLENCE
+     ============================================================ -->
+<section id="coe" class="py-16 lg:py-24 bg-navy-dark text-white relative overflow-hidden">
+  <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djZoNnYtNmgtNnptMCAwdjZoNnYtNmgtNnoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-50"></div>
+
+  <div class="relative z-10 max-w-screen-xl mx-auto px-4 lg:px-6">
+    <!-- Banner -->
+    <div class="text-center mb-12">
+      <span class="inline-block text-amber font-semibold text-sm uppercase tracking-widest mb-3">Industry 4.0 Ready</span>
+      <h2 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-4">Centres of Excellence</h2>
+      <p class="text-gray-300 max-w-2xl mx-auto text-base md:text-lg">Bridging Academia &amp; Industry 4.0 Workforce Demand — powered by world-class partners.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- KUKA -->
+      <div class="coe-card group">
+        <div class="coe-img-wrap">
+          <div class="coe-img-placeholder bg-gradient-to-br from-orange-900 to-orange-600">
+            <svg class="w-16 h-16 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div class="coe-badge">Industry Partner: KUKA</div>
+        </div>
+        <div class="coe-body">
+          <h3 class="coe-title">Industrial Robotics &amp; Automation Lab</h3>
+          <p class="coe-desc">6-axis KUKA robot arms, pick-and-place systems, collaborative robot programming, and real-world industrial automation training.</p>
+          <a href="#" class="coe-link">Explore Lab →</a>
+        </div>
+      </div>
+
+      <!-- Siemens/Bosch -->
+      <div class="coe-card group">
+        <div class="coe-img-wrap">
+          <div class="coe-img-placeholder bg-gradient-to-br from-blue-900 to-blue-600">
+            <svg class="w-16 h-16 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <div class="coe-badge">Partners: Siemens · Bosch Rexroth</div>
+        </div>
+        <div class="coe-body">
+          <h3 class="coe-title">Smart Manufacturing &amp; Industrial Drives</h3>
+          <p class="coe-desc">PLC/SCADA systems, hydraulic &amp; pneumatic drives, CNC machining simulation, and advanced motion control with Siemens &amp; Bosch Rexroth equipment.</p>
+          <a href="#" class="coe-link">Explore Lab →</a>
+        </div>
+      </div>
+
+      <!-- 3D Printing -->
+      <div class="coe-card group">
+        <div class="coe-img-wrap">
+          <div class="coe-img-placeholder bg-gradient-to-br from-green-900 to-emerald-600">
+            <svg class="w-16 h-16 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          </div>
+          <div class="coe-badge">Additive Manufacturing</div>
+        </div>
+        <div class="coe-body">
+          <h3 class="coe-title">3D Printing &amp; Rapid Prototyping Centre</h3>
+          <p class="coe-desc">FDM, SLA, and SLS 3D printing technologies, bio-printing research, rapid prototyping, and design-to-fabrication workflows for engineering projects.</p>
+          <a href="#" class="coe-link">Explore Lab →</a>
+        </div>
+      </div>
+
+      <!-- Virtual Instrumentation -->
+      <div class="coe-card group">
+        <div class="coe-img-wrap">
+          <div class="coe-img-placeholder bg-gradient-to-br from-purple-900 to-purple-600">
+            <svg class="w-16 h-16 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+          </div>
+          <div class="coe-badge">LabVIEW · NI Systems</div>
+        </div>
+        <div class="coe-body">
+          <h3 class="coe-title">Embedded Systems &amp; Virtual Instrumentation</h3>
+          <p class="coe-desc">NI LabVIEW-based virtual instruments, embedded system design with ARM/FPGA, IoT sensor integration, and real-time data acquisition.</p>
+          <a href="#" class="coe-link">Explore Lab →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RESEARCH & IDEA LAB
+     ============================================================ -->
+<section id="research" class="py-16 lg:py-24 bg-offwhite">
+  <div class="max-w-screen-xl mx-auto px-4 lg:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Left Content -->
+      <div>
+        <span class="inline-block text-amber font-semibold text-sm uppercase tracking-widest mb-3">Research &amp; Incubation</span>
+        <h2 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-navy mb-6">IDEA Lab &amp; Startup Ecosystem</h2>
+        <p class="text-slate text-base lg:text-lg mb-8 leading-relaxed">AKGU's IDEA Lab provides a complete innovation ecosystem — from ideation to market-ready products. We support student entrepreneurs with seed funding, mentorship, co-working space, and expert guidance from industry veterans.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          <div class="research-metric">
+            <div class="rm-icon bg-amber/10 text-amber">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <div class="font-bold text-navy text-lg">₹50L+ Seed Funding</div>
+              <div class="text-slate text-sm">Disbursed to student startups</div>
+            </div>
+          </div>
+          <div class="research-metric">
+            <div class="rm-icon bg-blue-100 text-blue-600">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+            </div>
+            <div>
+              <div class="font-bold text-navy text-lg">120+ Patents Filed</div>
+              <div class="text-slate text-sm">IP portfolio &amp; commercialization</div>
+            </div>
+          </div>
+          <div class="research-metric">
+            <div class="rm-icon bg-green-100 text-green-600">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            </div>
+            <div>
+              <div class="font-bold text-navy text-lg">40+ Active Startups</div>
+              <div class="text-slate text-sm">Incubated at IDEA Lab</div>
+            </div>
+          </div>
+          <div class="research-metric">
+            <div class="rm-icon bg-purple-100 text-purple-600">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+            <div>
+              <div class="font-bold text-navy text-lg">380+ Journals</div>
+              <div class="text-slate text-sm">Scopus &amp; SCI indexed publications</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#" class="inline-flex items-center gap-2 bg-navy hover:bg-navy-light text-white font-semibold px-7 py-3.5 rounded-xl transition-all duration-300 shadow-md">
+          Explore Research Portal
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+
+      <!-- Right: Ph.D. Domains -->
+      <div class="space-y-4">
+        <h3 class="font-display font-bold text-xl text-navy mb-4">Active Ph.D. Research Domains</h3>
+        <div class="phd-domain-card">
+          <div class="phd-domain-icon">🤖</div>
+          <div>
+            <div class="font-semibold text-navy">Artificial Intelligence &amp; Machine Learning</div>
+            <div class="text-sm text-slate">Supervisors: Dr. A. Sharma, Dr. P. Gupta | 12 scholars enrolled</div>
+          </div>
+        </div>
+        <div class="phd-domain-card">
+          <div class="phd-domain-icon">🏭</div>
+          <div>
+            <div class="font-semibold text-navy">Smart Manufacturing &amp; Industry 4.0</div>
+            <div class="text-sm text-slate">Supervisors: Dr. R. Verma, Dr. K. Singh | 8 scholars enrolled</div>
+          </div>
+        </div>
+        <div class="phd-domain-card">
+          <div class="phd-domain-icon">🔐</div>
+          <div>
+            <div class="font-semibold text-navy">Cyber Security &amp; Blockchain Technology</div>
+            <div class="text-sm text-slate">Supervisors: Dr. M. Agarwal | 6 scholars enrolled</div>
+          </div>
+        </div>
+        <div class="phd-domain-card">
+          <div class="phd-domain-icon">🌿</div>
+          <div>
+            <div class="font-semibold text-navy">Sustainable Energy &amp; Green Technologies</div>
+            <div class="text-sm text-slate">Supervisors: Dr. S. Yadav | 5 scholars enrolled</div>
+          </div>
+        </div>
+        <div class="phd-domain-card">
+          <div class="phd-domain-icon">📊</div>
+          <div>
+            <div class="font-semibold text-navy">Business Analytics &amp; FinTech</div>
+            <div class="text-sm text-slate">Supervisors: Dr. N. Joshi | 7 scholars enrolled</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PLACEMENTS & RECRUITERS
+     ============================================================ -->
+<section id="placements" class="py-16 lg:py-24 bg-white">
+  <div class="max-w-screen-xl mx-auto px-4 lg:px-6">
+    <div class="text-center mb-12">
+      <span class="inline-block text-amber font-semibold text-sm uppercase tracking-widest mb-3">Career Success</span>
+      <h2 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-navy mb-4">Placements &amp; Recruiters</h2>
+      <p class="text-slate max-w-xl mx-auto">AKGU graduates are shaping the future at India's and the world's most respected organizations.</p>
+    </div>
+
+    <!-- Placement Metrics -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
+      <div class="placement-metric">
+        <div class="pm-value">₹42 LPA</div>
+        <div class="pm-label">Highest Package</div>
+      </div>
+      <div class="placement-metric">
+        <div class="pm-value">₹8.5 LPA</div>
+        <div class="pm-label">Average Package</div>
+      </div>
+      <div class="placement-metric">
+        <div class="pm-value">1,200+</div>
+        <div class="pm-label">Job Offers (2025)</div>
+      </div>
+      <div class="placement-metric">
+        <div class="pm-value">200+</div>
+        <div class="pm-label">Recruiting Companies</div>
+      </div>
+    </div>
+
+    <!-- Recruiter Logo Marquee -->
+    <div class="mb-14">
+      <h3 class="text-center font-semibold text-navy mb-6 text-lg">Our Top Recruiters</h3>
+      <div class="recruiter-ticker-wrap overflow-hidden relative">
+        <!-- Fade edges -->
+        <div class="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10"></div>
+        <div class="recruiter-ticker flex gap-8 items-center" aria-label="Recruiter logos">
+          <!-- Recruiter items (duplicated for seamless loop) -->
+          <div class="recruiter-logo">TCS</div>
+          <div class="recruiter-logo">Infosys</div>
+          <div class="recruiter-logo">Wipro</div>
+          <div class="recruiter-logo">HCL Tech</div>
+          <div class="recruiter-logo">Cognizant</div>
+          <div class="recruiter-logo">Capgemini</div>
+          <div class="recruiter-logo">Tech Mahindra</div>
+          <div class="recruiter-logo">Accenture</div>
+          <div class="recruiter-logo">IBM</div>
+          <div class="recruiter-logo">Microsoft</div>
+          <div class="recruiter-logo">Amazon</div>
+          <div class="recruiter-logo">Samsung</div>
+          <div class="recruiter-logo">LG Electronics</div>
+          <div class="recruiter-logo">KUKA Robotics</div>
+          <div class="recruiter-logo">Siemens</div>
+          <!-- Duplicates for seamless loop -->
+          <div class="recruiter-logo">TCS</div>
+          <div class="recruiter-logo">Infosys</div>
+          <div class="recruiter-logo">Wipro</div>
+          <div class="recruiter-logo">HCL Tech</div>
+          <div class="recruiter-logo">Cognizant</div>
+          <div class="recruiter-logo">Capgemini</div>
+          <div class="recruiter-logo">Tech Mahindra</div>
+          <div class="recruiter-logo">Accenture</div>
+          <div class="recruiter-logo">IBM</div>
+          <div class="recruiter-logo">Microsoft</div>
+          <div class="recruiter-logo">Amazon</div>
+          <div class="recruiter-logo">Samsung</div>
+          <div class="recruiter-logo">LG Electronics</div>
+          <div class="recruiter-logo">KUKA Robotics</div>
+          <div class="recruiter-logo">Siemens</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alumni Testimonials -->
+    <div>
+      <h3 class="text-center font-semibold text-navy mb-8 text-lg">Alumni Testimonials</h3>
+      <div class="testimonials-grid grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="testimonial-card">
+          <div class="tc-quote">"AKGU's AI lab and KUKA robotics training gave me a real edge. Placed at Microsoft Azure with ₹28 LPA package — grateful for the hands-on experience."</div>
+          <div class="tc-author">
+            <div class="tc-avatar bg-blue-500">RS</div>
+            <div>
+              <div class="font-semibold text-navy">Rahul Sharma</div>
+              <div class="text-sm text-slate">B.Tech CSE (AI/ML) 2024 | Microsoft Azure, Hyderabad</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="tc-quote">"The MBA program's industry mentorship and real-world projects from Day 1 made us industry-ready. AKGU truly prepares you for the future of business."</div>
+          <div class="tc-author">
+            <div class="tc-avatar bg-rose-500">PA</div>
+            <div>
+              <div class="font-semibold text-navy">Priya Agarwal</div>
+              <div class="text-sm text-slate">MBA 2023 | Product Manager, Zomato</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="tc-quote">"IDEA Lab incubated my IoT startup during my M.Tech. We received seed funding and today serve 200+ enterprise clients. Thank you, AKGU!"</div>
+          <div class="tc-author">
+            <div class="tc-avatar bg-green-500">AK</div>
+            <div>
+              <div class="font-semibold text-navy">Arjun Kumar</div>
+              <div class="text-sm text-slate">M.Tech (Robotics) 2022 | Founder, SmartEdge IoT</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CAMPUS LIFE & UHV
+     ============================================================ -->
+<section id="campus" class="py-16 lg:py-24 bg-offwhite">
+  <div class="max-w-screen-xl mx-auto px-4 lg:px-6">
+    <div class="text-center mb-12">
+      <span class="inline-block text-amber font-semibold text-sm uppercase tracking-widest mb-3">Holistic Development</span>
+      <h2 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-navy mb-4">Life @ AKGU</h2>
+      <p class="text-slate max-w-2xl mx-auto">A vibrant campus that nurtures intellect, culture, values, and wellness in equal measure.</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
+      <!-- Club cards -->
+      <div class="campus-club-card">
+        <div class="cc-emoji">💻</div>
+        <div class="cc-name">Coding Club</div>
+      </div>
+      <div class="campus-club-card">
+        <div class="cc-emoji">🤖</div>
+        <div class="cc-name">Robotics Society</div>
+      </div>
+      <div class="campus-club-card">
+        <div class="cc-emoji">🎵</div>
+        <div class="cc-name">Music &amp; Arts</div>
+      </div>
+      <div class="campus-club-card">
+        <div class="cc-emoji">🎭</div>
+        <div class="cc-name">Dramatics Cell</div>
+      </div>
+      <div class="campus-club-card">
+        <div class="cc-emoji">⚽</div>
+        <div class="cc-name">Sports &amp; Fitness</div>
+      </div>
+      <div class="campus-club-card">
+        <div class="cc-emoji">🌱</div>
+        <div class="cc-name">NSS / NCC</div>
+      </div>
+    </div>
+
+    <!-- UHV Feature -->
+    <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 lg:p-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div>
+          <span class="inline-block bg-amber/10 text-amber font-semibold text-xs uppercase tracking-widest px-3 py-1 rounded-full mb-4">Universal Human Values</span>
+          <h3 class="font-display font-bold text-2xl lg:text-3xl text-navy mb-4">Value Education Cell (UHV)</h3>
+          <p class="text-slate leading-relaxed mb-5">AKGU believes that technology without values is hollow. Our UHV curriculum fosters empathy, ethical leadership, environmental responsibility, and a sense of national purpose — producing not just engineers, but responsible citizens.</p>
+          <ul class="space-y-2 text-sm text-slate">
+            <li class="flex items-start gap-2"><span class="text-amber mt-0.5">✓</span> Mandatory UHV course for all UG students (2 semesters)</li>
+            <li class="flex items-start gap-2"><span class="text-amber mt-0.5">✓</span> Yoga, Meditation &amp; Mindfulness sessions</li>
+            <li class="flex items-start gap-2"><span class="text-amber mt-0.5">✓</span> Faith Centre &amp; Interreligious Harmony Initiatives</li>
+            <li class="flex items-start gap-2"><span class="text-amber mt-0.5">✓</span> Sustainability &amp; Green Campus Initiatives (ISO 14001)</li>
+          </ul>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="campus-feature-box">
+            <div class="text-2xl mb-2">🏠</div>
+            <div class="font-semibold text-navy text-sm">Separate Hostels</div>
+            <div class="text-xs text-slate mt-1">Boys &amp; Girls with 24x7 security, Wi-Fi, &amp; dining</div>
+          </div>
+          <div class="campus-feature-box">
+            <div class="text-2xl mb-2">🍽️</div>
+            <div class="font-semibold text-navy text-sm">Multi-Cuisine Dining</div>
+            <div class="text-xs text-slate mt-1">Hygienic cafeteria with mess &amp; food courts</div>
+          </div>
+          <div class="campus-feature-box">
+            <div class="text-2xl mb-2">🏋️</div>
+            <div class="font-semibold text-navy text-sm">Sports Complex</div>
+            <div class="text-xs text-slate mt-1">Olympic-standard facilities &amp; indoor stadium</div>
+          </div>
+          <div class="campus-feature-box">
+            <div class="text-2xl mb-2">📚</div>
+            <div class="font-semibold text-navy text-sm">Smart Library</div>
+            <div class="text-xs text-slate mt-1">50,000+ volumes with digital resource access</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEE & SCHOLARSHIP CALCULATOR
+     ============================================================ -->
+<section id="calculator" class="py-16 lg:py-24 bg-navy">
+  <div class="max-w-screen-xl mx-auto px-4 lg:px-6">
+    <div class="text-center mb-10">
+      <span class="inline-block text-amber font-semibold text-sm uppercase tracking-widest mb-3">Plan Your Investment</span>
+      <h2 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-4">Fee &amp; Scholarship Calculator</h2>
+      <p class="text-gray-300 max-w-xl mx-auto">Select your program and academic score to instantly see tuition fees, scholarship discounts, and EMI options.</p>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-5">
+        <!-- Inputs -->
+        <div class="lg:col-span-3 p-6 lg:p-8 space-y-5">
+          <h3 class="font-semibold text-navy text-lg mb-2">Your Details</h3>
+
+          <!-- Course Select -->
+          <div>
+            <label for="calcCourse" class="block text-sm font-semibold text-gray-700 mb-1.5">Select Program</label>
+            <select id="calcCourse" class="calc-input">
+              <option value="">— Choose a Program —</option>
+              <optgroup label="Undergraduate">
+                <option value="btech_cse" data-fee="155000">B.Tech – Computer Science &amp; Engineering (AI/ML)</option>
+                <option value="btech_mech" data-fee="140000">B.Tech – Mechanical Engineering (Robotics)</option>
+                <option value="btech_eee" data-fee="140000">B.Tech – Electrical &amp; Electronics Eng.</option>
+                <option value="bba" data-fee="90000">BBA – Business Administration</option>
+                <option value="bca" data-fee="85000">BCA – Computer Applications</option>
+              </optgroup>
+              <optgroup label="Postgraduate">
+                <option value="mtech_ai" data-fee="120000">M.Tech – Data Science &amp; AI</option>
+                <option value="mba" data-fee="110000">MBA – Digital Business &amp; Strategy</option>
+                <option value="mca" data-fee="90000">MCA – Advanced Computing</option>
+              </optgroup>
+              <optgroup label="Doctoral">
+                <option value="phd" data-fee="60000">Ph.D. – All Disciplines (Annual)</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <!-- Percentage -->
+          <div>
+            <label for="calcPercent" class="block text-sm font-semibold text-gray-700 mb-1.5">
+              12th / Graduation Percentage: <span id="percentDisplay" class="text-amber font-bold">75%</span>
+            </label>
+            <input type="range" id="calcPercent" min="50" max="100" value="75" step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-amber" />
+            <div class="flex justify-between text-xs text-slate mt-1"><span>50%</span><span>100%</span></div>
+          </div>
+
+          <!-- EMI toggle -->
+          <div class="flex items-center gap-3">
+            <label class="text-sm font-semibold text-gray-700">Show EMI Breakdown?</label>
+            <button id="emiToggle" role="switch" aria-checked="false" class="emi-toggle-btn">
+              <span class="emi-thumb"></span>
+            </button>
+          </div>
+
+          <button id="calcBtn" class="w-full bg-amber hover:bg-amber-light text-white font-bold py-3.5 rounded-xl transition-all duration-300 shadow-md text-base">
+            Calculate Fees &amp; Scholarship
+          </button>
+        </div>
+
+        <!-- Results -->
+        <div id="calcResults" class="lg:col-span-2 bg-navy-dark text-white p-6 lg:p-8 flex flex-col justify-center">
+          <div id="calcPlaceholder" class="text-center text-gray-400 py-8">
+            <svg class="w-12 h-12 mx-auto mb-3 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            <p class="text-sm">Select a program and click <br/><strong class="text-white">Calculate</strong> to see your estimate.</p>
+          </div>
+          <div id="calcOutput" class="hidden space-y-4">
+            <h3 class="font-semibold text-amber-light text-sm uppercase tracking-wide">Fee Estimate</h3>
+            <div class="result-row">
+              <span class="text-gray-300 text-sm">Annual Tuition Fee</span>
+              <span id="resFee" class="text-white font-bold">—</span>
+            </div>
+            <div class="result-row">
+              <span class="text-gray-300 text-sm">Scholarship Discount</span>
+              <span id="resDiscount" class="text-green-400 font-bold">—</span>
+            </div>
+            <div class="result-row border-t border-white/20 pt-3">
+              <span class="text-gray-200 text-sm font-semibold">Payable After Scholarship</span>
+              <span id="resPayable" class="text-amber-light font-black text-lg">—</span>
+            </div>
+            <div id="emiSection" class="hidden">
+              <div class="result-row bg-white/10 rounded-lg px-3 py-2">
+                <span class="text-gray-300 text-sm">Monthly EMI (12 months)</span>
+                <span id="resEmi" class="text-white font-bold">—</span>
+              </div>
+            </div>
+            <div id="resScholarshipName" class="hidden bg-amber/20 border border-amber/30 rounded-lg px-3 py-2 text-amber-light text-sm font-semibold text-center"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="bg-navy-dark text-white">
+  <!-- Main Footer -->
+  <div class="max-w-screen-xl mx-auto px-4 lg:px-6 py-12 lg:py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+
+      <!-- Brand Column -->
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-amber flex items-center justify-center">
+            <span class="text-white font-display font-black text-base">AK</span>
+          </div>
+          <div>
+            <div class="font-display font-bold text-white text-sm leading-tight">Ajay Kumar Garg<br/>University</div>
+            <div class="text-[10px] text-gray-400 uppercase tracking-widest">AKGU • Estd. 1998</div>
+          </div>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed mb-4">Empowering Innovation &amp; Education 4.0 in Ghaziabad, Delhi-NCR. Approved by UGC | Affiliated to AKTU.</p>
+        <div class="flex gap-3">
+          <a href="#" aria-label="Facebook" class="social-icon"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a>
+          <a href="#" aria-label="Twitter/X" class="social-icon"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="LinkedIn" class="social-icon"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="#" aria-label="YouTube" class="social-icon"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          <a href="#" aria-label="Instagram" class="social-icon"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#">About AKGU</a></li>
+          <li><a href="#programs">Academic Programs</a></li>
+          <li><a href="#">Admissions 2026–27</a></li>
+          <li><a href="#research">Research &amp; Innovation</a></li>
+          <li><a href="#coe">Centres of Excellence</a></li>
+          <li><a href="#placements">Placements</a></li>
+          <li><a href="#campus">Campus Life</a></li>
+          <li><a href="#calculator">Scholarship Calculator</a></li>
+        </ul>
+      </div>
+
+      <!-- Academics & Governance -->
+      <div>
+        <h4 class="footer-heading">Academics &amp; Governance</h4>
+        <ul class="footer-links">
+          <li><a href="#">UGC / AICTE Approvals</a></li>
+          <li><a href="#">NAAC Accreditation</a></li>
+          <li><a href="#">NBA Accreditation</a></li>
+          <li><a href="#">Ph.D. Ordinances</a></li>
+          <li><a href="#">Academic Calendar</a></li>
+          <li><a href="#">Examination Schedule</a></li>
+          <li><a href="#">IQAC Reports</a></li>
+          <li><a href="#">RTI Disclosures</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact & Compliance -->
+      <div>
+        <h4 class="footer-heading">Contact &amp; Compliance</h4>
+        <ul class="space-y-2 text-sm text-gray-400 mb-5">
+          <li class="flex gap-2">
+            <svg class="w-4 h-4 text-amber mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+            27 KM Milestone, Delhi-Meerut Expressway, Ghaziabad, UP – 201009
+          </li>
+          <li class="flex gap-2">
+            <svg class="w-4 h-4 text-amber mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            <span>Toll-Free: <a href="tel:18002548864" class="text-amber-light hover:text-white transition">1800-AKGU-UNI</a></span>
+          </li>
+          <li class="flex gap-2">
+            <svg class="w-4 h-4 text-amber mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+            <a href="mailto:info@akgu.ac.in" class="text-amber-light hover:text-white transition">info@akgu.ac.in</a>
+          </li>
+        </ul>
+        <div class="space-y-2 text-sm">
+          <a href="#" class="flex items-center gap-2 text-red-400 hover:text-red-300 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            Anti-Ragging Helpline: 1800-180-5522
+          </a>
+          <a href="#" class="flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            Emergency: +91-120-456-7890
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Bottom Bar -->
+  <div class="border-t border-white/10">
+    <div class="max-w-screen-xl mx-auto px-4 lg:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
+      <p>&copy; 2026 Ajay Kumar Garg University (AKGU). All rights reserved. | Approved by UGC | AICTE Approved</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-gray-300 transition">Privacy Policy</a>
+        <a href="#" class="hover:text-gray-300 transition">Terms of Use</a>
+        <a href="#" class="hover:text-gray-300 transition">Sitemap</a>
+        <a href="#" class="hover:text-gray-300 transition">Grievance Cell</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     ENQUIRY MODAL (Auto-prompt + Manual trigger)
+     ============================================================ -->
+<div id="enquiryModal" role="dialog" aria-modal="true" aria-labelledby="enquiryTitle" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+  <div class="modal-backdrop absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+  <div class="modal-panel relative bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden animate-fade-in">
+    <!-- Top band -->
+    <div class="bg-navy px-6 py-5 flex items-start justify-between">
+      <div>
+        <div class="inline-flex items-center gap-2 bg-amber/20 text-amber-light text-xs font-semibold px-2.5 py-1 rounded-full mb-2">
+          <span class="w-1.5 h-1.5 bg-amber-light rounded-full animate-pulse"></span>
+          Admissions Open 2026–27
+        </div>
+        <h2 id="enquiryTitle" class="font-display font-bold text-white text-xl">Quick Admissions Enquiry</h2>
+        <p class="text-gray-300 text-sm mt-1">Let us call you back within 24 hours.</p>
+      </div>
+      <button id="closeEnquiry" aria-label="Close enquiry modal" class="text-gray-400 hover:text-white transition mt-1">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <!-- Form -->
+    <form id="enquiryForm" class="px-6 py-6 space-y-4" novalidate>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label for="eq_name" class="form-label">Full Name *</label>
+          <input type="text" id="eq_name" name="name" placeholder="Your Name" required class="form-input" autocomplete="name" />
+        </div>
+        <div>
+          <label for="eq_phone" class="form-label">Phone Number *</label>
+          <input type="tel" id="eq_phone" name="phone" placeholder="+91 XXXXX XXXXX" required class="form-input" autocomplete="tel" />
+        </div>
+      </div>
+      <div>
+        <label for="eq_email" class="form-label">Email Address</label>
+        <input type="email" id="eq_email" name="email" placeholder="you@example.com" class="form-input" autocomplete="email" />
+      </div>
+      <div>
+        <label for="eq_program" class="form-label">Interested Program *</label>
+        <select id="eq_program" name="program" required class="form-input">
+          <option value="">— Select Program —</option>
+          <option>B.Tech – Computer Science &amp; Engineering (AI/ML)</option>
+          <option>B.Tech – Mechanical Engineering (Robotics)</option>
+          <option>MBA – Digital Business &amp; Strategy</option>
+          <option>M.Tech – Data Science &amp; AI</option>
+          <option>Ph.D. – Computer Science &amp; AI</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="eq_msg" class="form-label">Message (optional)</label>
+        <textarea id="eq_msg" name="message" rows="2" placeholder="Any specific queries…" class="form-input resize-none"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-amber hover:bg-amber-light text-white font-bold py-3.5 rounded-xl transition-all duration-300 shadow-md">
+        Submit Enquiry →
+      </button>
+      <p class="text-center text-xs text-gray-400">By submitting you agree to our <a href="#" class="underline">Privacy Policy</a>. We respect your data.</p>
+    </form>
+  </div>
+</div>
+
+<!-- ============================================================
+     SEARCH MODAL (CMD/CTRL + K)
+     ============================================================ -->
+<div id="searchModal" role="dialog" aria-modal="true" aria-label="Search" class="modal-overlay fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 hidden">
+  <div class="modal-backdrop absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+  <div class="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden animate-fade-in">
+    <div class="flex items-center gap-3 px-5 py-4 border-b border-gray-200">
+      <svg class="w-5 h-5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 115 11a6 6 0 0112 0z"/></svg>
+      <input type="search" id="searchInput" placeholder="Search programs, research, labs, events…" class="flex-1 text-base text-gray-800 outline-none bg-transparent" autocomplete="off" />
+      <kbd class="hidden sm:block text-xs text-gray-400 border border-gray-200 rounded px-1.5 py-0.5">ESC</kbd>
+    </div>
+    <div id="searchResults" class="max-h-72 overflow-y-auto py-2">
+      <!-- Populated by JS -->
+      <div class="px-5 py-3 text-sm text-gray-400">Start typing to search…</div>
+    </div>
+  </div>
+</div>
+
+<!-- Main JS -->
+<script src="main.js"></script>
+</body>
+</html>
