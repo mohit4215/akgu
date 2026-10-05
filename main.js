@@ -8,8 +8,7 @@
  *  3. Hero Headline Carousel
  *  4. Animated Stats Counters
  *  5. Academic Program Filter Grid
- *  6. Fee & Scholarship Calculator
- *  7. Enquiry Modal (auto-prompt + manual trigger)
+ *  6. Enquiry Modal (auto-prompt + manual trigger)
  *  8. Search Modal (button + CMD/CTRL+K)
  *  9. Scroll Reveal Animations
  * 10. Back-to-Top Button
@@ -255,89 +254,7 @@ function releaseFocus(el) {
 })();
 
 /* ============================================================
-   6. FEE & SCHOLARSHIP CALCULATOR
-   ============================================================ */
-(function initCalculator() {
-  const courseSelect   = $('#calcCourse');
-  const percentSlider  = $('#calcPercent');
-  const percentDisplay = $('#percentDisplay');
-  const emiToggle      = $('#emiToggle');
-  const calcBtn        = $('#calcBtn');
-  const calcPlaceholder= $('#calcPlaceholder');
-  const calcOutput     = $('#calcOutput');
-  const emiSection     = $('#emiSection');
-
-  if (!courseSelect || !calcBtn) return;
-
-  // Scholarship tiers based on percentage
-  const getScholarship = (pct) => {
-    if (pct >= 95) return { pct: 100, name: '🏆 Super-30 Full Scholarship (100%)' };
-    if (pct >= 90) return { pct: 75,  name: '🥇 Gold Merit Scholarship (75%)' };
-    if (pct >= 85) return { pct: 50,  name: '🥈 Silver Merit Scholarship (50%)' };
-    if (pct >= 80) return { pct: 30,  name: '🥉 Bronze Merit Scholarship (30%)' };
-    if (pct >= 75) return { pct: 15,  name: '⭐ Academic Excellence Award (15%)' };
-    return { pct: 0, name: null };
-  };
-
-  // Live slider display
-  percentSlider?.addEventListener('input', () => {
-    if (percentDisplay) percentDisplay.textContent = percentSlider.value + '%';
-  });
-
-  // EMI toggle
-  let emiEnabled = false;
-  emiToggle?.addEventListener('click', () => {
-    emiEnabled = !emiEnabled;
-    emiToggle.setAttribute('aria-checked', String(emiEnabled));
-  });
-
-  // Calculate button
-  calcBtn.addEventListener('click', () => {
-    const selectedOption = courseSelect.options[courseSelect.selectedIndex];
-    const feeRaw  = parseInt(selectedOption.dataset.fee, 10);
-    const pct     = parseInt(percentSlider.value, 10);
-
-    if (!feeRaw || isNaN(feeRaw)) {
-      courseSelect.classList.add('error');
-      courseSelect.focus();
-      return;
-    }
-    courseSelect.classList.remove('error');
-
-    const scholarship = getScholarship(pct);
-    const discount    = Math.round(feeRaw * scholarship.pct / 100);
-    const payable     = feeRaw - discount;
-    const emi         = Math.ceil(payable / 12);
-
-    // Show output
-    calcPlaceholder.classList.add('hidden');
-    calcOutput.classList.remove('hidden');
-
-    $('#resFee').textContent      = inrFormat(feeRaw) + ' /year';
-    $('#resDiscount').textContent = discount > 0 ? `-${inrFormat(discount)} (${scholarship.pct}% off)` : 'No scholarship applicable';
-    $('#resPayable').textContent  = inrFormat(payable) + ' /year';
-    $('#resEmi').textContent      = inrFormat(emi) + ' /month';
-
-    const badge = $('#resScholarshipName');
-    if (scholarship.name) {
-      badge.textContent = scholarship.name;
-      badge.classList.remove('hidden');
-    } else {
-      badge.classList.add('hidden');
-    }
-
-    // EMI section visibility
-    emiSection.classList.toggle('hidden', !emiEnabled);
-
-    // Pulse the results panel
-    calcOutput.style.animation = 'none';
-    calcOutput.offsetHeight; // reflow
-    calcOutput.style.animation = 'fadeIn .4s ease';
-  });
-})();
-
-/* ============================================================
-   7. ENQUIRY MODAL
+   6. ENQUIRY MODAL
    ============================================================ */
 (function initEnquiryModal() {
   const modal     = $('#enquiryModal');
@@ -461,8 +378,6 @@ function releaseFocus(el) {
     { title: 'IDEA Lab & Startup Incubation', url: '#research', category: 'Research' },
     { title: 'Research Council & Patents', url: '#research', category: 'Research' },
     { title: 'Placements & Recruiters 2025', url: '#placements', category: 'Placements' },
-    { title: 'Fee & Scholarship Calculator', url: '#calculator', category: 'Admissions' },
-    { title: 'Super-30 Merit Scholarship', url: '#calculator', category: 'Admissions' },
     { title: 'Campus Life & Student Clubs', url: '#campus', category: 'Campus' },
     { title: 'Universal Human Values Cell (UHV)', url: '#campus', category: 'Campus' },
     { title: 'Hostel & Accommodation', url: '#campus', category: 'Campus' },

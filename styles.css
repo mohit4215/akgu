@@ -451,61 +451,6 @@ body {
 .campus-feature-box:hover { border-color: var(--amber); }
 
 /* ==============================================================
-   FEE CALCULATOR
-   ============================================================== */
-.calc-input {
-  width: 100%;
-  border: 1.5px solid #d1d5db;
-  border-radius: 0.625rem;
-  padding: 0.625rem 0.875rem;
-  font-size: 0.875rem;
-  color: #1e293b;
-  background: white;
-  transition: border-color .2s, box-shadow .2s;
-  outline: none;
-  appearance: none;
-  -webkit-appearance: none;
-}
-.calc-input:focus {
-  border-color: var(--amber);
-  box-shadow: 0 0 0 3px rgba(217,119,6,.12);
-}
-
-/* EMI Toggle */
-.emi-toggle-btn {
-  width: 2.75rem;
-  height: 1.5rem;
-  background: #d1d5db;
-  border-radius: 9999px;
-  position: relative;
-  border: none;
-  cursor: pointer;
-  transition: background .3s;
-  padding: 0;
-}
-.emi-toggle-btn[aria-checked="true"] { background: var(--amber); }
-.emi-thumb {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 1.125rem;
-  height: 1.125rem;
-  background: white;
-  border-radius: 9999px;
-  transition: transform .3s;
-  box-shadow: 0 1px 3px rgba(0,0,0,.2);
-}
-.emi-toggle-btn[aria-checked="true"] .emi-thumb { transform: translateX(1.25rem); }
-
-/* Results rows */
-.result-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* ==============================================================
    FOOTER
    ============================================================== */
 .footer-heading {
