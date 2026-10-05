@@ -64,7 +64,6 @@ export const FooterGlobal: GlobalConfig = {
         { label: 'Centres of Excellence',url: '/centres-of-excellence' },
         { label: 'Placements',           url: '/placements'  },
         { label: 'Campus Life',          url: '/campus-life' },
-        { label: 'Scholarship Calculator', url: '/#calculator' },
       ],
     },
     {

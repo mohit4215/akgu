@@ -4,7 +4,6 @@ import { StatsBlock } from '@/components/blocks/StatsBlock'
 import { ProgramExplorer } from '@/components/blocks/ProgramExplorer'
 import { CentresOfExcellenceBlock } from '@/components/blocks/CentresOfExcellenceBlock'
 import { PlacementTicker } from '@/components/blocks/PlacementTicker'
-import { ScholarshipCalculator } from '@/components/blocks/ScholarshipCalculator'
 import { CallToActionBlock } from '@/components/blocks/CallToActionBlock'
 
 export interface BlockData {
@@ -23,7 +22,6 @@ const BLOCK_MAP: Record<string, React.ComponentType<any>> = {
   'program-explorer': ProgramExplorer,
   'centres-of-excellence': CentresOfExcellenceBlock,
   'placement-ticker': PlacementTicker,
-  'scholarship-calculator': ScholarshipCalculator,
   'call-to-action': CallToActionBlock,
 }
 

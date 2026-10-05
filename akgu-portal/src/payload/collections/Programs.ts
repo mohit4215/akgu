@@ -61,7 +61,7 @@ export const Programs: CollectionConfig = {
       name: 'tuitionFeePerYear',
       type: 'number',
       label: 'Annual Tuition Fee (₹)',
-      admin: { description: 'Used by the Scholarship Calculator' },
+      admin: { description: 'Annual approved tuition fee per academic year' },
     },
 
     // ── Curriculum ────────────────────────────────────────

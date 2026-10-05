@@ -187,7 +187,6 @@ export async function seedDatabase() {
           { blockType: 'program-explorer' },
           { blockType: 'centres-of-excellence' },
           { blockType: 'placement-ticker' },
-          { blockType: 'scholarship-calculator' },
           { blockType: 'call-to-action' },
         ],
       } as any,

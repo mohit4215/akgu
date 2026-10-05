@@ -29,7 +29,6 @@ const SEARCH_INDEX: SearchItem[] = [
   { title: '3D Printing & Additive Manufacturing Centre', category: 'Centre of Excellence', url: '#coe', desc: 'Industrial grade SLA & FDM rapid prototyping machines' },
   { title: 'National Instruments (NI) LabVIEW Centre', category: 'Centre of Excellence', url: '#coe', desc: 'Virtual instrumentation, graphical system design, and sensors' },
   { title: 'AICTE IDEA Lab Maker Space', category: 'Research', url: '#research', desc: 'Interdisciplinary fabrication facility with laser cutters & IoT' },
-  { title: 'Scholarship & Fee Calculator', category: 'Admission', url: '#calculator', desc: 'Estimate Super-30 and merit scholarships from 15% up to 100%' },
   { title: 'Campus Placements 2025', category: 'Campus', url: '#placements', desc: 'Highest package ₹42 LPA, 1200+ total job offers' },
   { title: 'Hostel & Residential Life', category: 'Campus', url: '#campus', desc: 'Air-conditioned on-campus accommodation with 24x7 security' },
 ]
@@ -84,7 +83,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search programs, robotics lab, scholarships, placements..."
+            placeholder="Search programs, robotics lab, faculty, placements..."
             className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-navy focus:bg-white transition-all"
           />
         </div>

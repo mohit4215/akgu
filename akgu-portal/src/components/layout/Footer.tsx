@@ -44,11 +44,6 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#calculator" className="hover:text-amber transition-colors">
-                  Scholarship & Fee Calculator
-                </Link>
-              </li>
-              <li>
                 <Link href="#coe" className="hover:text-amber transition-colors">
                   Centres of Excellence & Robotics Lab
                 </Link>

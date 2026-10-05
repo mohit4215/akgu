@@ -4,7 +4,6 @@ import { StatsBlock }                 from '../blocks/StatsBlock'
 import { ProgramExplorerBlock }       from '../blocks/ProgramExplorerBlock'
 import { CentresOfExcellenceBlock }   from '../blocks/CentresOfExcellenceBlock'
 import { PlacementTickerBlock }       from '../blocks/PlacementTickerBlock'
-import { ScholarshipCalculatorBlock } from '../blocks/ScholarshipCalculatorBlock'
 import { CallToActionBlock }          from '../blocks/CallToActionBlock'
 
 export const Pages: CollectionConfig = {
@@ -66,7 +65,6 @@ export const Pages: CollectionConfig = {
         ProgramExplorerBlock,
         CentresOfExcellenceBlock,
         PlacementTickerBlock,
-        ScholarshipCalculatorBlock,
         CallToActionBlock,
       ],
     },

@@ -114,7 +114,6 @@ export type Block =
   | ProgramExplorerBlock
   | CentresOfExcellenceBlock
   | PlacementTickerBlock
-  | ScholarshipCalculatorBlock
   | CallToActionBlock
 
 export interface HeroBlock {
@@ -162,13 +161,6 @@ export interface CentresOfExcellenceBlock {
 
 export interface PlacementTickerBlock {
   blockType: 'placement-ticker'
-  id?: string | null
-  heading?: string | null
-  subheading?: string | null
-}
-
-export interface ScholarshipCalculatorBlock {
-  blockType: 'scholarship-calculator'
   id?: string | null
   heading?: string | null
   subheading?: string | null

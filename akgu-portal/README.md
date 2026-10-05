@@ -1,66 +1,94 @@
-# Ajay Kumar Garg University (AKGU) — Full-Stack University Portal
+# AKGU Portal — Full-Stack University Web Platform & Headless CMS
 
-Production-ready, full-stack university web application built with **Next.js 15 (App Router)**, **TypeScript**, **Payload CMS 3.0**, and **Tailwind CSS**.
-
----
-
-## 🌟 Key Features
-
-- **Payload CMS 3.0 Embedded Architecture**: Native admin panel at `/admin` built directly inside Next.js App Router with role-based access control (Admin & Editor).
-- **Page Builder System**: 7 configurable CMS blocks:
-  - `HeroBlock`: Animated gradients, dynamic headlines, action badges, and quick-access cards.
-  - `StatsBlock`: Animated count-up metrics using `IntersectionObserver`.
-  - `ProgramExplorerBlock`: Instant client-side degree filtering (UG, PG, Ph.D.) and live search.
-  - `CentresOfExcellenceBlock`: Industrial labs showcase (KUKA Robotics, Siemens/Bosch, 3D Printing, NI).
-  - `PlacementTickerBlock`: Continuous marquee ticker of global recruiters with alumni stories.
-  - `ScholarshipCalculatorBlock`: Real-time tuition discount calculation with Super-30 tiers and EMI toggle.
-  - `CallToActionBlock`: High-conversion lead generation band.
-- **Global Navigation & Modals**:
-  - Sticky glassmorphic header with multi-column mega-menus and responsive mobile accordion drawer.
-  - Global Search Modal with <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> + <kbd>K</kbd> instant search.
-  - Lead Enquiry Modal with automatic 10-second prompt and validation.
-- **SEO & Compliance**:
-  - Incremental Static Regeneration (ISR) with 60-second revalidation.
-  - Schema.org JSON-LD `EducationalOrganization` structured data.
-  - Custom 404 error page.
+Enterprise headless CMS and dynamic web application for **Ajay Kumar Garg University (AKGU)**, built with **Next.js 15 (App Router)**, **TypeScript**, **Payload CMS 3.0**, and **Tailwind CSS**.
 
 ---
 
-## 🚀 Quick Start
+## 🏛️ System Architecture
 
-### 1. Prerequisites
+This subsystem provides the administrative content management backend and dynamic server-rendered presentation layer for the university portal:
+
+- **Next.js 15 App Router**: Server Components, dynamic catch-all route handler (`/[...slug]`), and optimized asset delivery.
+- **Embedded Payload CMS 3.0**: Native admin panel hosted at `/admin` within Next.js App Router without requiring separate server processes.
+- **Dynamic Page Builder**: Block-based layout composition with schema validation.
+- **Type-Safe Schema**: Generated TypeScript interfaces synchronized with Payload collections and globals.
+
+---
+
+## 🧩 Page Builder Blocks
+
+The portal features 6 modular, draggable CMS blocks configured in `src/payload/blocks/`:
+
+1. **`HeroBlock`**: Dynamic headline rotation, announcement badge, CTA buttons, and quick-access navigation cards.
+2. **`StatsBlock`**: Key institutional metrics (Fortune 500 recruiters, international package records, patent counts) with count-up animations.
+3. **`ProgramExplorerBlock`**: Degree filtering grid supporting Undergraduate (B.Tech, BCA), Postgraduate (M.Tech, MCA, MBA), and Ph.D. degrees.
+4. **`CentresOfExcellenceBlock`**: Industrial automation laboratory showcase (KUKA Robotics, Siemens PLM, Bosch Rexroth, 3D Printing, NI).
+5. **`PlacementTickerBlock`**: Continuous recruiter marquee with student placement cards and salary packages.
+6. **`CallToActionBlock`**: Admissions enrollment banner and inquiry trigger.
+
+---
+
+## 🗄️ Collections & Globals
+
+### Collections
+- **`Pages`**: Custom URL slugs, SEO title/description meta, and dynamic block builder layouts.
+- **`Programs`**: Degree duration, intake capacity, annual tuition fees, and curriculum specializations.
+- **`Departments`**: Academic departments, department heads, and affiliated research labs.
+- **`Faculty`**: Academic profiles, designations, research specializations, and publications.
+- **`Placements`**: Placement statistics, top recruiters, alumni achievements, and package records.
+- **`Media`**: Asset management for campus photography, banners, and institutional publications.
+- **`Users`**: Role-based access control (`admin`, `editor`).
+
+### Globals
+- **`SiteSettings`**: University contact details, toll-free helpline numbers, and social links.
+- **`Header`**: Mega-menu navigation hierarchy and quick-action links.
+- **`Footer`**: Statutory disclaimers, accreditation links, and anti-ragging contact info.
+
+---
+
+## 🚀 Setup & Local Development
+
+### Prerequisites
 - Node.js >= 20.0.0
-- MongoDB instance (local or MongoDB Atlas)
+- MongoDB 6.0+ (Local daemon or MongoDB Atlas cluster)
 
-### 2. Environment Variables
+### Environment Configuration
 Copy `.env.example` to `.env.local`:
 ```bash
 cp .env.example .env.local
 ```
 
-Configure:
+Populate the required environment variables:
 ```env
 DATABASE_URI=mongodb://127.0.0.1:27017/akgu
-PAYLOAD_SECRET=your-random-32-character-secret-key-here
+PAYLOAD_SECRET=replace-with-a-secure-32-byte-secret-key
 NEXT_PUBLIC_SERVER_URL=http://localhost:3000
 ```
 
-### 3. Install Dependencies
+### Installation
 ```bash
 npm install
 ```
 
-### 4. Development Server
+### Development Server
 ```bash
 npm run dev
 ```
 
-Open:
-- Website: [http://localhost:3000](http://localhost:3000)
-- CMS Admin: [http://localhost:3000/admin](http://localhost:3000/admin)
+- Portal: [http://localhost:3000](http://localhost:3000)
+- Admin Panel: [http://localhost:3000/admin](http://localhost:3000/admin)
 
-### 5. Build for Production
+### Seeding Initial Data
+To populate the database with default academic programs, faculty profiles, and site settings:
+```bash
+npm run seed
+```
+
+---
+
+## 🛠️ Production Build
+
 ```bash
 npm run build
-npm start
+npm run start
 ```

@@ -35,7 +35,6 @@ const NAV_ITEMS = [
     url: '#admissions',
     subLinks: [
       { label: 'Program Explorer', url: '#programs', desc: 'Find UG, PG and Research degrees' },
-      { label: 'Fee & Scholarship Calculator', url: '#calculator', desc: 'Calculate tuition discount up to 100%' },
       { label: 'Eligibility & Criteria', url: '#admissions', desc: 'Cut-offs, entrance exams & direct entry' },
       { label: 'Apply Online', url: '#enquiry', desc: 'Submit application for 2026–27 intake' },
     ],
