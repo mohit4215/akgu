@@ -122,9 +122,6 @@
         <a href="#rankings" class="px-3.5 py-2 text-sm font-bold text-slate-700 hover:text-[#002147] hover:bg-slate-100 rounded-lg transition-colors">
           Rankings
         </a>
-        <a href="#calculator" class="px-3.5 py-2 text-sm font-bold text-slate-700 hover:text-[#002147] hover:bg-slate-100 rounded-lg transition-colors">
-          Scholarships
-        </a>
       </div>
 
       <!-- Action Buttons -->
@@ -160,7 +157,6 @@
           <a href="#journey" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-800 hover:text-amber-600">Campus Vibes & Clubs</a>
           <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-800 hover:text-amber-600">Moments That Matter</a>
           <a href="#rankings" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-800 hover:text-amber-600">Rankings & Awards</a>
-          <a href="#calculator" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-800 hover:text-amber-600">Scholarship Calculator</a>
         </div>
       </div>
       <button onclick="toggleMobileMenu(); openEnquiryModal();" class="w-full py-3 rounded-xl bg-[#002147] text-white font-bold text-sm shadow text-center">
@@ -672,70 +668,6 @@
   </section>
 
   <!-- ========================================== -->
-  <!-- 12. SCHOLARSHIP CALCULATOR                 -->
-  <!-- ========================================== -->
-  <section id="calculator" class="py-20 px-4 bg-slate-50">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#002147] font-display">
-          Scholarship & Tuition Fee Calculator
-        </h2>
-        <p class="text-sm text-slate-600 mt-2">
-          Calculate your tuition fee discount up to 100% under AKGU Super-30 and Academic Merit programs.
-        </p>
-      </div>
-
-      <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-200 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-        <div class="md:col-span-7 space-y-6">
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">1. Select Degree</label>
-            <select id="calcProgramSelect" onchange="calculateFee()" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold text-[#002147]">
-              <option value="155000">B.Tech Computer Science & Engineering (₹1,55,000/yr)</option>
-              <option value="155000">B.Tech Artificial Intelligence & ML (₹1,55,000/yr)</option>
-              <option value="145000">B.Tech Electronics & Communication (₹1,45,000/yr)</option>
-              <option value="95000">Bachelor of Computer Applications - BCA (₹95,000/yr)</option>
-              <option value="160000">Master of Business Administration - MBA (₹1,60,000/yr)</option>
-              <option value="115000">M.Tech Advanced Computing (₹1,15,000/yr)</option>
-              <option value="80000">Doctor of Philosophy - Ph.D. (₹80,000/yr)</option>
-            </select>
-          </div>
-
-          <div>
-            <div class="flex justify-between items-center mb-2">
-              <label class="text-xs font-bold uppercase tracking-wider text-slate-500">2. Qualifying 12th / Grad %</label>
-              <span id="pctDisplay" class="text-xl font-black text-amber-600 font-mono bg-amber-50 px-3 py-0.5 rounded-lg">88%</span>
-            </div>
-            <input id="pctSlider" type="range" min="50" max="100" value="88" oninput="calculateFee()" class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-amber-500" />
-            <div class="flex justify-between text-[11px] text-slate-400 mt-1 font-mono">
-              <span>50%</span>
-              <span>75% (Min Award)</span>
-              <span>85%</span>
-              <span>95%+ (100% Full)</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="md:col-span-5 bg-gradient-to-br from-[#002147] to-[#001630] rounded-2xl p-6 text-white text-center space-y-4">
-          <div id="tierBadge" class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-500 text-slate-950">
-            🥇 Gold Merit Scholarship
-          </div>
-          <div>
-            <span class="text-xs text-slate-300 block">Net Annual Payable</span>
-            <span id="netPayableText" class="text-3xl font-black font-display text-[#ffab00]">₹38,750</span>
-          </div>
-          <div class="text-xs text-slate-300 border-t border-white/10 pt-3">
-            <span>You save: </span>
-            <span id="discountText" class="font-bold text-white">₹1,16,250 (75%)</span>
-          </div>
-          <button onclick="openEnquiryModal()" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase tracking-wider">
-            Claim Scholarship
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================== -->
   <!-- 13. LEAD ENQUIRY MODAL                     -->
   <!-- ========================================== -->
   <div id="enquiryModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
@@ -802,10 +734,6 @@
           <span class="font-bold text-[#002147]">Top Placements @ AKGEC</span>
           <span class="text-slate-400 block mt-0.5">Anshuman Nandan (35 LPA) & Archas Srivastava (21 LPA)</span>
         </a>
-        <a href="#calculator" onclick="closeSearchModal()" class="block p-3 rounded-xl hover:bg-slate-50">
-          <span class="font-bold text-[#002147]">Scholarship Calculator</span>
-          <span class="text-slate-400 block mt-0.5">Up to 100% Super-30 tuition waiver</span>
-        </a>
       </div>
       <div class="pt-3 border-t border-slate-100 flex justify-between text-[11px] text-slate-400">
         <span>Press ESC to close</span>
@@ -845,7 +773,6 @@
             Quick Links
           </h4>
           <ul class="space-y-2 text-xs text-slate-400">
-            <li><a href="#calculator" class="hover:text-[#ffab00] transition-colors">Fee & Scholarship Calculator</a></li>
             <li><a href="#placements" class="hover:text-[#ffab00] transition-colors">Placements & Recruiters</a></li>
             <li><a href="#faculty" class="hover:text-[#ffab00] transition-colors">World Class Faculty</a></li>
             <li><a href="#journey" class="hover:text-[#ffab00] transition-colors">Campus Vibes & Clubs</a></li>
@@ -900,28 +827,6 @@
     setInterval(() => {
       setHeroSlide((currentHeroIndex + 1) % totalHeroSlides);
     }, 4500);
-
-    // 2. Scholarship Calculator Logic
-    function calculateFee() {
-      const baseFee = parseFloat(document.getElementById('calcProgramSelect').value) || 155000;
-      const pct = parseFloat(document.getElementById('pctSlider').value) || 88;
-      document.getElementById('pctDisplay').innerText = pct + '%';
-
-      let discountPct = 0;
-      let tierLabel = 'Standard Fee';
-      if (pct >= 95) { discountPct = 100; tierLabel = '🏆 Super-30 Full Scholarship (100%)'; }
-      else if (pct >= 90) { discountPct = 75; tierLabel = '🥇 Gold Merit Scholarship (75%)'; }
-      else if (pct >= 85) { discountPct = 50; tierLabel = '🥈 Silver Merit Scholarship (50%)'; }
-      else if (pct >= 80) { discountPct = 30; tierLabel = '🥉 Bronze Merit Scholarship (30%)'; }
-      else if (pct >= 75) { discountPct = 15; tierLabel = '⭐ Academic Excellence Award (15%)'; }
-
-      const discountAmt = Math.round((baseFee * discountPct) / 100);
-      const netPayable = baseFee - discountAmt;
-
-      document.getElementById('tierBadge').innerText = tierLabel;
-      document.getElementById('netPayableText').innerText = '₹' + netPayable.toLocaleString('en-IN');
-      document.getElementById('discountText').innerText = '₹' + discountAmt.toLocaleString('en-IN') + ' (' + discountPct + '%)';
-    }
 
     // 3. Modals
     function openEnquiryModal(prog) {
