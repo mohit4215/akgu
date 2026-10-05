@@ -15,11 +15,11 @@ export interface StatsBlockProps {
 }
 
 const DEFAULT_STATS: StatItem[] = [
-  { target: 6500, prefix: '', suffix: '+', label: 'Students On Campus' },
-  { target: 92, prefix: '', suffix: '%', label: 'Placement Rate' },
-  { target: 42, prefix: '₹', suffix: ' LPA', label: 'Highest Package' },
-  { target: 350, prefix: '', suffix: '+', label: 'Ph.D. & Expert Faculty' },
-  { target: 15, prefix: '', suffix: '+', label: 'Industry Research Labs' },
+  { target: 10000, prefix: '', suffix: '+', label: 'Students' },
+  { target: 12, prefix: '', suffix: '+', label: 'R&D Centres' },
+  { value: '₹ 1.13 Cr', label: 'Highest Package' },
+  { target: 28, prefix: '', suffix: '+ Years', label: 'Legacy' },
+  { target: 40, prefix: '', suffix: '+ Acres', label: 'Campus Area' },
 ]
 
 export function StatsBlock({ stats = DEFAULT_STATS }: StatsBlockProps) {
@@ -78,9 +78,7 @@ export function StatsBlock({ stats = DEFAULT_STATS }: StatsBlockProps) {
           {stats.map((item, idx) => (
             <div key={idx} className="p-4 rounded-xl bg-white/5 border border-white/5 backdrop-blur-xs">
               <div className="text-3xl sm:text-4xl font-extrabold text-amber font-display tracking-tight">
-                {item.prefix}
-                {hasAnimated ? counts[idx] : item.target}
-                {item.suffix}
+                {item.value ? item.value : `${item.prefix || ''}${hasAnimated ? counts[idx] : item.target}${item.suffix || ''}`}
               </div>
               <div className="text-xs sm:text-sm text-slate-300 font-medium mt-1.5 leading-snug">
                 {item.label}

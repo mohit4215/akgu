@@ -7,6 +7,11 @@ import {
   Cpu,
   TrendingUp,
   Award,
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
+  Maximize,
 } from 'lucide-react'
 
 export interface HeroBlockProps {
@@ -70,6 +75,19 @@ export function HeroBlock({
               <span>{secondaryCta.label || 'Explore Programs'}</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
+          </div>
+
+          {/* Live Video Captions & Controls (Roadmap Box 2) */}
+          <div className="pt-2 flex flex-wrap items-center gap-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-black/40 backdrop-blur-md border border-white/10 text-xs text-slate-300">
+              <span className="w-2 h-2 rounded-full bg-amber animate-pulse" />
+              <span className="font-bold text-white">CC:</span>
+              <span>[00:15] Hands-on robotics research at KUKA Industrial Center</span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-black/30 backdrop-blur-md border border-white/10 text-xs text-slate-300">
+              <span className="font-semibold text-white">Campus 4K Tour</span>
+              <span className="text-amber">• Live Stream</span>
+            </div>
           </div>
         </div>
 
