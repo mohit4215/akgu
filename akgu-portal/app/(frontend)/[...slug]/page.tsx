@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { getPayloadClient } from '@/lib/payload'
 import { BlockRenderer } from '@/lib/blockRenderer'
 
+export const dynamic = 'force-dynamic'
 export const revalidate = 60
 
 type Props = {

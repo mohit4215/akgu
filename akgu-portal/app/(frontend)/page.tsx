@@ -2,6 +2,7 @@ import React from 'react'
 import { BlockRenderer } from '@/lib/blockRenderer'
 import { getPayloadClient } from '@/lib/payload'
 
+export const dynamic = 'force-dynamic'
 export const revalidate = 60
 
 const DEFAULT_HOME_BLOCKS = [
