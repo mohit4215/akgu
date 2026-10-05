@@ -16,7 +16,7 @@
         extend: {
           colors: {
             cardinal: {
-              DEFAULT: '#8C1515',   /* Stanford Cardinal Red */
+              DEFAULT: '#8C1515',   /* Stanford Signature Cardinal Red */
               hover: '#701010',
               dark: '#5E0D0D',      /* Dark Knockout Red */
               deep: '#2E0A0A',      /* Deep Charcoal Burgundy */
@@ -24,7 +24,7 @@
               subtle: '#FAF0F0',
             },
             sandstone: {
-              DEFAULT: '#FBFBF9',   /* Warm Off-White / Sandstone */
+              DEFAULT: '#FBFBF9',   /* Warm Off-White / Sandstone Canvas */
               dark: '#F4F4F1',      /* Soft Surface Gray */
               border: '#E6E6E1',
             },
@@ -62,7 +62,7 @@
     };
   </script>
 
-  <!-- Google Fonts: Source Serif 4 (Stanford Classic Headings) & Source Sans 3 (Stanford UI Body) -->
+  <!-- Google Fonts: Source Serif 4 (Stanford Headings) & Source Sans 3 (Stanford UI Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;0,8..60,900;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
@@ -103,6 +103,85 @@
     .custom-scrollbar::-webkit-scrollbar { height: 6px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: #F4F4F1; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #D5D5D0; border-radius: 9999px; }
+
+    /* ============================================================ */
+    /* STANFORD-STYLE PHOTO SCROLL FLASH & REVEAL EFFECTS           */
+    /* ============================================================ */
+    
+    /* 1. Scroll-triggered smooth scale & opacity reveal */
+    .photo-reveal {
+      opacity: 0;
+      transform: translateY(22px) scale(0.97);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .photo-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* 2. Photo luminous sheen / flash overlay */
+    .photo-flash-box {
+      position: relative;
+      overflow: hidden;
+    }
+    .photo-flash-box::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.5) 45%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0.5) 55%,
+        transparent 100%
+      );
+      transform: skewX(-20deg);
+      pointer-events: none;
+      opacity: 0;
+      z-index: 10;
+    }
+    .photo-flash-box.flash-sweep::after {
+      opacity: 1;
+      animation: photoFlashSweep 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes photoFlashSweep {
+      0% { left: -150%; opacity: 0.9; }
+      100% { left: 160%; opacity: 0; }
+    }
+
+    /* 3. Sticky-Scroll Stanford Campus Slides */
+    .sticky-campus-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.06);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .sticky-campus-slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Stanford Story Chapter active indicator */
+    .story-chapter {
+      transition: all 0.35s ease;
+      border-left: 3px solid transparent;
+    }
+    .story-chapter.active-chapter {
+      border-left-color: #8C1515;
+      background-color: #FFFFFF;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
   </style>
 </head>
 <body class="bg-white text-charcoal antialiased selection:bg-cardinal selection:text-white flex flex-col min-h-screen">
@@ -469,7 +548,7 @@
       <!-- 1. STANFORD-STYLE HERO EDITORIAL FOCUS FEATURE -->
       <section class="relative bg-cardinal-deep text-white min-h-[580px] lg:min-h-[660px] flex items-center overflow-hidden">
         <!-- Ambient Campus Imagery Background (High-res real campus photographs) -->
-        <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 z-0 photo-flash-box" id="heroPhotoFlash">
           <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/building1.webp" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-100" id="heroImg0" alt="AKGU Campus Admin Quad" />
           <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/building2.webp" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-0" id="heroImg1" alt="AKGU Engineering Quad" />
           <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/building3.webp" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-0" id="heroImg2" alt="AKGU Robotics & Labs" />
@@ -574,13 +653,13 @@
             </a>
           </div>
 
-          <!-- Stanford 4-Card Story Grid (1 Featured + 3 Secondary) -->
+          <!-- Stanford 4-Card Story Grid with Scroll Flash Effect -->
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
             <!-- Featured Large Lead Card (Span 7) -->
-            <article onclick="showView('research-coe')" class="cursor-pointer lg:col-span-7 bg-white rounded-3xl overflow-hidden border border-sandstone-border shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between">
+            <article onclick="showView('research-coe')" class="cursor-pointer lg:col-span-7 bg-white rounded-3xl overflow-hidden border border-sandstone-border shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between photo-reveal">
               <div>
-                <div class="relative aspect-video w-full overflow-hidden">
+                <div class="relative aspect-video w-full overflow-hidden photo-flash-box">
                   <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/hero_img4.webp" alt="Robotics Research" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-cardinal text-white text-[11px] font-bold uppercase tracking-wider">
                     Robotics & AI Lab
@@ -608,7 +687,7 @@
             <div class="lg:col-span-5 space-y-6">
               
               <!-- Story 2 -->
-              <article onclick="showView('placements-highlights')" class="cursor-pointer bg-white rounded-2xl p-6 border border-sandstone-border shadow-sm hover:shadow-md transition-all group">
+              <article onclick="showView('placements-highlights')" class="cursor-pointer bg-white rounded-2xl p-6 border border-sandstone-border shadow-sm hover:shadow-md transition-all group photo-reveal">
                 <span class="text-[11px] font-bold uppercase tracking-wider text-cardinal block mb-1">
                   Career Trajectory
                 </span>
@@ -625,7 +704,7 @@
               </article>
 
               <!-- Story 3 -->
-              <article onclick="showView('about-isr')" class="cursor-pointer bg-white rounded-2xl p-6 border border-sandstone-border shadow-sm hover:shadow-md transition-all group">
+              <article onclick="showView('about-isr')" class="cursor-pointer bg-white rounded-2xl p-6 border border-sandstone-border shadow-sm hover:shadow-md transition-all group photo-reveal">
                 <span class="text-[11px] font-bold uppercase tracking-wider text-cardinal block mb-1">
                   Civics & Sustainability
                 </span>
@@ -642,7 +721,7 @@
               </article>
 
               <!-- Story 4 -->
-              <article onclick="showView('admissions-overview')" class="cursor-pointer bg-white rounded-2xl p-6 border border-sandstone-border shadow-sm hover:shadow-md transition-all group">
+              <article onclick="showView('admissions-overview')" class="cursor-pointer bg-white rounded-2xl p-6 border border-sandstone-border shadow-sm hover:shadow-md transition-all group photo-reveal">
                 <span class="text-[11px] font-bold uppercase tracking-wider text-cardinal block mb-1">
                   Admissions 2026–27
                 </span>
@@ -664,7 +743,183 @@
         </div>
       </section>
 
-      <!-- 4. STANFORD-STYLE "OUR IMPACT" STRATEGIC HUBS -->
+      <!-- ============================================================ -->
+      <!-- 4. STANFORD-STYLE SCROLL-DRIVEN PHOTO FLASH SHOWCASE         -->
+      <!-- ("THE CAMPUS IN MOTION" - STICKY SCROLLYTELLING SECTION)     -->
+      <!-- ============================================================ -->
+      <section id="campus-in-motion" class="py-24 px-4 bg-sandstone-dark border-t border-sandstone-border relative">
+        <div class="max-w-7xl mx-auto">
+          
+          <div class="mb-14 max-w-2xl">
+            <span class="text-xs font-bold uppercase tracking-widest text-cardinal">
+              The Campus in Focus
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-serif font-bold text-charcoal-dark mt-2">
+              Spaces of Rigor & Inspiration
+            </h2>
+            <p class="text-charcoal-muted text-sm sm:text-base mt-3">
+              Scroll down to explore the 40-acre campus ecosystem — as you move through each story, experience how our academic quads, robotic workcells, and student hubs come alive.
+            </p>
+          </div>
+
+          <!-- Sticky Scrollytelling Container (Desktop 2-Column Grid) -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start relative">
+            
+            <!-- Left Sticky Window: University Pictures Flash Container (Pinned at top-28) -->
+            <div class="lg:col-span-7 lg:sticky lg:top-28 z-20">
+              <div class="relative w-full aspect-[16/10] bg-black rounded-3xl overflow-hidden shadow-2xl border border-sandstone-border photo-flash-box" id="stickyCampusFrame">
+                
+                <!-- 5 University Pictures (Crossfading / Flashing on scroll) -->
+                <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/building1.webp" class="sticky-campus-slide active" id="campusSlide0" alt="Central Administration & Heritage Quad" />
+                <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/building3.webp" class="sticky-campus-slide" id="campusSlide1" alt="German Robotics & Automation CoE" />
+                <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/building4.webp" class="sticky-campus-slide" id="campusSlide2" alt="Central Digital Library & Research Commons" />
+                <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/hero_img1.webp" class="sticky-campus-slide" id="campusSlide3" alt="Surabhi Cultural & Technical Festival" />
+                <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/hero_img5.webp" class="sticky-campus-slide" id="campusSlide4" alt="Olympic-Grade Sports Complex & Floodlit Turf" />
+
+                <!-- Ambient Vignette Gradient -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none"></div>
+
+                <!-- Top Floating Indicator Pill -->
+                <div class="absolute top-5 left-5 z-20 flex items-center gap-2">
+                  <span class="px-3 py-1 rounded-full bg-cardinal text-white text-[11px] font-bold uppercase tracking-wider backdrop-blur-md shadow">
+                    <span id="campusSlideCounter">01 / 05</span>
+                  </span>
+                  <span class="px-3 py-1 rounded-full bg-black/60 text-white/90 text-xs font-semibold backdrop-blur-md hidden sm:inline" id="campusSlideLabel">
+                    Administrative Quad
+                  </span>
+                </div>
+
+                <!-- Bottom Floating Controls & Play Trigger -->
+                <div class="absolute bottom-5 left-5 right-5 z-20 flex items-center justify-between gap-4">
+                  <div>
+                    <h3 class="text-lg sm:text-xl font-serif font-bold text-white drop-shadow-md" id="campusSlideTitle">
+                      The 40-Acre Smart Heritage Quad
+                    </h3>
+                    <p class="text-[11px] text-white/80 hidden sm:block drop-shadow" id="campusSlideLocation">
+                      Adhyatmik Nagar • Delhi-Meerut Expressway
+                    </p>
+                  </div>
+                  <button onclick="openVideoTourModal()" class="px-4 py-2 rounded-full bg-white/20 hover:bg-white/30 text-white text-xs font-semibold backdrop-blur-md border border-white/30 flex items-center gap-1.5 transition-all shrink-0">
+                    <i data-lucide="play" class="w-3.5 h-3.5 text-poppy-accent fill-poppy-accent"></i>
+                    <span class="hidden sm:inline">Tour in 4K</span>
+                  </button>
+                </div>
+
+                <!-- Luminous Shimmer Flash Sweep Overlay Effect Triggered On Change -->
+                <div id="slideFlashSweep" class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300"></div>
+
+              </div>
+
+              <!-- Quick Progress Tabs below image (Clickable) -->
+              <div class="mt-4 flex items-center gap-2 overflow-x-auto pb-2">
+                <button onclick="jumpToCampusChapter(0)" class="campus-tab px-3 py-1.5 rounded-full text-xs font-semibold bg-cardinal text-white shrink-0 transition-all" id="campusTab0">01. Heritage Quad</button>
+                <button onclick="jumpToCampusChapter(1)" class="campus-tab px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-charcoal-muted hover:text-cardinal shrink-0 transition-all" id="campusTab1">02. Robotics CoE</button>
+                <button onclick="jumpToCampusChapter(2)" class="campus-tab px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-charcoal-muted hover:text-cardinal shrink-0 transition-all" id="campusTab2">03. Digital Library</button>
+                <button onclick="jumpToCampusChapter(3)" class="campus-tab px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-charcoal-muted hover:text-cardinal shrink-0 transition-all" id="campusTab3">04. Surabhi Fest</button>
+                <button onclick="jumpToCampusChapter(4)" class="campus-tab px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-charcoal-muted hover:text-cardinal shrink-0 transition-all" id="campusTab4">05. Sports Arena</button>
+              </div>
+            </div>
+
+            <!-- Right Scrollable Story Chapters (Trigger image flash & transition as scrolled past) -->
+            <div class="lg:col-span-5 space-y-16 py-4">
+              
+              <!-- Chapter 0 -->
+              <div class="story-chapter active-chapter p-8 rounded-3xl bg-white border border-sandstone-border" data-chapter-idx="0" id="chapter0">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="w-2 h-2 rounded-full bg-cardinal"></span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-cardinal">01 • Architectural Heritage</span>
+                </div>
+                <h3 class="text-2xl font-serif font-bold text-charcoal-dark mb-3">
+                  The 40-Acre Smart Green Quad
+                </h3>
+                <p class="text-sm text-charcoal leading-relaxed">
+                  Established in 1998 along the Delhi-Meerut Expressway, the campus balances monumental academic architecture with lush green gardens, 1.2 MW rooftop solar grids, and fully air-conditioned smart instructional lecture halls.
+                </p>
+                <div class="mt-6 pt-4 border-t border-sandstone-border flex items-center justify-between text-xs text-charcoal-muted">
+                  <span>Wi-Fi Enabled • Eco-Conscious</span>
+                  <button onclick="showView('about-legacy')" class="text-cardinal font-bold hover:underline">Explore Legacy &rarr;</button>
+                </div>
+              </div>
+
+              <!-- Chapter 1 -->
+              <div class="story-chapter p-8 rounded-3xl bg-white/70 border border-sandstone-border" data-chapter-idx="1" id="chapter1">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="w-2 h-2 rounded-full bg-cardinal"></span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-cardinal">02 • Advanced Engineering</span>
+                </div>
+                <h3 class="text-2xl font-serif font-bold text-charcoal-dark mb-3">
+                  German Robotics & Industry 4.0 Labs
+                </h3>
+                <p class="text-sm text-charcoal leading-relaxed">
+                  Co-created with KUKA Robotics (Germany), Siemens, and Bosch Rexroth. Undergraduate engineers work with 6-axis articulating robotic arms, programmable PLCs, and digital twin simulation cells used in tier-1 manufacturing.
+                </p>
+                <div class="mt-6 pt-4 border-t border-sandstone-border flex items-center justify-between text-xs text-charcoal-muted">
+                  <span>German Certifications • Industry Grade</span>
+                  <button onclick="showView('research-coe')" class="text-cardinal font-bold hover:underline">View CoE Labs &rarr;</button>
+                </div>
+              </div>
+
+              <!-- Chapter 2 -->
+              <div class="story-chapter p-8 rounded-3xl bg-white/70 border border-sandstone-border" data-chapter-idx="2" id="chapter2">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="w-2 h-2 rounded-full bg-cardinal"></span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-cardinal">03 • Intellectual Commons</span>
+                </div>
+                <h3 class="text-2xl font-serif font-bold text-charcoal-dark mb-3">
+                  Central Digital Library & Research Commons
+                </h3>
+                <p class="text-sm text-charcoal leading-relaxed">
+                  Home to over 100,000 physical volumes, electronic subscriptions to IEEE, Springer, and ACM digital libraries, collaborative study pods, and high-speed data terminals supporting round-the-clock research.
+                </p>
+                <div class="mt-6 pt-4 border-t border-sandstone-border flex items-center justify-between text-xs text-charcoal-muted">
+                  <span>100,000+ Books • IEEE Access</span>
+                  <button onclick="showView('about-overview')" class="text-cardinal font-bold hover:underline">Explore Resources &rarr;</button>
+                </div>
+              </div>
+
+              <!-- Chapter 3 -->
+              <div class="story-chapter p-8 rounded-3xl bg-white/70 border border-sandstone-border" data-chapter-idx="3" id="chapter3">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="w-2 h-2 rounded-full bg-cardinal"></span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-cardinal">04 • Cultural Life</span>
+                </div>
+                <h3 class="text-2xl font-serif font-bold text-charcoal-dark mb-3">
+                  Surabhi Festival & Vibrant Campus Traditions
+                </h3>
+                <p class="text-sm text-charcoal leading-relaxed">
+                  A three-day annual national festival drawing 15,000+ collegiate participants. From high-octane coding hackathons and autonomous vehicle trials to theatrical drama and celebrity musical concerts.
+                </p>
+                <div class="mt-6 pt-4 border-t border-sandstone-border flex items-center justify-between text-xs text-charcoal-muted">
+                  <span>15,000+ Scholars • 40+ Events</span>
+                  <button onclick="showView('about-overview')" class="text-cardinal font-bold hover:underline">Student Life &rarr;</button>
+                </div>
+              </div>
+
+              <!-- Chapter 4 -->
+              <div class="story-chapter p-8 rounded-3xl bg-white/70 border border-sandstone-border" data-chapter-idx="4" id="chapter4">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="w-2 h-2 rounded-full bg-cardinal"></span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-cardinal">05 • Athletics & Living</span>
+                </div>
+                <h3 class="text-2xl font-serif font-bold text-charcoal-dark mb-3">
+                  Olympic-Grade Turf & Residential Hostels
+                </h3>
+                <p class="text-sm text-charcoal leading-relaxed">
+                  Floodlit basketball courts, indoor synthetic badminton courts, cricket nets, modern fitness centers, and secure air-conditioned residential complexes accommodating over 1,800 outstation scholars.
+                </p>
+                <div class="mt-6 pt-4 border-t border-sandstone-border flex items-center justify-between text-xs text-charcoal-muted">
+                  <span>Floodlit Turf • 1,800+ Hostel Beds</span>
+                  <button onclick="showView('admissions-overview')" class="text-cardinal font-bold hover:underline">Hostel Details &rarr;</button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. STANFORD-STYLE "OUR IMPACT" STRATEGIC HUBS -->
       <section class="py-20 px-4 bg-white border-t border-sandstone-border">
         <div class="max-w-7xl mx-auto">
           <div class="text-center max-w-3xl mx-auto mb-16">
@@ -681,9 +936,9 @@
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            <!-- Hub 1 -->
-            <div onclick="showView('research-centres')" class="cursor-pointer rounded-3xl overflow-hidden bg-sandstone border border-sandstone-border hover:border-cardinal hover:shadow-xl transition-all group flex flex-col justify-between">
-              <div class="relative h-60 overflow-hidden">
+            <!-- Hub 1 with Photo Reveal -->
+            <div onclick="showView('research-centres')" class="cursor-pointer rounded-3xl overflow-hidden bg-sandstone border border-sandstone-border hover:border-cardinal hover:shadow-xl transition-all group flex flex-col justify-between photo-reveal">
+              <div class="relative h-60 overflow-hidden photo-flash-box">
                 <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/hero_img2.webp" alt="Artificial Intelligence" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                 <div class="absolute bottom-4 left-4 text-white">
@@ -702,9 +957,9 @@
               </div>
             </div>
 
-            <!-- Hub 2 -->
-            <div onclick="showView('research-coe')" class="cursor-pointer rounded-3xl overflow-hidden bg-sandstone border border-sandstone-border hover:border-cardinal hover:shadow-xl transition-all group flex flex-col justify-between">
-              <div class="relative h-60 overflow-hidden">
+            <!-- Hub 2 with Photo Reveal -->
+            <div onclick="showView('research-coe')" class="cursor-pointer rounded-3xl overflow-hidden bg-sandstone border border-sandstone-border hover:border-cardinal hover:shadow-xl transition-all group flex flex-col justify-between photo-reveal">
+              <div class="relative h-60 overflow-hidden photo-flash-box">
                 <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/hero_img3.webp" alt="Industrial Automation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                 <div class="absolute bottom-4 left-4 text-white">
@@ -723,9 +978,9 @@
               </div>
             </div>
 
-            <!-- Hub 3 -->
-            <div onclick="showView('about-isr')" class="cursor-pointer rounded-3xl overflow-hidden bg-sandstone border border-sandstone-border hover:border-cardinal hover:shadow-xl transition-all group flex flex-col justify-between">
-              <div class="relative h-60 overflow-hidden">
+            <!-- Hub 3 with Photo Reveal -->
+            <div onclick="showView('about-isr')" class="cursor-pointer rounded-3xl overflow-hidden bg-sandstone border border-sandstone-border hover:border-cardinal hover:shadow-xl transition-all group flex flex-col justify-between photo-reveal">
+              <div class="relative h-60 overflow-hidden photo-flash-box">
                 <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/hero_img5.webp" alt="Civics and Campus" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                 <div class="absolute bottom-4 left-4 text-white">
@@ -748,7 +1003,7 @@
         </div>
       </section>
 
-      <!-- 5. STANFORD-STYLE "THE SCHOOLS" / ACADEMIC SPECTRUM -->
+      <!-- 6. STANFORD-STYLE "THE SCHOOLS" / ACADEMIC SPECTRUM -->
       <section class="py-20 px-4 bg-sandstone-dark">
         <div class="max-w-7xl mx-auto">
           <div class="text-center max-w-3xl mx-auto mb-14">
@@ -766,7 +1021,7 @@
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             <!-- School 1 -->
-            <div onclick="showView('programs-engineering')" class="cursor-pointer p-8 rounded-3xl bg-white border border-sandstone-border hover:border-cardinal hover:shadow-lg transition-all group">
+            <div onclick="showView('programs-engineering')" class="cursor-pointer p-8 rounded-3xl bg-white border border-sandstone-border hover:border-cardinal hover:shadow-lg transition-all group photo-reveal">
               <div class="w-12 h-12 rounded-2xl bg-cardinal-subtle text-cardinal flex items-center justify-center mb-6">
                 <i data-lucide="cpu" class="w-6 h-6"></i>
               </div>
@@ -782,7 +1037,7 @@
             </div>
 
             <!-- School 2 -->
-            <div onclick="showView('programs-engineering')" class="cursor-pointer p-8 rounded-3xl bg-white border border-sandstone-border hover:border-cardinal hover:shadow-lg transition-all group">
+            <div onclick="showView('programs-engineering')" class="cursor-pointer p-8 rounded-3xl bg-white border border-sandstone-border hover:border-cardinal hover:shadow-lg transition-all group photo-reveal">
               <div class="w-12 h-12 rounded-2xl bg-cardinal-subtle text-cardinal flex items-center justify-center mb-6">
                 <i data-lucide="sparkles" class="w-6 h-6"></i>
               </div>
@@ -798,7 +1053,7 @@
             </div>
 
             <!-- School 3 -->
-            <div onclick="showView('programs-engineering')" class="cursor-pointer p-8 rounded-3xl bg-white border border-sandstone-border hover:border-cardinal hover:shadow-lg transition-all group">
+            <div onclick="showView('programs-engineering')" class="cursor-pointer p-8 rounded-3xl bg-white border border-sandstone-border hover:border-cardinal hover:shadow-lg transition-all group photo-reveal">
               <div class="w-12 h-12 rounded-2xl bg-cardinal-subtle text-cardinal flex items-center justify-center mb-6">
                 <i data-lucide="cog" class="w-6 h-6"></i>
               </div>
@@ -814,7 +1069,7 @@
             </div>
 
             <!-- School 4 -->
-            <div onclick="showView('programs-computing')" class="cursor-pointer p-8 rounded-3xl bg-white border border-sandstone-border hover:border-cardinal hover:shadow-lg transition-all group">
+            <div onclick="showView('programs-computing')" class="cursor-pointer p-8 rounded-3xl bg-white border border-sandstone-border hover:border-cardinal hover:shadow-lg transition-all group photo-reveal">
               <div class="w-12 h-12 rounded-2xl bg-cardinal-subtle text-cardinal flex items-center justify-center mb-6">
                 <i data-lucide="code" class="w-6 h-6"></i>
               </div>
@@ -830,7 +1085,7 @@
             </div>
 
             <!-- School 5 -->
-            <div onclick="showView('programs-management')" class="cursor-pointer p-8 rounded-3xl bg-white border border-sandstone-border hover:border-cardinal hover:shadow-lg transition-all group">
+            <div onclick="showView('programs-management')" class="cursor-pointer p-8 rounded-3xl bg-white border border-sandstone-border hover:border-cardinal hover:shadow-lg transition-all group photo-reveal">
               <div class="w-12 h-12 rounded-2xl bg-cardinal-subtle text-cardinal flex items-center justify-center mb-6">
                 <i data-lucide="briefcase" class="w-6 h-6"></i>
               </div>
@@ -846,7 +1101,7 @@
             </div>
 
             <!-- School 6 -->
-            <div class="p-8 rounded-3xl bg-cardinal-dark text-white flex flex-col justify-between">
+            <div class="p-8 rounded-3xl bg-cardinal-dark text-white flex flex-col justify-between photo-reveal">
               <div>
                 <div class="w-12 h-12 rounded-2xl bg-white/10 text-poppy-accent flex items-center justify-center mb-6">
                   <i data-lucide="award" class="w-6 h-6"></i>
@@ -867,7 +1122,7 @@
         </div>
       </section>
 
-      <!-- 6. TOP PLACEMENTS & HIRING ENTERPRISES MARQUEE -->
+      <!-- 7. TOP PLACEMENTS & HIRING ENTERPRISES MARQUEE -->
       <section class="py-16 px-4 bg-white border-t border-sandstone-border">
         <div class="max-w-7xl mx-auto">
           <div class="text-center max-w-2xl mx-auto mb-10">
@@ -884,7 +1139,7 @@
 
           <!-- Placement Spotlight Cards -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div class="p-8 rounded-3xl bg-gradient-to-r from-cardinal-deep to-cardinal-dark text-white flex justify-between items-center shadow-lg">
+            <div class="p-8 rounded-3xl bg-gradient-to-r from-cardinal-deep to-cardinal-dark text-white flex justify-between items-center shadow-lg photo-reveal">
               <div>
                 <span class="text-xs text-poppy-accent font-semibold uppercase tracking-widest">Goldman Sachs Select</span>
                 <h3 class="text-2xl sm:text-3xl font-serif font-bold mt-1">Anshuman Nandan</h3>
@@ -896,7 +1151,7 @@
               </div>
             </div>
 
-            <div class="p-8 rounded-3xl bg-gradient-to-r from-cardinal-dark to-cardinal-deep text-white flex justify-between items-center shadow-lg">
+            <div class="p-8 rounded-3xl bg-gradient-to-r from-cardinal-dark to-cardinal-deep text-white flex justify-between items-center shadow-lg photo-reveal">
               <div>
                 <span class="text-xs text-poppy-accent font-semibold uppercase tracking-widest">Q Benifi Global Select</span>
                 <h3 class="text-2xl sm:text-3xl font-serif font-bold mt-1">Archas Srivastava</h3>
@@ -943,53 +1198,6 @@
         </div>
       </section>
 
-      <!-- 7. STANFORD-STYLE CAMPUS CULTURE & STUDENT LIFE -->
-      <section class="py-20 px-4 bg-sandstone">
-        <div class="max-w-7xl mx-auto">
-          <div class="text-center max-w-2xl mx-auto mb-14">
-            <span class="text-xs font-bold uppercase tracking-widest text-cardinal">
-              Campus Life & Community
-            </span>
-            <h2 class="text-3xl sm:text-4xl font-serif font-bold text-charcoal-dark mt-1">
-              Life on Campus
-            </h2>
-            <p class="text-xs sm:text-sm text-charcoal-muted mt-2">
-              Vibrant cultural fests, national hackathon champions, athletics arenas, and residential community.
-            </p>
-          </div>
-
-          <!-- Photo Highlights -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div class="relative rounded-3xl overflow-hidden shadow-sm group h-72">
-              <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/hero_img1.webp" alt="Surabhi Fest" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent p-6 flex flex-col justify-end text-white">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-poppy-accent">Annual Fest</span>
-                <h3 class="text-lg font-serif font-bold mt-0.5">Surabhi Cultural & Tech Extravaganza</h3>
-                <p class="text-xs text-white/80 mt-1">Drama, music, fine arts, and celebrity musical concerts.</p>
-              </div>
-            </div>
-
-            <div class="relative rounded-3xl overflow-hidden shadow-sm group h-72">
-              <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/hero_img4.webp" alt="IDEA Labs" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent p-6 flex flex-col justify-end text-white">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-poppy-accent">Student Makers</span>
-                <h3 class="text-lg font-serif font-bold mt-0.5">AICTE IDEA Lab & Prototyping Hub</h3>
-                <p class="text-xs text-white/80 mt-1">Smart India Hackathon winners and autonomous drone testing.</p>
-              </div>
-            </div>
-
-            <div class="relative rounded-3xl overflow-hidden shadow-sm group h-72">
-              <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/hero_img5.webp" alt="Sports Arena" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent p-6 flex flex-col justify-end text-white">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-poppy-accent">Athletics</span>
-                <h3 class="text-lg font-serif font-bold mt-0.5">FIFA Standard Sports Turf & Arena</h3>
-                <p class="text-xs text-white/80 mt-1">Floodlit basketball, synthetic badminton arena, and cricket turf.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- 8. DISTINGUISHED RESEARCH FACULTY SPOTLIGHT -->
       <section id="faculty" class="py-16 px-4 bg-white border-t border-sandstone-border">
         <div class="max-w-6xl mx-auto">
@@ -1004,42 +1212,42 @@
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="rounded-2xl border border-sandstone-border bg-sandstone p-6">
+            <div class="rounded-2xl border border-sandstone-border bg-sandstone p-6 photo-reveal">
               <div class="w-12 h-12 rounded-xl bg-cardinal text-white flex items-center justify-center font-serif font-bold text-lg mb-4">DD</div>
               <h3 class="text-base font-serif font-bold text-charcoal-dark">Dr. Dirk Draheim</h3>
               <p class="text-xs font-semibold text-cardinal">Research Professor</p>
               <p class="text-xs text-charcoal-muted mt-2">Information Systems & Large-scale Distributed Computing</p>
             </div>
 
-            <div class="rounded-2xl border border-sandstone-border bg-sandstone p-6">
+            <div class="rounded-2xl border border-sandstone-border bg-sandstone p-6 photo-reveal">
               <div class="w-12 h-12 rounded-xl bg-cardinal text-white flex items-center justify-center font-serif font-bold text-lg mb-4">RS</div>
               <h3 class="text-base font-serif font-bold text-charcoal-dark">Dr. Rahul Sharma</h3>
               <p class="text-xs font-semibold text-cardinal">Dean Academic</p>
               <p class="text-xs text-charcoal-muted mt-2">Computer Science & Advanced Algorithms</p>
             </div>
 
-            <div class="rounded-2xl border border-sandstone-border bg-sandstone p-6">
+            <div class="rounded-2xl border border-sandstone-border bg-sandstone p-6 photo-reveal">
               <div class="w-12 h-12 rounded-xl bg-cardinal text-white flex items-center justify-center font-serif font-bold text-lg mb-4">SL</div>
               <h3 class="text-base font-serif font-bold text-charcoal-dark">Dr. Silvia Lips</h3>
               <p class="text-xs font-semibold text-cardinal">International Chair</p>
               <p class="text-xs text-charcoal-muted mt-2">e-Governance & Digital Transformation</p>
             </div>
 
-            <div class="rounded-2xl border border-sandstone-border bg-sandstone p-6">
+            <div class="rounded-2xl border border-sandstone-border bg-sandstone p-6 photo-reveal">
               <div class="w-12 h-12 rounded-xl bg-cardinal text-white flex items-center justify-center font-serif font-bold text-lg mb-4">MK</div>
               <h3 class="text-base font-serif font-bold text-charcoal-dark">Dr. Minakshi Kaushik</h3>
               <p class="text-xs font-semibold text-cardinal">Head of Dept - AI</p>
               <p class="text-xs text-charcoal-muted mt-2">Artificial Intelligence & Pattern Recognition</p>
             </div>
 
-            <div class="rounded-2xl border border-sandstone-border bg-sandstone p-6">
+            <div class="rounded-2xl border border-sandstone-border bg-sandstone p-6 photo-reveal">
               <div class="w-12 h-12 rounded-xl bg-cardinal text-white flex items-center justify-center font-serif font-bold text-lg mb-4">VC</div>
               <h3 class="text-base font-serif font-bold text-charcoal-dark">Mr. Vishal Chaudhry</h3>
               <p class="text-xs font-semibold text-cardinal">Associate Dean</p>
               <p class="text-xs text-charcoal-muted mt-2">Industrial Automation & Robotics Systems</p>
             </div>
 
-            <div class="rounded-2xl border border-sandstone-border bg-sandstone p-6">
+            <div class="rounded-2xl border border-sandstone-border bg-sandstone p-6 photo-reveal">
               <div class="w-12 h-12 rounded-xl bg-cardinal text-white flex items-center justify-center font-serif font-bold text-lg mb-4">SG</div>
               <h3 class="text-base font-serif font-bold text-charcoal-dark">Ms. Shilpi Gupta</h3>
               <p class="text-xs font-semibold text-cardinal">Corporate Liaison</p>
@@ -1467,7 +1675,7 @@
   <!-- ============================================================ -->
   <script>
     const VIEW_DATA = {"about-overview":{"category":"About","catSlug":"about","title":"Who We Are & Overview","subtitle":"A premier technological university rooted in 28 years of academic excellence and visionary research.","badge":"NAAC A++ Accredited • NIRF Ranked","content":"\n      <div class=\"prose max-w-none space-y-6 text-slate-700 text-sm leading-relaxed\">\n        <p class=\"text-base font-medium text-slate-800\">\n          Ajay Kumar Garg University (AKGU), Ghaziabad, stands as an emblem of state-of-the-art technical, management, and computing education in the National Capital Region (NCR). Established under the legacy of Ajay Kumar Garg Engineering College (AKGEC), the institution has evolved over nearly three decades into a multidisciplinary university recognized for its engineering acumen, high-impact industrial partnerships, and student-centric pedagogy.\n        </p>\n        <div class=\"grid grid-cols-1 md:grid-cols-3 gap-6 my-8 not-prose\">\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <div class=\"text-3xl font-black font-display text-amber-600 mb-1\">10,000+</div>\n            <div class=\"font-bold text-slate-900 text-sm\">Undergraduate & Postgraduate Scholars</div>\n            <p class=\"text-xs text-slate-500 mt-2\">Active learners across engineering, AI, computing, and management disciplines.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <div class=\"text-3xl font-black font-display text-amber-600 mb-1\">40+ Acres</div>\n            <div class=\"font-bold text-slate-900 text-sm\">Green Wi-Fi Enabled Campus</div>\n            <p class=\"text-xs text-slate-500 mt-2\">Located strategically along the Delhi-Meerut Expressway with modern hostel complexes.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <div class=\"text-3xl font-black font-display text-amber-600 mb-1\">12+ Centres</div>\n            <div class=\"font-bold text-slate-900 text-sm\">Industrial Centres of Excellence</div>\n            <p class=\"text-xs text-slate-500 mt-2\">Collaborative technology hubs with KUKA, Siemens, Bosch, and National Instruments.</p>\n          </div>\n        </div>\n        <h3 class=\"text-xl font-black font-display text-slate-900 mt-8 mb-4\">Core University Pillars</h3>\n        <p>The academic governance of AKGU is structured around outcome-based education (OBE), rigorous industry alignment, and continuous innovation. All curricula are benchmarked against IEEE, ACM, and AICTE model syllabi, ensuring that graduates possess both theoretical depth and production-ready competencies.</p>\n      </div>\n    "},"about-legacy":{"category":"About","catSlug":"about","title":"Our Legacy & Milestones","subtitle":"From a pioneering engineering college in 1998 to a premier multidisciplinary university.","badge":"28+ Years of Academic Distinction","content":"\n      <div class=\"space-y-8\">\n        <p class=\"text-sm text-slate-700 leading-relaxed\">\n          Founded in 1998 under the aegis of the Indian Institute of Management and Technology (IIMT) Society, AKGU began its journey with just four core engineering disciplines. Through relentless commitment to quality and ethical governance, it consistently ranked as Uttar Pradesh's top-performing engineering institution, leading up to its evolution into Ajay Kumar Garg University.\n        </p>\n        <div class=\"relative border-l-2 border-amber-500/30 pl-6 ml-4 space-y-8\">\n          <div class=\"relative\">\n            <div class=\"absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-amber-500 border-4 border-white shadow\"></div>\n            <div class=\"text-xs font-bold text-amber-600 uppercase tracking-wider\">1998 • The Foundation</div>\n            <h4 class=\"text-base font-bold text-slate-900 mt-1\">Inception of Ajay Kumar Garg Engineering College</h4>\n            <p class=\"text-xs text-slate-600 mt-1\">Inaugurated with 240 seats across CSE, ECE, ME, and IT under Dr. A.P.J. Abdul Kalam Technical University affiliation.</p>\n          </div>\n          <div class=\"relative\">\n            <div class=\"absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-amber-500 border-4 border-white shadow\"></div>\n            <div class=\"text-xs font-bold text-amber-600 uppercase tracking-wider\">2007 • Industry CoE Era</div>\n            <h4 class=\"text-base font-bold text-slate-900 mt-1\">Partnerships with KUKA Robotics & Bosch Rexroth</h4>\n            <p class=\"text-xs text-slate-600 mt-1\">Establishment of northern India's premier industrial robotics and automation training centres.</p>\n          </div>\n          <div class=\"relative\">\n            <div class=\"absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-amber-500 border-4 border-white shadow\"></div>\n            <div class=\"text-xs font-bold text-amber-600 uppercase tracking-wider\">2018 • Autonomous Status</div>\n            <h4 class=\"text-base font-bold text-slate-900 mt-1\">UGC Autonomous Institution & NAAC Accreditation</h4>\n            <p class=\"text-xs text-slate-600 mt-1\">Granted autonomous status by the University Grants Commission; achieved top tier NAAC grades.</p>\n          </div>\n          <div class=\"relative\">\n            <div class=\"absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-amber-500 border-4 border-white shadow\"></div>\n            <div class=\"text-xs font-bold text-amber-600 uppercase tracking-wider\">2024–Present • University Charter</div>\n            <h4 class=\"text-base font-bold text-slate-900 mt-1\">Transition to Ajay Kumar Garg University (AKGU)</h4>\n            <p class=\"text-xs text-slate-600 mt-1\">Enacted as a full-fledged multidisciplinary university with expanded schools of Management, AI, and Computing.</p>\n          </div>\n        </div>\n      </div>\n    "},"about-vision":{"category":"About","catSlug":"about","title":"Vision & Mission","subtitle":"Guiding tenets fostering ethical leadership, technological mastery, and societal impact.","badge":"Foundational Creed","content":"\n      <div class=\"grid grid-cols-1 md:grid-cols-2 gap-8\">\n        <div class=\"p-8 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between\">\n          <div>\n            <div class=\"w-12 h-12 rounded-2xl bg-[#111827] text-white flex items-center justify-center mb-6\">\n              <i data-lucide=\"eye\" class=\"w-6 h-6 text-[#ffc526]\"></i>\n            </div>\n            <h3 class=\"text-2xl font-black font-display text-slate-900 mb-4\">Our Vision</h3>\n            <p class=\"text-sm text-slate-600 leading-relaxed\">\n              \"To emerge as an internationally acclaimed university that nurtures visionary technological leaders, encourages transformative scientific inquiry, and instills high moral integrity to serve industry and global society.\"\n            </p>\n          </div>\n          <div class=\"pt-6 border-t border-slate-100 mt-6 text-xs font-bold text-amber-600\">\n            Globally Relevant • Ethically Driven\n          </div>\n        </div>\n        <div class=\"p-8 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between\">\n          <div>\n            <div class=\"w-12 h-12 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center mb-6\">\n              <i data-lucide=\"target\" class=\"w-6 h-6\"></i>\n            </div>\n            <h3 class=\"text-2xl font-black font-display text-slate-900 mb-4\">Our Mission</h3>\n            <ul class=\"text-xs text-slate-600 space-y-3 leading-relaxed\">\n              <li class=\"flex items-start gap-2\">\n                <i data-lucide=\"check\" class=\"w-4 h-4 text-emerald-600 shrink-0 mt-0.5\"></i>\n                <span>Deliver student-centered experiential education through interdisciplinary and industry-aligned curricula.</span>\n              </li>\n              <li class=\"flex items-start gap-2\">\n                <i data-lucide=\"check\" class=\"w-4 h-4 text-emerald-600 shrink-0 mt-0.5\"></i>\n                <span>Foster impactful research, patent creation, and product development in high-growth technological frontiers.</span>\n              </li>\n              <li class=\"flex items-start gap-2\">\n                <i data-lucide=\"check\" class=\"w-4 h-4 text-emerald-600 shrink-0 mt-0.5\"></i>\n                <span>Build strong entrepreneurial pipelines that translate student innovations into commercially viable ventures.</span>\n              </li>\n            </ul>\n          </div>\n          <div class=\"pt-6 border-t border-slate-100 mt-6 text-xs font-bold text-slate-700\">\n            Continuous Improvement • Social Stewardship\n          </div>\n        </div>\n      </div>\n    "},"about-leadership":{"category":"About","catSlug":"about","title":"Leadership & Governance","subtitle":"Guided by eminent academicians, visionary administrators, and seasoned industry veterans.","badge":"Institutional Governance","content":"\n      <div class=\"space-y-10\">\n        <div class=\"grid grid-cols-1 md:grid-cols-2 gap-8\">\n          <div class=\"p-6 rounded-3xl bg-white border border-slate-200 shadow-sm flex gap-6 items-center\">\n            <div class=\"w-20 h-20 rounded-2xl bg-[#111827] text-white flex items-center justify-center font-bold text-2xl font-display shrink-0\">\n              DG\n            </div>\n            <div>\n              <h4 class=\"text-lg font-bold text-slate-900\">Dr. R. K. Agarwal</h4>\n              <p class=\"text-xs font-semibold text-amber-600\">Director General & Chief Academic Mentor</p>\n              <p class=\"text-xs text-slate-500 mt-2\">B.Tech (IIT Kanpur), M.S. (Cranfield, UK), Ph.D. with over 40 years of aerospace & academic leadership.</p>\n            </div>\n          </div>\n          <div class=\"p-6 rounded-3xl bg-white border border-slate-200 shadow-sm flex gap-6 items-center\">\n            <div class=\"w-20 h-20 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-2xl font-display shrink-0\">\n              VC\n            </div>\n            <div>\n              <h4 class=\"text-lg font-bold text-slate-900\">Dr. Hemant Ahuja</h4>\n              <p class=\"text-xs font-semibold text-amber-600\">Vice-Chancellor</p>\n              <p class=\"text-xs text-slate-500 mt-2\">Eminent administrator and computational intelligence researcher driving university global accreditations.</p>\n            </div>\n          </div>\n        </div>\n        <div class=\"bg-slate-50 rounded-3xl p-8 border border-slate-200\">\n          <h3 class=\"text-lg font-black font-display text-slate-900 mb-4\">Statutory Governance Councils</h3>\n          <div class=\"grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs text-slate-600\">\n            <div class=\"bg-white p-5 rounded-2xl border border-slate-200\">\n              <h5 class=\"font-bold text-slate-900 mb-2\">Board of Governors</h5>\n              <p>Top administrative body formulating institutional policies, financial stewardship, and capital infrastructure growth.</p>\n            </div>\n            <div class=\"bg-white p-5 rounded-2xl border border-slate-200\">\n              <h5 class=\"font-bold text-slate-900 mb-2\">Academic Council</h5>\n              <p>Chairs curriculum updates, examination reforms, degree regulations, and approvals of new programs.</p>\n            </div>\n            <div class=\"bg-white p-5 rounded-2xl border border-slate-200\">\n              <h5 class=\"font-bold text-slate-900 mb-2\">Board of Studies</h5>\n              <p>Department-level committees featuring industry experts and university deans to review syllabus modules.</p>\n            </div>\n          </div>\n        </div>\n      </div>\n    "},"about-objectives":{"category":"About","catSlug":"about","title":"Institutional Objectives","subtitle":"Strategic roadmap for excellence across pedagogy, research, and holistic development.","badge":"Strategic Goals","content":"\n      <div class=\"grid grid-cols-1 md:grid-cols-2 gap-6\">\n        <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n          <div class=\"w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center font-bold mb-4\">01</div>\n          <h4 class=\"font-bold text-slate-900 text-base mb-2\">Industry-Embedded Engineering</h4>\n          <p class=\"text-xs text-slate-600 leading-relaxed\">Establish direct skill-transfer programs in partnership with global automation giants to reduce graduate onboarding latency in high-tech roles.</p>\n        </div>\n        <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n          <div class=\"w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center font-bold mb-4\">02</div>\n          <h4 class=\"font-bold text-slate-900 text-base mb-2\">Translational Research & IPR</h4>\n          <p class=\"text-xs text-slate-600 leading-relaxed\">Encourage faculty and scholar publication in Scopus Q1/Q2 journals and incentivize institutional patent grants and technology commercialization.</p>\n        </div>\n        <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n          <div class=\"w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center font-bold mb-4\">03</div>\n          <h4 class=\"font-bold text-slate-900 text-base mb-2\">Inclusive Student Incubation</h4>\n          <p class=\"text-xs text-slate-600 leading-relaxed\">Support early-stage student enterprises through seed capital, cloud credits, legal patent advice, and physical co-working labs within campus.</p>\n        </div>\n        <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n          <div class=\"w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center font-bold mb-4\">04</div>\n          <h4 class=\"font-bold text-slate-900 text-base mb-2\">Eco-Conscious Green Infrastructure</h4>\n          <p class=\"text-xs text-slate-600 leading-relaxed\">Operate a zero-discharge green campus with 1.2 MW rooftop solar installations, extensive rainwater recharging, and paperless administrative ERPs.</p>\n        </div>\n      </div>\n    "},"about-rankings":{"category":"About","catSlug":"about","title":"Awards & National Rankings","subtitle":"Recognition of persistent academic rigor by apex national assessment agencies.","badge":"National Benchmarks","content":"\n      <div class=\"space-y-8\">\n        <div class=\"grid grid-cols-2 md:grid-cols-4 gap-6 text-center\">\n          <div class=\"p-6 rounded-3xl bg-white border border-slate-200 shadow-sm\">\n            <span class=\"text-xs font-bold text-amber-600 block mb-2\">NIRF Ranking</span>\n            <div class=\"text-3xl font-black font-display text-slate-900\">Rank 101–150</div>\n            <p class=\"text-xs text-slate-500 mt-2\">Engineering Band across India</p>\n          </div>\n          <div class=\"p-6 rounded-3xl bg-white border border-slate-200 shadow-sm\">\n            <span class=\"text-xs font-bold text-amber-600 block mb-2\">NAAC Grade</span>\n            <div class=\"text-3xl font-black font-display text-slate-900\">A++ (3.42)</div>\n            <p class=\"text-xs text-slate-500 mt-2\">Highest Quality Accreditation</p>\n          </div>\n          <div class=\"p-6 rounded-3xl bg-white border border-slate-200 shadow-sm\">\n            <span class=\"text-xs font-bold text-amber-600 block mb-2\">India Today 2023</span>\n            <div class=\"text-3xl font-black font-display text-slate-900\">Rank 77th</div>\n            <p class=\"text-xs text-slate-500 mt-2\">Among All India Colleges</p>\n          </div>\n          <div class=\"p-6 rounded-3xl bg-white border border-slate-200 shadow-sm\">\n            <span class=\"text-xs font-bold text-amber-600 block mb-2\">Outlook Survey</span>\n            <div class=\"text-3xl font-black font-display text-slate-900\">Rank 44th</div>\n            <p class=\"text-xs text-slate-500 mt-2\">Top 50 Private Institutes</p>\n          </div>\n        </div>\n        <div class=\"p-6 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-2\">\n          <h4 class=\"font-bold text-slate-900 text-sm mb-2\">Institutional Distinctions</h4>\n          <p>• <strong>ARIIA Band 'Excellent':</strong> Atal Ranking of Institutions on Innovation Achievements for outstanding student entrepreneurship enablement.</p>\n          <p>• <strong>NBA Tier-1 Accreditation:</strong> Core B.Tech programs (CSE, ECE, ME, IT) accredited under the international Washington Accord guidelines.</p>\n          <p>• <strong>QS I-GAUGE 'Diamond' Rating:</strong> Evaluated across teaching, employability, campus facilities, and governance transparency.</p>\n        </div>\n      </div>\n    "},"about-approvals":{"category":"About","catSlug":"about","title":"Recognitions & Approvals","subtitle":"Statutory authorizations conforming to statutory standards of higher education.","badge":"Statutory Compliance","content":"\n      <div class=\"grid grid-cols-1 md:grid-cols-3 gap-6\">\n        <div class=\"p-6 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between\">\n          <div>\n            <div class=\"w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-sm mb-4\">UGC</div>\n            <h4 class=\"font-bold text-slate-900 text-base\">University Grants Commission (UGC)</h4>\n            <p class=\"text-xs text-slate-600 mt-2 leading-relaxed\">Recognized under Section 2(f) of the UGC Act 1956, empowered to award undergraduate, postgraduate, and doctoral degrees.</p>\n          </div>\n          <div class=\"mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-emerald-600 flex items-center gap-1.5\">\n            <i data-lucide=\"check-circle\" class=\"w-4 h-4\"></i> Fully Compliant\n          </div>\n        </div>\n        <div class=\"p-6 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between\">\n          <div>\n            <div class=\"w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-sm mb-4\">AICTE</div>\n            <h4 class=\"font-bold text-slate-900 text-base\">AICTE Approval (EOA)</h4>\n            <p class=\"text-xs text-slate-600 mt-2 leading-relaxed\">All technical, engineering, and management programs are duly approved by the All India Council for Technical Education, New Delhi.</p>\n          </div>\n          <div class=\"mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-emerald-600 flex items-center gap-1.5\">\n            <i data-lucide=\"check-circle\" class=\"w-4 h-4\"></i> Current Year EOA Granted\n          </div>\n        </div>\n        <div class=\"p-6 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between\">\n          <div>\n            <div class=\"w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-sm mb-4\">UP GOV</div>\n            <h4 class=\"font-bold text-slate-900 text-base\">State Legislature Charter</h4>\n            <p class=\"text-xs text-slate-600 mt-2 leading-relaxed\">Enacted through Uttar Pradesh State Act and notified in the official state gazette as a unitary teaching and research university.</p>\n          </div>\n          <div class=\"mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-emerald-600 flex items-center gap-1.5\">\n            <i data-lucide=\"check-circle\" class=\"w-4 h-4\"></i> Official Gazette Notified\n          </div>\n        </div>\n      </div>\n    "},"about-isr":{"category":"About","catSlug":"about","title":"Institutional Social Responsibility (ISR)","subtitle":"Nurturing compassionate engineers and giving back to local rural communities.","badge":"Social Commitment","content":"\n      <div class=\"space-y-6 text-sm text-slate-700\">\n        <p>At AKGU, education transcends the classroom. The Institutional Social Responsibility wing spearheads diverse community engagement initiatives, promoting social upliftment, health awareness, and digital literacy in neighbouring districts.</p>\n        <div class=\"grid grid-cols-1 md:grid-cols-2 gap-6 my-6\">\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-2\">Unnat Bharat Abhiyan (UBA)</h4>\n            <p class=\"text-xs text-slate-600 leading-relaxed\">Five adjoining rural villages adopted for rural water purification, digital education, agricultural waste management, and solar street lighting.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-2\">Annual Blood Donation Camps</h4>\n            <p class=\"text-xs text-slate-600 leading-relaxed\">Conducted in collaboration with Rotary Club and AIIMS, collecting over 1,200 units annually with active voluntary student and faculty participation.</p>\n          </div>\n        </div>\n      </div>\n    "},"about-calendar":{"category":"About","catSlug":"about","title":"University Academic Calendar","subtitle":"Official schedule for Academic Session 2026–2027.","badge":"Session 2026–27","content":"\n      <div class=\"space-y-6\">\n        <div class=\"overflow-x-auto rounded-2xl border border-slate-200 bg-white\">\n          <table class=\"w-full text-left text-xs\">\n            <thead class=\"bg-slate-100 text-slate-700 font-bold border-b border-slate-200\">\n              <tr>\n                <th class=\"p-3.5\">Academic Event / Milestone</th>\n                <th class=\"p-3.5\">Odd Semester (Term I)</th>\n                <th class=\"p-3.5\">Even Semester (Term II)</th>\n              </tr>\n            </thead>\n            <tbody class=\"divide-y divide-slate-100 text-slate-600\">\n              <tr>\n                <td class=\"p-3.5 font-semibold text-slate-900\">Registration & Fee Payment</td>\n                <td class=\"p-3.5\">July 15 – July 22, 2026</td>\n                <td class=\"p-3.5\">January 04 – January 11, 2027</td>\n              </tr>\n              <tr>\n                <td class=\"p-3.5 font-semibold text-slate-900\">Commencement of Classes</td>\n                <td class=\"p-3.5\">July 27, 2026</td>\n                <td class=\"p-3.5\">January 15, 2027</td>\n              </tr>\n              <tr>\n                <td class=\"p-3.5 font-semibold text-slate-900\">Mid-Term Evaluation (Sessional Exams)</td>\n                <td class=\"p-3.5\">September 21 – September 26, 2026</td>\n                <td class=\"p-3.5\">March 08 – March 13, 2027</td>\n              </tr>\n              <tr>\n                <td class=\"p-3.5 font-semibold text-slate-900\">Surabhi Annual Cultural & Tech Fest</td>\n                <td class=\"p-3.5\">November 12 – November 14, 2026</td>\n                <td class=\"p-3.5\">—</td>\n              </tr>\n              <tr>\n                <td class=\"p-3.5 font-semibold text-slate-900\">End-Semester Practical & Theory Exams</td>\n                <td class=\"p-3.5\">December 07 – December 24, 2026</td>\n                <td class=\"p-3.5\">May 10 – May 28, 2027</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n      </div>\n    "},"programs-engineering":{"category":"Programs","catSlug":"programs","title":"School of Engineering & Technology","subtitle":"Undergraduate, Postgraduate, and Doctoral engineering programs aligned with Industry 4.0.","badge":"NBA Tier-1 • Washington Accord Compliant","content":"\n      <div class=\"space-y-8\">\n        <p class=\"text-sm text-slate-700 leading-relaxed\">\n          The School of Engineering & Technology (SOET) represents AKGU's legacy core. Equipped with world-class computational clusters, 5G wireless labs, and industrial automation centres, SOET delivers practical knowledge rooted in engineering fundamentals.\n        </p>\n        <div class=\"grid grid-cols-1 md:grid-cols-2 gap-6\">\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-1\">B.Tech Computer Science & Engineering (CSE)</h4>\n            <p class=\"text-xs font-semibold text-amber-600 mb-2\">Duration: 4 Years • Intake: 360 Seats</p>\n            <p class=\"text-xs text-slate-600 leading-relaxed\">Specializations in Cloud Architecture, Cyber Security, and High Performance Computing. 96% placement rate with average package ₹7.4 LPA.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-1\">B.Tech Artificial Intelligence & Machine Learning (AI/ML)</h4>\n            <p class=\"text-xs font-semibold text-amber-600 mb-2\">Duration: 4 Years • Intake: 180 Seats</p>\n            <p class=\"text-xs text-slate-600 leading-relaxed\">Curriculum includes Deep Learning, NLP, Generative AI, and GPU compute pipelines with NVIDIA partner labs.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-1\">B.Tech Electronics & Communication (ECE)</h4>\n            <p class=\"text-xs font-semibold text-amber-600 mb-2\">Duration: 4 Years • Intake: 180 Seats</p>\n            <p class=\"text-xs text-slate-600 leading-relaxed\">Focus on VLSI Design, Embedded IoT Systems, and Signal Processing in partnership with National Instruments.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-1\">B.Tech Mechanical & Mechatronics</h4>\n            <p class=\"text-xs font-semibold text-amber-600 mb-2\">Duration: 4 Years • Intake: 120 Seats</p>\n            <p class=\"text-xs text-slate-600 leading-relaxed\">Hands-on training inside KUKA Robotics and Bosch Rexroth CoE with industrial automation credentials.</p>\n          </div>\n        </div>\n      </div>\n    "},"programs-management":{"category":"Programs","catSlug":"programs","title":"School of Management Studies","subtitle":"Cultivating strategic leaders, business analytics masters, and successful entrepreneurs.","badge":"AICTE Approved • Dual Specializations","content":"\n      <div class=\"space-y-6\">\n        <p class=\"text-sm text-slate-700 leading-relaxed\">\n          The School of Management Studies prepares forward-looking managers skilled in contemporary business dynamics, financial technology, marketing intelligence, and corporate analytics.\n        </p>\n        <div class=\"grid grid-cols-1 md:grid-cols-2 gap-6 my-6\">\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-1\">Master of Business Administration (MBA)</h4>\n            <p class=\"text-xs font-semibold text-amber-600 mb-2\">Duration: 2 Years • Dual Specializations</p>\n            <p class=\"text-xs text-slate-600 leading-relaxed\">Specializations in Marketing, Finance, HR, Operations, Business Analytics, and International Business. Includes 8-week corporate summer internship.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-1\">Bachelor of Business Administration (BBA)</h4>\n            <p class=\"text-xs font-semibold text-amber-600 mb-2\">Duration: 3 Years • Industry Immersion</p>\n            <p class=\"text-xs text-slate-600 leading-relaxed\">Undergraduate foundation covering managerial economics, digital marketing, corporate law, and business intelligence software.</p>\n          </div>\n        </div>\n      </div>\n    "},"programs-computing":{"category":"Programs","catSlug":"programs","title":"School of Computer Applications","subtitle":"Practical programming, full-stack software development, and cloud computing.","badge":"Application Centric • 100% Industry Project Based","content":"\n      <div class=\"space-y-6\">\n        <p class=\"text-sm text-slate-700 leading-relaxed\">\n          The School of Computer Applications bridges software theory with production reality, preparing software engineers for SaaS enterprises, IT consulting, and high-growth technology unicorns.\n        </p>\n        <div class=\"grid grid-cols-1 md:grid-cols-2 gap-6 my-6\">\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-1\">Master of Computer Applications (MCA)</h4>\n            <p class=\"text-xs font-semibold text-amber-600 mb-2\">Duration: 2 Years • Advanced Full-Stack Track</p>\n            <p class=\"text-xs text-slate-600 leading-relaxed\">Enterprise software systems, cloud microservices (AWS/GCP), DevOps, mobile engineering, and database management systems.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-1\">Bachelor of Computer Applications (BCA)</h4>\n            <p class=\"text-xs font-semibold text-amber-600 mb-2\">Duration: 3 Years • Modern Web & App Design</p>\n            <p class=\"text-xs text-slate-600 leading-relaxed\">Foundation in Python, Java, React, SQL, modern operating systems, and computer networks with capstone projects.</p>\n          </div>\n        </div>\n      </div>\n    "},"programs-humanities":{"category":"Programs","catSlug":"programs","title":"School of Humanities & Applied Sciences","subtitle":"Fundamental sciences and behavioral humanities powering interdisciplinary innovation.","badge":"Foundational Rigor","content":"\n      <div class=\"space-y-6 text-sm text-slate-700\">\n        <p>The School of Humanities & Applied Sciences provides the intellectual bedrock for engineering and business programs, imparting foundational mastery in Applied Mathematics, Quantum Physics, Material Chemistry, and Professional English.</p>\n        <div class=\"grid grid-cols-1 md:grid-cols-3 gap-6 my-6\">\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-1\">Applied Mathematics</h4>\n            <p class=\"text-xs text-slate-500 mt-2\">Discrete structures, numerical linear algebra, statistics for machine learning, and cryptography.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-1\">Applied Physics & Materials</h4>\n            <p class=\"text-xs text-slate-500 mt-2\">Semiconductor mechanics, fiber optics, laser systems, and nanoscale materials characterization.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-1\">Humanities & Social Sciences</h4>\n            <p class=\"text-xs text-slate-500 mt-2\">Professional communication, executive business ethics, patent law, and environmental ecology.</p>\n          </div>\n        </div>\n      </div>\n    "},"admissions-overview":{"category":"Admissions","catSlug":"admissions","title":"Admissions Overview 2026–27","subtitle":"Join a premier engineering and research university. Transparent admissions based strictly on merit.","badge":"Admissions Open • Academic Year 2026–27","content":"\n      <div class=\"space-y-6\">\n        <div class=\"p-6 rounded-3xl bg-amber-500/10 border border-amber-500/30 flex flex-col md:flex-row items-center justify-between gap-6\">\n          <div>\n            <span class=\"px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500 text-slate-950\">Notice</span>\n            <h3 class=\"text-xl font-black font-display text-slate-900 mt-2\">Applications Open for 2026–27 Academic Intake</h3>\n            <p class=\"text-xs text-slate-600 mt-1\">Candidates can apply via JEE Main 2026, CUET UG/PG 2026, or University Direct Merit Counseling.</p>\n          </div>\n          <button onclick=\"openEnquiryModal('Admissions Overview')\" class=\"px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase tracking-wider shrink-0 shadow\">\n            Initiate Application\n          </button>\n        </div>\n        <div class=\"grid grid-cols-1 md:grid-cols-3 gap-6\">\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-1\">B.Tech Engineering</h4>\n            <p class=\"text-xs font-semibold text-amber-600 mb-2\">Through JEE Main / CUET / 10+2 PCM</p>\n            <p class=\"text-xs text-slate-600\">85% seats allocated through state/national counseling; 15% through management merit quota.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-1\">Management (BBA/MBA)</h4>\n            <p class=\"text-xs font-semibold text-amber-600 mb-2\">Through CAT / MAT / CUET / Merit</p>\n            <p class=\"text-xs text-slate-600\">Shortlisting followed by Personal Interview (PI) and Academic Profile assessment.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-1\">Computing (BCA/MCA)</h4>\n            <p class=\"text-xs font-semibold text-amber-600 mb-2\">Through CUET / Direct Academic Merit</p>\n            <p class=\"text-xs text-slate-600\">Open to mathematics/computing candidates with aggregate merit criteria.</p>\n          </div>\n        </div>\n      </div>\n    "},"admissions-fees":{"category":"Admissions","catSlug":"admissions","title":"Programs & Fee Structure","subtitle":"Transparent, approved fee schedules with zero hidden charges for session 2026–27.","badge":"Fee Schedule 2026–27","content":"\n      <div class=\"space-y-6\">\n        <div class=\"overflow-x-auto rounded-2xl border border-slate-200 bg-white\">\n          <table class=\"w-full text-left text-xs\">\n            <thead class=\"bg-slate-100 text-slate-700 font-bold border-b border-slate-200\">\n              <tr>\n                <th class=\"p-3.5\">Degree Program</th>\n                <th class=\"p-3.5\">Academic Tuition (Annual)</th>\n                <th class=\"p-3.5\">Dev. & Exam Fee</th>\n                <th class=\"p-3.5\">Refundable Security</th>\n                <th class=\"p-3.5\">Total Year 1 Fee</th>\n              </tr>\n            </thead>\n            <tbody class=\"divide-y divide-slate-100 text-slate-600\">\n              <tr>\n                <td class=\"p-3.5 font-bold text-slate-900\">B.Tech (CSE, AI/ML, IT, DS)</td>\n                <td class=\"p-3.5\">₹ 1,28,000</td>\n                <td class=\"p-3.5\">₹ 18,500</td>\n                <td class=\"p-3.5\">₹ 10,000</td>\n                <td class=\"p-3.5 font-bold text-slate-900\">₹ 1,56,500</td>\n              </tr>\n              <tr>\n                <td class=\"p-3.5 font-bold text-slate-900\">B.Tech (ECE, ME, Civil)</td>\n                <td class=\"p-3.5\">₹ 1,15,000</td>\n                <td class=\"p-3.5\">₹ 18,500</td>\n                <td class=\"p-3.5\">₹ 10,000</td>\n                <td class=\"p-3.5 font-bold text-slate-900\">₹ 1,43,500</td>\n              </tr>\n              <tr>\n                <td class=\"p-3.5 font-bold text-slate-900\">BCA (Computing)</td>\n                <td class=\"p-3.5\">₹ 72,000</td>\n                <td class=\"p-3.5\">₹ 12,000</td>\n                <td class=\"p-3.5\">₹ 8,000</td>\n                <td class=\"p-3.5 font-bold text-slate-900\">₹ 92,000</td>\n              </tr>\n              <tr>\n                <td class=\"p-3.5 font-bold text-slate-900\">MCA (Computer Applications)</td>\n                <td class=\"p-3.5\">₹ 98,000</td>\n                <td class=\"p-3.5\">₹ 15,000</td>\n                <td class=\"p-3.5\">₹ 10,000</td>\n                <td class=\"p-3.5 font-bold text-slate-900\">₹ 1,23,000</td>\n              </tr>\n              <tr>\n                <td class=\"p-3.5 font-bold text-slate-900\">BBA (Management Studies)</td>\n                <td class=\"p-3.5\">₹ 68,000</td>\n                <td class=\"p-3.5\">₹ 12,000</td>\n                <td class=\"p-3.5\">₹ 8,000</td>\n                <td class=\"p-3.5 font-bold text-slate-900\">₹ 88,000</td>\n              </tr>\n              <tr>\n                <td class=\"p-3.5 font-bold text-slate-900\">MBA (Dual Specialization)</td>\n                <td class=\"p-3.5\">₹ 1,18,000</td>\n                <td class=\"p-3.5\">₹ 16,500</td>\n                <td class=\"p-3.5\">₹ 10,000</td>\n                <td class=\"p-3.5 font-bold text-slate-900\">₹ 1,44,500</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n        <div class=\"p-4 rounded-xl bg-slate-100 text-xs text-slate-600 flex items-center justify-between\">\n          <span>* Optional On-Campus Air-Cooled / AC Hostel accommodation available starting from ₹95,000/year (including 4 meals).</span>\n          <button onclick=\"openEnquiryModal('Fee Structure')\" class=\"text-amber-600 font-bold hover:underline\">Download Detailed Fee PDF &rarr;</button>\n        </div>\n      </div>\n    "},"admissions-apply":{"category":"Admissions","catSlug":"admissions","title":"How to Apply (Step-by-Step)","subtitle":"Simplified 4-stage online admissions walkthrough for prospective candidates.","badge":"Application Guide","content":"\n      <div class=\"grid grid-cols-1 md:grid-cols-4 gap-6\">\n        <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm relative\">\n          <div class=\"w-10 h-10 rounded-full bg-amber-500 text-slate-950 font-black flex items-center justify-center text-sm mb-4\">1</div>\n          <h4 class=\"font-bold text-slate-900 text-sm mb-2\">Registration</h4>\n          <p class=\"text-xs text-slate-600\">Register on the admission portal with basic email, mobile number, and select candidate target school/course.</p>\n        </div>\n        <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm relative\">\n          <div class=\"w-10 h-10 rounded-full bg-amber-500 text-slate-950 font-black flex items-center justify-center text-sm mb-4\">2</div>\n          <h4 class=\"font-bold text-slate-900 text-sm mb-2\">Upload Credentials</h4>\n          <p class=\"text-xs text-slate-600\">Upload scanned 10th & 12th marks-sheets, graduation transcripts (if PG), and entrance scorecard (JEE/CUET/CAT).</p>\n        </div>\n        <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm relative\">\n          <div class=\"w-10 h-10 rounded-full bg-amber-500 text-slate-950 font-black flex items-center justify-center text-sm mb-4\">3</div>\n          <h4 class=\"font-bold text-slate-900 text-sm mb-2\">Counseling / PI</h4>\n          <p class=\"text-xs text-slate-600\">Shortlisted candidates are invited for document verification, branch allocation, or personal interview for MBA.</p>\n        </div>\n        <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm relative\">\n          <div class=\"w-10 h-10 rounded-full bg-amber-500 text-slate-950 font-black flex items-center justify-center text-sm mb-4\">4</div>\n          <h4 class=\"font-bold text-slate-900 text-sm mb-2\">Seat Confirmation</h4>\n          <p class=\"text-xs text-slate-600\">Pay the initial tuition deposit online to receive your provisional Admission Letter and Roll Number.</p>\n        </div>\n      </div>\n    "},"admissions-eligibility":{"category":"Admissions","catSlug":"admissions","title":"Eligibility & Selection Criteria","subtitle":"Standardized minimum qualifying marks for Indian and International applicants.","badge":"Eligibility Norms","content":"\n      <div class=\"space-y-6\">\n        <div class=\"overflow-x-auto rounded-2xl border border-slate-200 bg-white\">\n          <table class=\"w-full text-left text-xs\">\n            <thead class=\"bg-slate-100 text-slate-700 font-bold border-b border-slate-200\">\n              <tr>\n                <th class=\"p-3.5\">Degree Program</th>\n                <th class=\"p-3.5\">Qualifying Exam</th>\n                <th class=\"p-3.5\">Minimum Marks Requirement</th>\n                <th class=\"p-3.5\">Mandatory Subjects</th>\n              </tr>\n            </thead>\n            <tbody class=\"divide-y divide-slate-100 text-slate-600\">\n              <tr>\n                <td class=\"p-3.5 font-bold text-slate-900\">B.Tech First Year</td>\n                <td class=\"p-3.5\">10+2 / CBSE / ICSE / State Board</td>\n                <td class=\"p-3.5\">Min 50% aggregate (45% for SC/ST)</td>\n                <td class=\"p-3.5\">Physics, Mathematics + (Chem/CS/Bio)</td>\n              </tr>\n              <tr>\n                <td class=\"p-3.5 font-bold text-slate-900\">B.Tech Lateral Entry (2nd Yr)</td>\n                <td class=\"p-3.5\">3-Year Engg Diploma or B.Sc.</td>\n                <td class=\"p-3.5\">Min 45% aggregate (40% for SC/ST)</td>\n                <td class=\"p-3.5\">Relevant Engineering Branch</td>\n              </tr>\n              <tr>\n                <td class=\"p-3.5 font-bold text-slate-900\">MCA</td>\n                <td class=\"p-3.5\">Graduation (BCA / B.Sc. / B.Com)</td>\n                <td class=\"p-3.5\">Min 50% aggregate (45% for SC/ST)</td>\n                <td class=\"p-3.5\">Mathematics at 10+2 or Degree level</td>\n              </tr>\n              <tr>\n                <td class=\"p-3.5 font-bold text-slate-900\">MBA</td>\n                <td class=\"p-3.5\">Any Recognized 3-Year Bachelor Degree</td>\n                <td class=\"p-3.5\">Min 50% aggregate (45% for SC/ST)</td>\n                <td class=\"p-3.5\">Valid Score in CAT / MAT / CMAT / CUET</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n      </div>\n    "},"admissions-payment":{"category":"Admissions","catSlug":"admissions","title":"Fee Payment Process","subtitle":"Authorized payment modes, net-banking portals, and official university bank accounts.","badge":"Secure Payments","content":"\n      <div class=\"space-y-6\">\n        <p class=\"text-sm text-slate-700\">All fees must be remitted strictly through official university channels. Students are strongly advised against cash payments to unauthorized personnel.</p>\n        <div class=\"grid grid-cols-1 md:grid-cols-2 gap-6\">\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-sm mb-2 flex items-center gap-2\">\n              <i data-lucide=\"credit-card\" class=\"w-4 h-4 text-amber-600\"></i> Mode A: Online ERP Gateway\n            </h4>\n            <p class=\"text-xs text-slate-600 leading-relaxed\">Students and parents can pay using Credit Card, Debit Card, Net Banking, or UPI via the official HDFC / ICICI SmartHub gateway integrated into the ERP portal. Instant receipt generated upon clearance.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-sm mb-2 flex items-center gap-2\">\n              <i data-lucide=\"building\" class=\"w-4 h-4 text-amber-600\"></i> Mode B: RTGS / NEFT Direct Transfer\n            </h4>\n            <div class=\"text-xs text-slate-600 space-y-1 font-mono bg-slate-50 p-3 rounded-lg border border-slate-200 mt-2\">\n              <div>Bank: Kotak Mahindra Bank</div>\n              <div>Account Name: Ajay Kumar Garg University</div>\n              <div>Account No: 508010023419</div>\n              <div>IFSC Code: KKBK0005292</div>\n              <div>Branch: Navyug Market, Ghaziabad</div>\n            </div>\n          </div>\n        </div>\n      </div>\n    "},"admissions-refund":{"category":"Admissions","catSlug":"admissions","title":"University Refund Policy","subtitle":"100% compliant with the University Grants Commission (UGC) Fee Refund Norms.","badge":"UGC Notification Compliant","content":"\n      <div class=\"space-y-6\">\n        <p class=\"text-sm text-slate-700\">In accordance with the statutory guidelines issued by the University Grants Commission (UGC), New Delhi, the fee refund policy on cancellation/withdrawal of admission is implemented as follows:</p>\n        <div class=\"overflow-x-auto rounded-2xl border border-slate-200 bg-white\">\n          <table class=\"w-full text-left text-xs\">\n            <thead class=\"bg-slate-100 text-slate-700 font-bold border-b border-slate-200\">\n              <tr>\n                <th class=\"p-3.5\">Percentage of Refund of Aggregate Fees</th>\n                <th class=\"p-3.5\">Notice Point of Withdrawal Received by Registrar Office</th>\n              </tr>\n            </thead>\n            <tbody class=\"divide-y divide-slate-100 text-slate-600\">\n              <tr class=\"bg-emerald-50/50\">\n                <td class=\"p-3.5 font-bold text-emerald-800\">100% (Less deduction of max ₹1,000 as processing fee)</td>\n                <td class=\"p-3.5\">15 days or more before the formally-notified last date of admission.</td>\n              </tr>\n              <tr>\n                <td class=\"p-3.5 font-bold text-slate-900\">90%</td>\n                <td class=\"p-3.5\">Less than 15 days before the formally-notified last date of admission.</td>\n              </tr>\n              <tr>\n                <td class=\"p-3.5 font-bold text-slate-900\">80%</td>\n                <td class=\"p-3.5\">15 days or less after the formally-notified last date of admission.</td>\n              </tr>\n              <tr>\n                <td class=\"p-3.5 font-bold text-slate-900\">50%</td>\n                <td class=\"p-3.5\">30 days or less, but more than 15 days, after formally-notified last date of admission.</td>\n              </tr>\n              <tr class=\"text-slate-400\">\n                <td class=\"p-3.5 font-bold\">00% (Security deposit refunded)</td>\n                <td class=\"p-3.5\">More than 30 days after formally-notified last date of admission.</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n      </div>\n    "},"admissions-faqs":{"category":"Admissions","catSlug":"admissions","title":"Admissions FAQs","subtitle":"Frequently asked questions regarding admission eligibility, hostel allotment, and scholarships.","badge":"Help & Support","content":"\n      <div class=\"space-y-4\">\n        <div class=\"border border-slate-200 rounded-2xl overflow-hidden bg-white\">\n          <button onclick=\"toggleFaq('faq1')\" class=\"w-full p-5 text-left font-bold text-sm text-slate-900 flex justify-between items-center hover:bg-slate-50\">\n            <span>What are the accepted entrance examinations for B.Tech admission?</span>\n            <i data-lucide=\"chevron-down\" id=\"faq1-icon\" class=\"w-4 h-4 text-slate-400 transition-transform\"></i>\n          </button>\n          <div id=\"faq1\" class=\"hidden p-5 pt-0 text-xs text-slate-600 leading-relaxed border-t border-slate-100\">\n            AKGU accepts JEE Main valid percentiles as well as CUET UG scores for all engineering streams. Candidates with high percentage in 10+2 PCM (State or Central Boards) can also apply under institutional merit counseling seats.\n          </div>\n        </div>\n        <div class=\"border border-slate-200 rounded-2xl overflow-hidden bg-white\">\n          <button onclick=\"toggleFaq('faq2')\" class=\"w-full p-5 text-left font-bold text-sm text-slate-900 flex justify-between items-center hover:bg-slate-50\">\n            <span>Are hostel facilities guaranteed for all outstation students?</span>\n            <i data-lucide=\"chevron-down\" id=\"faq2-icon\" class=\"w-4 h-4 text-slate-400 transition-transform\"></i>\n          </button>\n          <div id=\"faq2\" class=\"hidden p-5 pt-0 text-xs text-slate-600 leading-relaxed border-t border-slate-100\">\n            Yes, on-campus air-cooled and air-conditioned hostels are available separately for boys and girls with total capacity exceeding 1,800 residents. Allocation is prioritized on a first-come, first-served basis upon seat acceptance.\n          </div>\n        </div>\n        <div class=\"border border-slate-200 rounded-2xl overflow-hidden bg-white\">\n          <button onclick=\"toggleFaq('faq3')\" class=\"w-full p-5 text-left font-bold text-sm text-slate-900 flex justify-between items-center hover:bg-slate-50\">\n            <span>Does the university provide educational loan facilitation?</span>\n            <i data-lucide=\"chevron-down\" id=\"faq3-icon\" class=\"w-4 h-4 text-slate-400 transition-transform\"></i>\n          </button>\n          <div id=\"faq3\" class=\"hidden p-5 pt-0 text-xs text-slate-600 leading-relaxed border-t border-slate-100\">\n            Yes. The university has tie-ups with leading national banks (SBI, PNB, HDFC, Kotak) to grant pre-approved education loans. The admission office provides necessary Bonafide and Fee Estimate documentation on the same day.\n          </div>\n        </div>\n        <div class=\"border border-slate-200 rounded-2xl overflow-hidden bg-white\">\n          <button onclick=\"toggleFaq('faq4')\" class=\"w-full p-5 text-left font-bold text-sm text-slate-900 flex justify-between items-center hover:bg-slate-50\">\n            <span>What are the scholarship criteria for meritorious students?</span>\n            <i data-lucide=\"chevron-down\" id=\"faq4-icon\" class=\"w-4 h-4 text-slate-400 transition-transform\"></i>\n          </button>\n          <div id=\"faq4\" class=\"hidden p-5 pt-0 text-xs text-slate-600 leading-relaxed border-t border-slate-100\">\n            Merit scholarships are granted to students securing above 90% in 10+2 examinations or under 50,000 rank in JEE Main. In addition, state government fee-reimbursement schemes are facilitated for eligible UP domicile candidates.\n          </div>\n        </div>\n      </div>\n    "},"placements-overview":{"category":"Placements","catSlug":"placements","title":"Corporate Relations Centre (CRC)","subtitle":"Strategic bridge connecting industry captains with outstanding academic talent.","badge":"Industry Connect","content":"\n      <div class=\"space-y-6\">\n        <p class=\"text-sm text-slate-700 leading-relaxed\">\n          The Corporate Relations Centre (CRC) at AKGU orchestrates continuous training, industry interface, campus recruitment drives, and mock technical evaluation bootcamps. With a dedicated network of 650+ active recruiter relationships, CRC maintains one of the highest placement track records across NCR.\n        </p>\n        <div class=\"grid grid-cols-1 md:grid-cols-3 gap-6 my-6\">\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <div class=\"text-3xl font-black font-display text-amber-600 mb-1\">₹ 1.13 Cr</div>\n            <div class=\"font-bold text-slate-900 text-sm\">Highest International Offer</div>\n            <p class=\"text-xs text-slate-500 mt-2\">Placed with leading global tech enterprise.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <div class=\"text-3xl font-black font-display text-amber-600 mb-1\">₹ 6.82 LPA</div>\n            <div class=\"font-bold text-slate-900 text-sm\">Overall University Average CTC</div>\n            <p class=\"text-xs text-slate-500 mt-2\">Consistent upward trajectory across 5 seasons.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <div class=\"text-3xl font-black font-display text-amber-600 mb-1\">2,100+ Offers</div>\n            <div class=\"font-bold text-slate-900 text-sm\">Dispatched in 2025–26 Drive</div>\n            <p class=\"text-xs text-slate-500 mt-2\">Spanning Tier-1 Product & IT Services firms.</p>\n          </div>\n        </div>\n      </div>\n    "},"placements-highlights":{"category":"Placements","catSlug":"placements","title":"Placement Highlights & Top Recruiters","subtitle":"Proven outcomes across product powerhouses, global finance firms, and tech leaders.","badge":"Outstanding Record","content":"\n      <div class=\"space-y-8\">\n        <div class=\"grid grid-cols-1 md:grid-cols-2 gap-6\">\n          <div class=\"p-6 rounded-3xl bg-slate-900 text-white flex justify-between items-center\">\n            <div>\n              <span class=\"text-xs text-amber-400 font-bold uppercase\">Goldman Sachs Select</span>\n              <h4 class=\"text-2xl font-bold font-display mt-1\">Anshuman Nandan</h4>\n              <p class=\"text-xs text-slate-300\">B.Tech - Artificial Intelligence & ML</p>\n            </div>\n            <div class=\"text-right\">\n              <div class=\"text-3xl font-black text-[#ffc526] font-display\">35 LPA</div>\n              <span class=\"text-[11px] text-slate-400\">Domestic Package</span>\n            </div>\n          </div>\n          <div class=\"p-6 rounded-3xl bg-slate-900 text-white flex justify-between items-center\">\n            <div>\n              <span class=\"text-xs text-amber-400 font-bold uppercase\">Q Benifi Global Select</span>\n              <h4 class=\"text-2xl font-bold font-display mt-1\">Archas Srivastava</h4>\n              <p class=\"text-xs text-slate-300\">B.Tech - Computer Science</p>\n            </div>\n            <div class=\"text-right\">\n              <div class=\"text-3xl font-black text-[#ffc526] font-display\">21 LPA</div>\n              <span class=\"text-[11px] text-slate-400\">Domestic Package</span>\n            </div>\n          </div>\n        </div>\n        <div>\n          <h4 class=\"font-bold text-slate-900 text-base mb-4\">Prominent Hiring Enterprises</h4>\n          <div class=\"grid grid-cols-2 sm:grid-cols-4 gap-4 text-center\">\n            <div class=\"p-4 rounded-xl bg-white border border-slate-200 text-xs font-black text-slate-800\">AMAZON</div>\n            <div class=\"p-4 rounded-xl bg-white border border-slate-200 text-xs font-black text-slate-800\">MICROSOFT</div>\n            <div class=\"p-4 rounded-xl bg-white border border-slate-200 text-xs font-black text-slate-800\">GOLDMAN SACHS</div>\n            <div class=\"p-4 rounded-xl bg-white border border-slate-200 text-xs font-black text-slate-800\">TCS DIGITAL</div>\n            <div class=\"p-4 rounded-xl bg-white border border-slate-200 text-xs font-black text-slate-800\">INFOSYS</div>\n            <div class=\"p-4 rounded-xl bg-white border border-slate-200 text-xs font-black text-slate-800\">COGNIZANT</div>\n            <div class=\"p-4 rounded-xl bg-white border border-slate-200 text-xs font-black text-slate-800\">WIPRO</div>\n            <div class=\"p-4 rounded-xl bg-white border border-slate-200 text-xs font-black text-slate-800\">COMMVAULT</div>\n          </div>\n        </div>\n      </div>\n    "},"placements-policy":{"category":"Placements","catSlug":"placements","title":"University Placement Policy","subtitle":"Transparent norms ensuring equitable career access for all eligible scholars.","badge":"Code of Ethics","content":"\n      <div class=\"space-y-4 text-xs text-slate-700 leading-relaxed\">\n        <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3\">\n          <h4 class=\"font-bold text-slate-900 text-sm\">1. One-Student One-Job Norm</h4>\n          <p>To ensure maximum placement coverage, a student securing an initial offer below ₹7.0 LPA is considered placed. However, candidates remain eligible for \"Dream Offers\" (CTC > ₹12 LPA) or \"Super Dream Offers\" (CTC > ₹20 LPA).</p>\n        </div>\n        <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3\">\n          <h4 class=\"font-bold text-slate-900 text-sm\">2. Attendance & Academic Criteria</h4>\n          <p>Candidates must maintain a minimum of 75% classroom attendance and zero active backlogs to register with CRC campus interview schedules.</p>\n        </div>\n        <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3\">\n          <h4 class=\"font-bold text-slate-900 text-sm\">3. Professional Integrity & Code of Conduct</h4>\n          <p>Non-appearance after registration or backing out of an accepted offer invites disciplinary action and withdrawal of university placement facilitation.</p>\n        </div>\n      </div>\n    "},"placements-internship":{"category":"Placements","catSlug":"placements","title":"Industrial Internship Policy","subtitle":"Mandatory experiential industry projects embedded in degree curriculums.","badge":"Industry Practice","content":"\n      <div class=\"space-y-6 text-sm text-slate-700\">\n        <p>AKGU enforces mandatory internship credits for all undergraduate students during summer vacations (between 4th and 6th semesters) and a full-semester industry capstone in the final 8th semester.</p>\n        <div class=\"grid grid-cols-1 md:grid-cols-2 gap-6 my-6\">\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-1\">Stipendiary Summer Internships</h4>\n            <p class=\"text-xs text-slate-600 mt-2\">6 to 8 weeks duration across software houses, automotive labs, and financial firms with average stipends ranging from ₹15,000 to ₹45,000 per month.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <h4 class=\"font-bold text-slate-900 text-base mb-1\">Full-Semester Industry Capstone</h4>\n            <p class=\"text-xs text-slate-600 mt-2\">Final semester students with pre-placement offers (PPOs) can complete their final project remotely while working full-time at corporate headquarters.</p>\n          </div>\n        </div>\n      </div>\n    "},"placements-testimonials":{"category":"Placements","catSlug":"placements","title":"Student Testimonials & Reflections","subtitle":"Real career outcomes and transformative journeys shared by recent alumni.","badge":"Success Stories","content":"\n      <div class=\"grid grid-cols-1 md:grid-cols-2 gap-6\">\n        <div class=\"p-6 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between\">\n          <div>\n            <div class=\"flex text-amber-500 gap-1 mb-4\">\n              <i data-lucide=\"star\" class=\"w-4 h-4 fill-amber-400\"></i>\n              <i data-lucide=\"star\" class=\"w-4 h-4 fill-amber-400\"></i>\n              <i data-lucide=\"star\" class=\"w-4 h-4 fill-amber-400\"></i>\n              <i data-lucide=\"star\" class=\"w-4 h-4 fill-amber-400\"></i>\n              <i data-lucide=\"star\" class=\"w-4 h-4 fill-amber-400\"></i>\n            </div>\n            <p class=\"text-xs text-slate-700 italic leading-relaxed\">\n              \"The coding culture at the Computer Science department and the regular mock interviews conducted by CRC helped me crack Goldman Sachs. The university provided access to top-tier algorithmic challenges and faculty guidance right from third year.\"\n            </p>\n          </div>\n          <div class=\"flex items-center gap-3 pt-4 border-t border-slate-100 mt-6\">\n            <div class=\"w-10 h-10 rounded-full bg-[#111827] text-[#ffc526] font-bold flex items-center justify-center text-xs\">AN</div>\n            <div>\n              <h5 class=\"text-xs font-bold text-slate-900\">Anshuman Nandan</h5>\n              <p class=\"text-[11px] text-slate-500\">Goldman Sachs (₹35 LPA) • Class of 2024</p>\n            </div>\n          </div>\n        </div>\n        <div class=\"p-6 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between\">\n          <div>\n            <div class=\"flex text-amber-500 gap-1 mb-4\">\n              <i data-lucide=\"star\" class=\"w-4 h-4 fill-amber-400\"></i>\n              <i data-lucide=\"star\" class=\"w-4 h-4 fill-amber-400\"></i>\n              <i data-lucide=\"star\" class=\"w-4 h-4 fill-amber-400\"></i>\n              <i data-lucide=\"star\" class=\"w-4 h-4 fill-amber-400\"></i>\n              <i data-lucide=\"star\" class=\"w-4 h-4 fill-amber-400\"></i>\n            </div>\n            <p class=\"text-xs text-slate-700 italic leading-relaxed\">\n              \"Working inside the KUKA Robotics Centre gave me a major practical edge over peers from other colleges. The hands-on training with industrial controllers directly helped me secure an automation engineering role.\"\n            </p>\n          </div>\n          <div class=\"flex items-center gap-3 pt-4 border-t border-slate-100 mt-6\">\n            <div class=\"w-10 h-10 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-xs\">AS</div>\n            <div>\n              <h5 class=\"text-xs font-bold text-slate-900\">Archas Srivastava</h5>\n              <p class=\"text-[11px] text-slate-500\">Q Benifi Global (₹21 LPA) • Class of 2024</p>\n            </div>\n          </div>\n        </div>\n      </div>\n    "},"research-overview":{"category":"Research & Innovation","catSlug":"research","title":"Research & Innovation Cell","subtitle":"Nurturing deep-tech discoveries, multidisciplinary patents, and funded research.","badge":"Sponsored Research & IPR","content":"\n      <div class=\"space-y-6\">\n        <p class=\"text-sm text-slate-700 leading-relaxed\">\n          The Office of Research and Innovation coordinates funded projects under the Department of Science and Technology (DST), AICTE, SERB, and European academic partnerships. AKGU allocates an annual internal Seed Money Grant of ₹1.5 Crores to fund young faculty and student-led prototypes.\n        </p>\n        <div class=\"grid grid-cols-1 md:grid-cols-3 gap-6 my-6\">\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <div class=\"text-3xl font-black font-display text-amber-600 mb-1\">120+</div>\n            <div class=\"font-bold text-slate-900 text-sm\">Patents Published & Granted</div>\n            <p class=\"text-xs text-slate-500 mt-2\">Active IPR cell assisting with full drafting and filings.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <div class=\"text-3xl font-black font-display text-amber-600 mb-1\">1,450+</div>\n            <div class=\"font-bold text-slate-900 text-sm\">Scopus & SCI Publications</div>\n            <p class=\"text-xs text-slate-500 mt-2\">High-citation impact factors in IEEE, Springer, Elsevier.</p>\n          </div>\n          <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n            <div class=\"text-3xl font-black font-display text-amber-600 mb-1\">₹ 6.2 Cr</div>\n            <div class=\"font-bold text-slate-900 text-sm\">Funded Projects in Pipeline</div>\n            <p class=\"text-xs text-slate-500 mt-2\">External grants from government and industrial bodies.</p>\n          </div>\n        </div>\n      </div>\n    "},"research-patents":{"category":"Research & Innovation","catSlug":"research","title":"Patents & Scientific Publications","subtitle":"Demonstrated research output and intellectual property creation by scholars.","badge":"Intellectual Property Rights","content":"\n      <div class=\"space-y-6\">\n        <p class=\"text-sm text-slate-700\">AKGU provides 100% legal fee sponsorship for patents authored by students and faculty members. Recent notable patent filings include:</p>\n        <div class=\"space-y-3\">\n          <div class=\"p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex justify-between items-center text-xs\">\n            <div>\n              <span class=\"text-amber-600 font-bold\">Patent App: 202411039482 • Published</span>\n              <h5 class=\"font-bold text-slate-900 text-sm mt-0.5\">Automated Defect Detection in High-Speed Automotive Assembly Using Edge Vision</h5>\n              <p class=\"text-slate-500\">Dept of Mechanical Engg & KUKA CoE</p>\n            </div>\n            <span class=\"px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-bold\">Granted</span>\n          </div>\n          <div class=\"p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex justify-between items-center text-xs\">\n            <div>\n              <span class=\"text-amber-600 font-bold\">Patent App: 202411028711 • Published</span>\n              <h5 class=\"font-bold text-slate-900 text-sm mt-0.5\">Low-Latency Distributed Consensus Model for IoT Edge Devices in Microgrids</h5>\n              <p class=\"text-slate-500\">Dept of Computer Science & ECE</p>\n            </div>\n            <span class=\"px-3 py-1 rounded-full bg-amber-50 text-amber-700 font-bold\">Under Review</span>\n          </div>\n        </div>\n      </div>\n    "},"research-centres":{"category":"Research & Innovation","catSlug":"research","title":"Centres of Research (COR)","subtitle":"Specialized interdisciplinary labs pushing frontiers in quantum, AI, and green energy.","badge":"Advanced Laboratories","content":"\n      <div class=\"grid grid-cols-1 md:grid-cols-2 gap-6\">\n        <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n          <h4 class=\"font-bold text-slate-900 text-base mb-1\">Centre for Generative AI & High Compute</h4>\n          <p class=\"text-xs text-slate-600 mt-2\">Dedicated cluster of NVIDIA A100 GPUs enabling research in multilingual LLMs, edge inference, and synthetic data generation.</p>\n        </div>\n        <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n          <h4 class=\"font-bold text-slate-900 text-base mb-1\">Centre for Renewable Energy & Battery Systems</h4>\n          <p class=\"text-xs text-slate-600 mt-2\">Prototyping BMS (Battery Management Systems), solid-state energy storage, and smart microgrid controllers.</p>\n        </div>\n        <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n          <h4 class=\"font-bold text-slate-900 text-base mb-1\">Centre for Cyber Security & Cryptography</h4>\n          <p class=\"text-xs text-slate-600 mt-2\">Certified sandbox for vulnerability assessments, reverse engineering, and post-quantum cryptographic primitives.</p>\n        </div>\n        <div class=\"p-6 rounded-2xl bg-white border border-slate-200 shadow-sm\">\n          <h4 class=\"font-bold text-slate-900 text-base mb-1\">Centre for Additive Manufacturing & 3D Prototyping</h4>\n          <p class=\"text-xs text-slate-600 mt-2\">Industrial SLA, SLS, and metal 3D printers supporting rapid medical and mechanical tooling prototyping.</p>\n        </div>\n      </div>\n    "},"research-coe":{"category":"Research & Innovation","catSlug":"research","title":"Industrial Centres of Excellence (CoE)","subtitle":"Flagship industrial facilities operated jointly with German & global technology leaders.","badge":"Industry 4.0 Collaborations","content":"\n      <div class=\"grid grid-cols-1 md:grid-cols-2 gap-6\">\n        <div class=\"p-6 rounded-3xl bg-white border border-slate-200 shadow-sm\">\n          <div class=\"w-12 h-12 rounded-2xl bg-[#111827] text-white flex items-center justify-center font-bold text-sm mb-4\">KUKA</div>\n          <h4 class=\"text-base font-bold text-slate-900\">KUKA Industrial Robotics Centre</h4>\n          <p class=\"text-xs text-slate-600 mt-2 leading-relaxed\">Established with KUKA Robotics (Germany), featuring 6-axis industrial articulating robot arms, robotic welding, and automated cell programming.</p>\n        </div>\n        <div class=\"p-6 rounded-3xl bg-white border border-slate-200 shadow-sm\">\n          <div class=\"w-12 h-12 rounded-2xl bg-[#111827] text-white flex items-center justify-center font-bold text-sm mb-4\">BOSCH</div>\n          <h4 class=\"text-base font-bold text-slate-900\">Bosch Rexroth Automation Centre</h4>\n          <p class=\"text-xs text-slate-600 mt-2 leading-relaxed\">State-of-the-art facility for Industrial Hydraulics, Electro-Pneumatics, Sensorics, and PLC drives used in heavy automation machinery.</p>\n        </div>\n        <div class=\"p-6 rounded-3xl bg-white border border-slate-200 shadow-sm\">\n          <div class=\"w-12 h-12 rounded-2xl bg-[#111827] text-white flex items-center justify-center font-bold text-sm mb-4\">SIEMENS</div>\n          <h4 class=\"text-base font-bold text-slate-900\">Siemens Automation & PLM Lab</h4>\n          <p class=\"text-xs text-slate-600 mt-2 leading-relaxed\">Certified training on Siemens TIA Portal, S7-1500 PLCs, SCADA, and digital twin simulation for smart manufacturing lines.</p>\n        </div>\n        <div class=\"p-6 rounded-3xl bg-white border border-slate-200 shadow-sm\">\n          <div class=\"w-12 h-12 rounded-2xl bg-[#111827] text-white flex items-center justify-center font-bold text-sm mb-4\">NI</div>\n          <h4 class=\"text-base font-bold text-slate-900\">National Instruments LabVIEW Academy</h4>\n          <p class=\"text-xs text-slate-600 mt-2 leading-relaxed\">Equipped with NI ELVIS-II boards, myRIO, and virtual instrumentation testbenches for automated RF and hardware testing.</p>\n        </div>\n      </div>\n    "},"alumni-network":{"category":"Alumni","catSlug":"alumni","title":"Global Alumni Network & Registration","subtitle":"Connecting 30,000+ graduates holding impactful roles across 35 countries worldwide.","badge":"30,000+ Alumni Worldwide","content":"\n      <div class=\"space-y-8\">\n        <div class=\"p-8 rounded-3xl bg-white border border-slate-200 shadow-sm\">\n          <h4 class=\"text-xl font-bold font-display text-slate-900 mb-2\">Join the AKGU Alumni Association</h4>\n          <p class=\"text-xs text-slate-600 leading-relaxed mb-6\">Stay connected with your alma mater, mentor current students, access job boards, and attend annual alumni meets across Delhi NCR, Bengaluru, London, and Silicon Valley.</p>\n          <div class=\"grid grid-cols-1 sm:grid-cols-3 gap-4\">\n            <div class=\"p-4 rounded-xl bg-slate-50 border border-slate-200 text-center\">\n              <div class=\"text-2xl font-black text-slate-900 font-display\">NCR Chapter</div>\n              <div class=\"text-xs text-slate-500 mt-1\">12,000+ Members</div>\n            </div>\n            <div class=\"p-4 rounded-xl bg-slate-50 border border-slate-200 text-center\">\n              <div class=\"text-2xl font-black text-slate-900 font-display\">Bengaluru Hub</div>\n              <div class=\"text-xs text-slate-500 mt-1\">6,500+ Tech Leaders</div>\n            </div>\n            <div class=\"p-4 rounded-xl bg-slate-50 border border-slate-200 text-center\">\n              <div class=\"text-2xl font-black text-slate-900 font-display\">International</div>\n              <div class=\"text-xs text-slate-500 mt-1\">USA, UK, Europe, UAE</div>\n            </div>\n          </div>\n        </div>\n        <div class=\"p-6 rounded-2xl bg-amber-500 text-slate-950 flex flex-col sm:flex-row items-center justify-between gap-4\">\n          <div>\n            <h5 class=\"font-black text-base font-display\">Are you an AKGEC / AKGU Alumnus?</h5>\n            <p class=\"text-xs font-medium text-slate-800\">Register your current company, country, and designation in the official directory.</p>\n          </div>\n          <button onclick=\"openEnquiryModal('Alumni Network Registration')\" class=\"px-6 py-3 rounded-xl bg-slate-950 hover:bg-slate-900 text-white font-bold text-xs uppercase tracking-wider shrink-0 shadow\">\n            Register As Alumni\n          </button>\n        </div>\n      </div>\n    "}};
-    const CATEGORIES = {"about":{"name":"About AKGU","items":[{"id":"about-overview","label":"About Stanford-Style Overview"},{"id":"about-legacy","label":"History & 28-Year Legacy"},{"id":"about-vision","label":"Vision & Mission"},{"id":"about-leadership","label":"Leadership & Governance"},{"id":"about-objectives","label":"Institutional Objectives"},{"id":"about-rankings","label":"Rankings & Accreditations (NAAC A++, NIRF)"},{"id":"about-approvals","label":"Approvals & Mandatory Disclosures (UGC, AICTE)"},{"id":"about-isr","label":"Social Impact & Civic Responsibility"},{"id":"about-calendar","label":"Academic Calendar"}]},"academics":{"name":"Academics & Schools","items":[{"id":"programs-engineering","label":"School of Engineering & Technology"},{"id":"programs-management","label":"School of Management Studies"},{"id":"programs-computing","label":"School of Computer Applications"},{"id":"programs-humanities","label":"School of Humanities & Applied Sciences"},{"id":"research-overview","label":"Graduate & Doctoral Research (Ph.D.)"}]},"research":{"name":"Research & Innovation","items":[{"id":"research-overview","label":"Research Overview"},{"id":"research-patents","label":"Patents & Publications"},{"id":"research-centres","label":"Centres of Research (COR)"},{"id":"research-coe","label":"Centres of Excellence (KUKA, Siemens, Bosch, NI)"}]},"admissions":{"name":"Admissions & Aid","items":[{"id":"admissions-overview","label":"Admissions Overview 2026–27"},{"id":"admissions-fees","label":"Programs & Fee Structure"},{"id":"admissions-apply","label":"How to Apply (Step-by-Step)"},{"id":"admissions-eligibility","label":"Eligibility & Selection Criteria"},{"id":"admissions-payment","label":"Tuition Payment Process"},{"id":"admissions-refund","label":"UGC Fee Refund Policy"},{"id":"admissions-faqs","label":"Admissions FAQs"}]},"placements":{"name":"Placements & Careers","items":[{"id":"placements-overview","label":"Corporate Relations Centre (CRC)"},{"id":"placements-highlights","label":"Placement Highlights & Top Recruiters"},{"id":"placements-policy","label":"Placement Code & Policy"},{"id":"placements-internship","label":"Industrial Internship Policy"},{"id":"placements-testimonials","label":"Student Testimonials & Reflections"}]},"campus-life":{"name":"Campus Life & Community","items":[{"id":"alumni-network","label":"Global Alumni Network & Registration"}]}};
+    const CATEGORIES = {"about":{"name":"About AKGU","items":[{"id":"about-overview","label":"About Stanford-Style Overview"},{"id":"about-legacy","label":"History & 28-Year Legacy"},{"id":"about-vision","label":"Vision & Mission"},{"id":"about-leadership","label":"Leadership & Governance"},{"id":"about-objectives","label":"Institutional Objectives"},{"id":"about-rankings","label":"Rankings & Accreditations (NAAC A++, NIRF)"},{"id":"about-approvals","label":"Approvals & Mandatory Disclosures (UGC, AICTE)"},{"id":"about-isr","label":"Social Impact & Civic Responsibility"},{"id":"about-calendar","label":"Academic Calendar"}]},"academics":{"name":"Academics & Schools","items":[{"id":"programs-engineering","label":"School of Engineering & Technology"},{"id":"programs-management","label":"School of Management Studies"},{"id":"programs-computing","label":"School of Computer Applications"},{"id":"programs-humanities","label":"School of Humanities & Applied Sciences"},{"id":"research-overview","label":"Graduate & Doctoral Research (Ph.D.)"}]},"research":{"name":"Research & Innovation","items":[{"id":"research-overview","label":"Research Overview"},{"id":"research-patents","label":"Patents & Publications"},{"id":"research-centres","label":"Centres of Research (COR)"},{"id":"research-coe","label":"Centres of Excellence (KUKA, Siemens, Bosch, NI)"}]},"admissions":{"name":"Admissions & Aid","items":[{"id":"admissions-overview","label":"Admissions Overview 2026–27"},{"id":"admissions-fees","label":"Programs & Fee Structure"},{"id":"admissions-apply","label":"How to Apply (Step-by-Step)"},{"id":"admissions-eligibility","label":"Eligibility & Selection Criteria"},{"id":"admissions-payment","label":"Tuition Payment Process"},{"id":"admissions-refund","label":"UGC Fee Refund Policy"},{"id":"admissions-faqs","label":"Admissions FAQs"}]},"placements":{"name":"Placements & Careers","items":[{"id":"placements-overview","label":"Corporate Relations Centre (CRC)"},{"id":"placements-highlights","label":"Placement Highlights & Top Recruiters"},{"id":"placements-policy","label":"Placement Code & Policy"},{"id":"placements-internship","label":"Industrial Internship Policy"},{"id":"placements-testimonials","label":"Student Testimonials & Outcomes"}]},"campus-life":{"name":"Campus Life & Community","items":[{"id":"alumni-network","label":"Global Alumni Network & Registration"}]}};
 
     // Initialize Lucide Icons
     lucide.createIcons();
@@ -1484,6 +1692,7 @@
         window.history.pushState(null, '', '#home');
         window.scrollTo({ top: 0, behavior: 'smooth' });
         lucide.createIcons();
+        initScrollAnimations();
         return;
       }
 
@@ -1548,9 +1757,166 @@
       } else {
         showView('home');
       }
+      initScrollAnimations();
     });
 
-    // 2. Mobile Accordion & Drawer Controls
+    // ============================================================
+    // 2. STANFORD-STYLE PHOTO SCROLL REVEAL & FLASH ENGINE
+    // ============================================================
+    
+    // Campus Scrollytelling Data
+    const CAMPUS_STORIES = [
+      {
+        counter: '01 / 05',
+        label: 'Administrative Quad',
+        title: 'The 40-Acre Smart Heritage Quad',
+        location: 'Adhyatmik Nagar • Delhi-Meerut Expressway'
+      },
+      {
+        counter: '02 / 05',
+        label: 'Robotics & Automation CoE',
+        title: 'KUKA Robotics & Industry 4.0 Labs',
+        location: 'German Industrial Training Workcell'
+      },
+      {
+        counter: '03 / 05',
+        label: 'Central Library',
+        title: 'Central Digital Knowledge Commons',
+        location: '100,000+ Volumes & IEEE Electronic Archive'
+      },
+      {
+        counter: '04 / 05',
+        label: 'Annual Fest Arena',
+        title: 'Surabhi Cultural & Technical Extravaganza',
+        location: 'Open Air Amphitheatre & Hackathon Hub'
+      },
+      {
+        counter: '05 / 05',
+        label: 'Athletics & Sports Turf',
+        title: 'FIFA Standard Sports Arena & Residential Hostels',
+        location: 'Floodlit Complex & Air-Conditioned Hostels'
+      }
+    ];
+
+    let currentCampusStoryIndex = 0;
+
+    function setCampusStorySlide(idx) {
+      if (idx === currentCampusStoryIndex) return;
+      currentCampusStoryIndex = idx;
+
+      // 1. Crossfade sticky image slides with flash
+      for (let i = 0; i < 5; i++) {
+        const slide = document.getElementById('campusSlide' + i);
+        if (slide) {
+          if (i === idx) {
+            slide.classList.add('active');
+          } else {
+            slide.classList.remove('active');
+          }
+        }
+      }
+
+      // 2. Trigger Luminous Flash Sweep on the sticky frame
+      const frame = document.getElementById('stickyCampusFrame');
+      if (frame) {
+        frame.classList.remove('flash-sweep');
+        void frame.offsetWidth; // force reflow
+        frame.classList.add('flash-sweep');
+      }
+
+      // 3. Update story metadata labels
+      const data = CAMPUS_STORIES[idx];
+      if (data) {
+        document.getElementById('campusSlideCounter').textContent = data.counter;
+        document.getElementById('campusSlideLabel').textContent = data.label;
+        document.getElementById('campusSlideTitle').textContent = data.title;
+        document.getElementById('campusSlideLocation').textContent = data.location;
+      }
+
+      // 4. Update tab button states
+      for (let i = 0; i < 5; i++) {
+        const tab = document.getElementById('campusTab' + i);
+        if (tab) {
+          if (i === idx) {
+            tab.className = "campus-tab px-3 py-1.5 rounded-full text-xs font-semibold bg-cardinal text-white shrink-0 transition-all shadow-sm";
+          } else {
+            tab.className = "campus-tab px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-charcoal-muted hover:text-cardinal shrink-0 transition-all";
+          }
+        }
+      }
+
+      // 5. Update right-hand story card border highlight
+      for (let i = 0; i < 5; i++) {
+        const chap = document.getElementById('chapter' + i);
+        if (chap) {
+          if (i === idx) {
+            chap.classList.add('active-chapter');
+            chap.classList.remove('bg-white/70');
+            chap.classList.add('bg-white');
+          } else {
+            chap.classList.remove('active-chapter');
+            chap.classList.remove('bg-white');
+            chap.classList.add('bg-white/70');
+          }
+        }
+      }
+    }
+
+    function jumpToCampusChapter(idx) {
+      setCampusStorySlide(idx);
+      const chap = document.getElementById('chapter' + idx);
+      if (chap) {
+        chap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    // Scroll Observer Initialization
+    function initScrollAnimations() {
+      // 1. General photo flash & reveal on scroll down
+      const photoElements = document.querySelectorAll('.photo-reveal');
+      const revealObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            
+            // Trigger quick luminous flash sweep overlay
+            const flashBox = entry.target.querySelector('.photo-flash-box') || entry.target;
+            if (flashBox) {
+              flashBox.classList.add('flash-sweep');
+              setTimeout(() => {
+                flashBox.classList.remove('flash-sweep');
+              }, 1000);
+            }
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      photoElements.forEach(el => revealObserver.observe(el));
+
+      // 2. Scrollytelling story chapters observer
+      const chapters = document.querySelectorAll('.story-chapter');
+      const chapterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const idx = entry.target.getAttribute('data-chapter-idx');
+            if (idx !== null) {
+              setCampusStorySlide(parseInt(idx, 10));
+            }
+          }
+        });
+      }, {
+        threshold: 0.5,
+        rootMargin: '-10% 0px -20% 0px'
+      });
+
+      chapters.forEach(ch => chapterObserver.observe(ch));
+    }
+
+    // 3. Mobile Accordion & Drawer Controls
     function toggleMobileMenu() {
       const drawer = document.getElementById('mobileDrawer');
       drawer.classList.toggle('hidden');
@@ -1568,7 +1934,7 @@
       }
     }
 
-    // 3. FAQ Accordion Toggle
+    // 4. FAQ Accordion Toggle
     function toggleFaq(id) {
       const el = document.getElementById(id);
       const icon = document.getElementById(id + '-icon');
@@ -1578,7 +1944,7 @@
       }
     }
 
-    // 4. Hero Slider Controls
+    // 5. Hero Slider Controls
     let currentHeroIndex = 0;
     const totalHeroSlides = 5;
     function setHeroSlide(idx) {
@@ -1595,6 +1961,14 @@
           ? 'w-3 h-3 rounded-full bg-white cursor-pointer transition-all hero-dot'
           : 'w-3 h-3 rounded-full bg-white/40 cursor-pointer transition-all hero-dot';
       });
+
+      // Quick flash sweep on hero change
+      const heroBox = document.getElementById('heroPhotoFlash');
+      if (heroBox) {
+        heroBox.classList.remove('flash-sweep');
+        void heroBox.offsetWidth;
+        heroBox.classList.add('flash-sweep');
+      }
     }
 
     setInterval(() => {
@@ -1604,7 +1978,7 @@
       }
     }, 4500);
 
-    // 5. Video Tour Modal
+    // 6. Video Tour Modal
     function openVideoTourModal() {
       const modal = document.getElementById('videoModal');
       const iframe = document.getElementById('videoModalIframe');
@@ -1618,7 +1992,7 @@
       modal.classList.add('hidden');
     }
 
-    // 6. Lead Enquiry Modal
+    // 7. Lead Enquiry Modal
     function openEnquiryModal(prog) {
       document.getElementById('enquiryModal').classList.remove('hidden');
       document.getElementById('enquiryForm').classList.remove('hidden');
@@ -1642,7 +2016,7 @@
       document.getElementById('enquirySuccess').classList.remove('hidden');
     }
 
-    // 7. Student Portal ERP Modal
+    // 8. Student Portal ERP Modal
     function openStudentPortalModal() {
       document.getElementById('studentPortalModal').classList.remove('hidden');
       document.getElementById('erpAlert').classList.add('hidden');
@@ -1659,7 +2033,7 @@
       }, 1500);
     }
 
-    // 8. Global Search Modal (Ctrl/Cmd + K)
+    // 9. Global Search Modal (Ctrl/Cmd + K)
     function openSearchModal() {
       document.getElementById('searchModal').classList.remove('hidden');
       setTimeout(() => document.getElementById('searchInput').focus(), 100);
