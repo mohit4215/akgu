@@ -6,6 +6,7 @@
   <title>AKG University | Ajay Kumar Garg University</title>
   <meta name="description" content="Discover programs, campus life, admissions, and opportunities at Ajay Kumar Garg University." />
   <link rel="canonical" href="https://www.akgu.ac.in/" />
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -17,9 +18,10 @@
             brand: {
               navy: '#002147',
               dark: '#001630',
-              blue: '#1e40af',
-              accent: '#f59e0b',
-              accentHover: '#d97706',
+              blue: '#1b2d59',
+              amber: '#ffab00',
+              yellow: '#f59e0b',
+              accent: '#d97706',
               light: '#f8fafc',
             }
           },
@@ -42,12 +44,12 @@
     };
   </script>
 
-  <!-- Google Fonts: Outfit & Plus Jakarta Sans (Exact match with akgu.edu.in) -->
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans (Identical to akgu.edu.in) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Lucide Icons CDN -->
+  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
@@ -60,39 +62,29 @@
     .hero-slide {
       transition: opacity 1s ease-in-out;
     }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    .glass-dark {
-      background: rgba(0, 33, 71, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
   </style>
 </head>
-<body class="bg-[#f8fafc] text-gray-900 antialiased selection:bg-[#002147] selection:text-white">
+<body class="bg-white text-gray-900 antialiased selection:bg-[#002147] selection:text-white">
 
   <!-- ========================================== -->
-  <!-- 1. TOP ANNOUNCEMENT BAR & UTILITY HEADER   -->
+  <!-- 1. TOP UTILITY HEADER                      -->
   <!-- ========================================== -->
   <div class="bg-[#001630] text-slate-300 text-xs py-2 px-4 border-b border-white/10">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
       <div class="flex items-center gap-6">
-        <a href="tel:18002548264" class="flex items-center gap-1.5 hover:text-amber-400 transition-colors">
-          <i data-lucide="phone" class="w-3.5 h-3.5 text-amber-400"></i>
+        <a href="tel:18002548264" class="flex items-center gap-1.5 hover:text-[#ffab00] transition-colors">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-[#ffab00]"></i>
           <span>Toll-Free: 1800-AKGU-UNI (1800-254-8264)</span>
         </a>
-        <a href="mailto:info@akgu.ac.in" class="hidden md:flex items-center gap-1.5 hover:text-amber-400 transition-colors">
-          <i data-lucide="mail" class="w-3.5 h-3.5 text-amber-400"></i>
+        <a href="mailto:info@akgu.ac.in" class="hidden md:flex items-center gap-1.5 hover:text-[#ffab00] transition-colors">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-[#ffab00]"></i>
           <span>info@akgu.ac.in</span>
         </a>
       </div>
       <div class="flex items-center gap-4">
         <span class="hidden sm:inline text-slate-400">27 KM Stone, Delhi-Meerut Expressway, Ghaziabad, UP</span>
         <div class="h-3 w-px bg-slate-700 hidden sm:block"></div>
-        <a href="#admissions" class="text-amber-400 hover:text-white font-bold flex items-center gap-1">
+        <a href="#admissions" class="text-[#ffab00] hover:text-white font-bold flex items-center gap-1">
           <span>Admissions 2026–27 Open</span>
           <i data-lucide="sparkles" class="w-3 h-3"></i>
         </a>
@@ -101,38 +93,31 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- 2. MAIN NAVIGATION NAVBAR                  -->
+  <!-- 2. MAIN NAVBAR WITH OFFICIAL LOGO          -->
   <!-- ========================================== -->
-  <nav id="mainNav" class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-      <!-- Brand Logo -->
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-12 h-12 rounded-xl bg-[#002147] flex items-center justify-center text-white font-black text-xl shadow-md group-hover:scale-105 transition-transform">
-          AK
-        </div>
-        <div>
-          <span class="font-display font-extrabold text-xl text-[#002147] tracking-tight block leading-tight">
-            AKG UNIVERSITY
-          </span>
-          <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">
-            Ajay Kumar Garg University
-          </span>
-        </div>
+  <nav class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between gap-4">
+      <!-- Official Logo -->
+      <a href="#" class="flex items-center">
+        <img src="akg-logo.webp" alt="AKG University Logo" class="h-12 sm:h-14 md:h-16 w-auto object-contain cursor-pointer" />
       </a>
 
-      <!-- Desktop Nav Menu -->
+      <!-- Desktop Nav Items -->
       <div class="hidden lg:flex items-center gap-1">
         <a href="#schools" class="px-3.5 py-2 text-sm font-bold text-slate-700 hover:text-[#002147] hover:bg-slate-100 rounded-lg transition-colors">
           Schools & Academics
         </a>
-        <a href="#admissions" class="px-3.5 py-2 text-sm font-bold text-slate-700 hover:text-[#002147] hover:bg-slate-100 rounded-lg transition-colors">
-          Admissions 2026
+        <a href="#faculty" class="px-3.5 py-2 text-sm font-bold text-slate-700 hover:text-[#002147] hover:bg-slate-100 rounded-lg transition-colors">
+          Faculty
         </a>
         <a href="#placements" class="px-3.5 py-2 text-sm font-bold text-slate-700 hover:text-[#002147] hover:bg-slate-100 rounded-lg transition-colors">
           Placements
         </a>
         <a href="#journey" class="px-3.5 py-2 text-sm font-bold text-slate-700 hover:text-[#002147] hover:bg-slate-100 rounded-lg transition-colors">
           Campus Vibes
+        </a>
+        <a href="#gallery" class="px-3.5 py-2 text-sm font-bold text-slate-700 hover:text-[#002147] hover:bg-slate-100 rounded-lg transition-colors">
+          Moments
         </a>
         <a href="#rankings" class="px-3.5 py-2 text-sm font-bold text-slate-700 hover:text-[#002147] hover:bg-slate-100 rounded-lg transition-colors">
           Rankings
@@ -144,7 +129,7 @@
 
       <!-- Action Buttons -->
       <div class="flex items-center gap-3">
-        <button onclick="openSearchModal()" class="p-2 text-slate-600 hover:text-[#002147] hover:bg-slate-100 rounded-xl transition-colors" title="Search (Ctrl+K)">
+        <button onclick="openSearchModal()" class="p-2 text-slate-600 hover:text-[#002147] hover:bg-slate-100 rounded-xl" title="Search (Ctrl+K)">
           <i data-lucide="search" class="w-5 h-5"></i>
         </button>
         <button onclick="openEnquiryModal()" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all flex items-center gap-1.5">
@@ -163,16 +148,17 @@
     <div class="fixed inset-y-0 right-0 w-full max-w-xs bg-white p-6 shadow-2xl flex flex-col justify-between">
       <div>
         <div class="flex items-center justify-between pb-4 border-b border-slate-100">
-          <span class="font-display font-black text-lg text-[#002147]">AKG University</span>
+          <img src="akg-logo.webp" alt="AKG Logo" class="h-10 w-auto" />
           <button onclick="toggleMobileMenu()" class="p-1 text-slate-400 hover:text-slate-700">
             <i data-lucide="x" class="w-6 h-6"></i>
           </button>
         </div>
         <div class="py-4 space-y-2">
           <a href="#schools" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-800 hover:text-amber-600">Schools & Academics</a>
-          <a href="#admissions" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-800 hover:text-amber-600">Admissions 2026</a>
-          <a href="#placements" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-800 hover:text-amber-600">Placements & Recruiters</a>
+          <a href="#faculty" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-800 hover:text-amber-600">World Class Faculty</a>
+          <a href="#placements" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-800 hover:text-amber-600">Placements @ AKGEC</a>
           <a href="#journey" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-800 hover:text-amber-600">Campus Vibes & Clubs</a>
+          <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-800 hover:text-amber-600">Moments That Matter</a>
           <a href="#rankings" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-800 hover:text-amber-600">Rankings & Awards</a>
           <a href="#calculator" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-800 hover:text-amber-600">Scholarship Calculator</a>
         </div>
@@ -184,10 +170,9 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- 3. HERO BANNER SECTION (Exact akgu.edu.in) -->
+  <!-- 3. HERO BANNER SECTION                     -->
   <!-- ========================================== -->
   <section class="relative min-h-[640px] lg:min-h-[720px] flex items-center bg-[#001630] text-white overflow-hidden">
-    <!-- Carousel Images -->
     <div class="absolute inset-0 z-0">
       <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/building1.webp" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-100" id="heroImg0" alt="AKGU Campus" />
       <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/building2.webp" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-0" id="heroImg1" alt="AKGU Campus 2" />
@@ -199,9 +184,9 @@
 
     <div class="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
       <div class="max-w-2xl space-y-6">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/30 text-xs font-bold uppercase tracking-wider">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/20 text-[#ffab00] border border-amber-400/30 text-xs font-bold uppercase tracking-wider">
           <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
-          <span>28 years of Legacy, </span>
+          <span>28 years of Legacy,</span>
         </div>
 
         <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black font-display text-white tracking-tight leading-none">
@@ -235,32 +220,32 @@
   </section>
 
   <!-- ========================================== -->
-  <!-- 4. STATS METRICS BAR                       -->
+  <!-- 4. KEY STATS IMPACT BAR                    -->
   <!-- ========================================== -->
   <section class="bg-[#002147] text-white py-12 px-4 border-y border-white/10">
     <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
       <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
-        <div class="text-3xl sm:text-4xl font-black text-amber-400 font-display">62</div>
+        <div class="text-3xl sm:text-4xl font-black text-[#ffab00] font-display">62</div>
         <div class="text-sm font-bold text-white mt-1">Fortune Global</div>
         <div class="text-xs text-slate-300 mt-0.5 leading-snug">Plethora of Global Fortune MNC's awaiting you</div>
       </div>
       <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
-        <div class="text-3xl sm:text-4xl font-black text-amber-400 font-display">82</div>
+        <div class="text-3xl sm:text-4xl font-black text-[#ffab00] font-display">82</div>
         <div class="text-sm font-bold text-white mt-1">Fortune India</div>
         <div class="text-xs text-slate-300 mt-0.5 leading-snug">Earn best placement packages within Country's top Industries</div>
       </div>
       <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
-        <div class="text-3xl sm:text-4xl font-black text-amber-400 font-display">1.13 Cr</div>
+        <div class="text-3xl sm:text-4xl font-black text-[#ffab00] font-display">1.13 Cr</div>
         <div class="text-sm font-bold text-white mt-1">Placements</div>
         <div class="text-xs text-slate-300 mt-0.5 leading-snug">Highest Package Offered</div>
       </div>
       <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
-        <div class="text-3xl sm:text-4xl font-black text-amber-400 font-display">37+</div>
+        <div class="text-3xl sm:text-4xl font-black text-[#ffab00] font-display">37+</div>
         <div class="text-sm font-bold text-white mt-1">Amazon</div>
         <div class="text-xs text-slate-300 mt-0.5 leading-snug">Students selected by Amazon</div>
       </div>
       <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
-        <div class="text-3xl sm:text-4xl font-black text-amber-400 font-display">5500+</div>
+        <div class="text-3xl sm:text-4xl font-black text-[#ffab00] font-display">5500+</div>
         <div class="text-sm font-bold text-white mt-1">Patents</div>
         <div class="text-xs text-slate-300 mt-0.5 leading-snug">filed successfully till date</div>
       </div>
@@ -285,12 +270,10 @@
         </p>
       </div>
 
-      <!-- Schools Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- School 1 -->
         <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:border-amber-500 hover:shadow-xl transition-all group">
           <div class="w-12 h-12 rounded-2xl bg-[#002147] text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <i data-lucide="cpu" class="w-6 h-6 text-amber-400"></i>
+            <i data-lucide="cpu" class="w-6 h-6 text-[#ffab00]"></i>
           </div>
           <h3 class="font-display font-extrabold text-xl text-[#002147] group-hover:text-amber-600 transition-colors">
             School of Computer Science and Engineering
@@ -302,13 +285,12 @@
           </div>
         </div>
 
-        <!-- School 2 -->
         <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:border-amber-500 hover:shadow-xl transition-all group">
           <div class="w-12 h-12 rounded-2xl bg-[#002147] text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <i data-lucide="cog" class="w-6 h-6 text-amber-400"></i>
+            <i data-lucide="cog" class="w-6 h-6 text-[#ffab00]"></i>
           </div>
           <h3 class="font-display font-extrabold text-xl text-[#002147] group-hover:text-amber-600 transition-colors">
-            School of Engineering  Sciences
+            School of Engineering Sciences
           </h3>
           <p class="text-sm font-semibold text-slate-500 mt-2">B.Tech, M.Tech, Ph.D.</p>
           <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-[#002147]">
@@ -317,10 +299,9 @@
           </div>
         </div>
 
-        <!-- School 3 -->
         <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:border-amber-500 hover:shadow-xl transition-all group">
           <div class="w-12 h-12 rounded-2xl bg-[#002147] text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <i data-lucide="code" class="w-6 h-6 text-amber-400"></i>
+            <i data-lucide="code" class="w-6 h-6 text-[#ffab00]"></i>
           </div>
           <h3 class="font-display font-extrabold text-xl text-[#002147] group-hover:text-amber-600 transition-colors">
             School of Computing
@@ -332,10 +313,9 @@
           </div>
         </div>
 
-        <!-- School 4 -->
         <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:border-amber-500 hover:shadow-xl transition-all group">
           <div class="w-12 h-12 rounded-2xl bg-[#002147] text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <i data-lucide="briefcase" class="w-6 h-6 text-amber-400"></i>
+            <i data-lucide="briefcase" class="w-6 h-6 text-[#ffab00]"></i>
           </div>
           <h3 class="font-display font-extrabold text-xl text-[#002147] group-hover:text-amber-600 transition-colors">
             School of Management Studies
@@ -347,25 +327,23 @@
           </div>
         </div>
 
-        <!-- School 5 -->
         <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:border-amber-500 hover:shadow-xl transition-all group">
           <div class="w-12 h-12 rounded-2xl bg-[#002147] text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <i data-lucide="sparkles" class="w-6 h-6 text-amber-400"></i>
+            <i data-lucide="sparkles" class="w-6 h-6 text-[#ffab00]"></i>
           </div>
           <h3 class="font-display font-extrabold text-xl text-[#002147] group-hover:text-amber-600 transition-colors">
             School of Artificial Intelligence
           </h3>
-          <p class="text-sm font-semibold text-slate-500 mt-2">B.TECH, M.TECH,Ph.D.</p>
+          <p class="text-sm font-semibold text-slate-500 mt-2">B.TECH, M.TECH, Ph.D.</p>
           <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-[#002147]">
             <span>Deep Learning & Generative AI</span>
             <i data-lucide="arrow-right" class="w-4 h-4 text-amber-500 group-hover:translate-x-1 transition-transform"></i>
           </div>
         </div>
 
-        <!-- School 6: Research Cell -->
         <div class="p-8 rounded-3xl bg-gradient-to-br from-[#002147] to-[#001630] text-white flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-[#ffab00] flex items-center justify-center mb-6">
               <i data-lucide="award" class="w-6 h-6"></i>
             </div>
             <h3 class="font-display font-extrabold text-xl text-white">
@@ -384,21 +362,160 @@
   </section>
 
   <!-- ========================================== -->
-  <!-- 6. CAMPUS VIBES / MILESTONES               -->
+  <!-- 6. TOP PLACEMENTS @ AKGEC (Exact section)  -->
   <!-- ========================================== -->
-  <section id="journey" class="py-20 px-4 bg-slate-50">
+  <section id="placements" class="w-full bg-white py-16 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-[#1b2d59] font-display">
+          Top Placements @ AKGEC
+        </h2>
+        <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-[#1b2d59]"></div>
+        <p class="mt-4 text-gray-600 text-lg">
+          Exceptional career opportunities for our students
+        </p>
+      </div>
+
+      <!-- Student Placement Cards & Packages -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-14">
+        <!-- Student Card 1 -->
+        <div class="lg:col-span-6 rounded-3xl overflow-hidden shadow-xl bg-gradient-to-r from-[#1b2d59] to-[#001630] text-white p-8 relative flex flex-col justify-between min-h-[380px]">
+          <div>
+            <span class="text-xs font-serif italic text-amber-300 uppercase tracking-widest block mb-4">Goldman Sachs</span>
+            <h3 class="text-3xl font-bold text-[#ffab00] font-display">Anshuman Nandan</h3>
+            <p class="text-sm font-semibold text-slate-200 mt-1">B.TECH - AIML</p>
+          </div>
+          <div class="pt-6 border-t border-white/10 flex items-baseline justify-between">
+            <div>
+              <span class="text-[11px] uppercase tracking-wider text-slate-300 block">Salary Package</span>
+              <span class="text-4xl sm:text-5xl font-black text-[#ffab00] font-display">35 <span class="text-lg">LPA</span></span>
+            </div>
+            <span class="px-4 py-2 rounded-xl bg-white/10 text-xs font-bold text-white">Top Tier Select</span>
+          </div>
+        </div>
+
+        <!-- Student Card 2 -->
+        <div class="lg:col-span-6 rounded-3xl overflow-hidden shadow-xl bg-gradient-to-r from-[#002147] to-[#1b2d59] text-white p-8 relative flex flex-col justify-between min-h-[380px]">
+          <div>
+            <span class="text-xs font-serif italic text-sky-300 uppercase tracking-widest block mb-4">Q BENIFI GLOBAL CORP</span>
+            <h3 class="text-3xl font-bold text-[#ffab00] font-display">ARCHAS SRIVASTAVA</h3>
+            <p class="text-sm font-semibold text-slate-200 mt-1">B.TECH - CS</p>
+          </div>
+          <div class="pt-6 border-t border-white/10 flex items-baseline justify-between">
+            <div>
+              <span class="text-[11px] uppercase tracking-wider text-slate-300 block">Salary Package</span>
+              <span class="text-4xl sm:text-5xl font-black text-[#ffab00] font-display">21.00 <span class="text-lg">LPA</span></span>
+            </div>
+            <span class="px-4 py-2 rounded-xl bg-white/10 text-xs font-bold text-white">Top Tier Select</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Placement Slabs -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 text-center">
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="text-2xl font-black text-[#1b2d59] font-display">20 LPA</div>
+          <div class="text-xs text-slate-500 mt-1">Package Offered by 40+ Companies</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="text-2xl font-black text-[#1b2d59] font-display">15 LPA</div>
+          <div class="text-xs text-slate-500 mt-1">Package Offered by 50+ Companies</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="text-2xl font-black text-[#1b2d59] font-display">10 LPA</div>
+          <div class="text-xs text-slate-500 mt-1">Package Offered by 100+ Companies</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="text-2xl font-black text-[#1b2d59] font-display">7 LPA</div>
+          <div class="text-xs text-slate-500 mt-1">Package Offered by 350+ Companies</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="text-2xl font-black text-[#1b2d59] font-display">5 LPA</div>
+          <div class="text-xs text-slate-500 mt-1">Package Offered by 650+ Companies</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 7. WORLD CLASS FACULTY (Exact from live)   -->
+  <!-- ========================================== -->
+  <section id="faculty" class="bg-slate-50 px-5 py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl">
+      <div class="mb-12 text-center">
+        <p class="font-display font-black text-2xl sm:text-3xl md:text-4xl uppercase tracking-widest text-amber-600">
+          World Class Faculty
+        </p>
+        <p class="text-slate-500 text-sm mt-2">Distinguished professors, researchers, and global mentors</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm text-center">
+          <div class="w-24 h-24 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden flex items-center justify-center font-bold text-[#002147] text-xl">
+            DD
+          </div>
+          <h4 class="font-display font-bold text-lg text-[#002147]">Dr. Dirk Draheim</h4>
+          <p class="text-xs text-slate-500 mt-1">Tallinn University of Technology, Estonia</p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm text-center">
+          <div class="w-24 h-24 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden flex items-center justify-center font-bold text-[#002147] text-xl">
+            RS
+          </div>
+          <h4 class="font-display font-bold text-lg text-[#002147]">Dr. Rahul Sharma</h4>
+          <p class="text-xs text-slate-500 mt-1">Post-Doctorate from Karlsruhe Institute of Technology, Germany</p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm text-center">
+          <div class="w-24 h-24 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden flex items-center justify-center font-bold text-[#002147] text-xl">
+            SL
+          </div>
+          <h4 class="font-display font-bold text-lg text-[#002147]">Dr. Silvia Lips</h4>
+          <p class="text-xs text-slate-500 mt-1">Tallinn University of Technology (TalTech), Estonia</p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm text-center">
+          <div class="w-24 h-24 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden flex items-center justify-center font-bold text-[#002147] text-xl">
+            MK
+          </div>
+          <h4 class="font-display font-bold text-lg text-[#002147]">Dr. Minakshi Kaushik</h4>
+          <p class="text-xs text-slate-500 mt-1">Post-Doctorate from Karlsruhe Institute of Technology, Germany</p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm text-center">
+          <div class="w-24 h-24 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden flex items-center justify-center font-bold text-[#002147] text-xl">
+            VC
+          </div>
+          <h4 class="font-display font-bold text-lg text-[#002147]">Mr. Vishal Chaudhry</h4>
+          <p class="text-xs text-slate-500 mt-1">Tallinn University of Technology</p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm text-center">
+          <div class="w-24 h-24 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden flex items-center justify-center font-bold text-[#002147] text-xl">
+            SG
+          </div>
+          <h4 class="font-display font-bold text-lg text-[#002147]">Ms. Shilpi Gupta</h4>
+          <p class="text-xs text-slate-500 mt-1">Associate Professor & Senior Researcher</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 8. CAMPUS VIBES (Exact akgu.edu.in)        -->
+  <!-- ========================================== -->
+  <section id="journey" class="py-20 px-4 bg-white">
     <div class="max-w-7xl mx-auto">
       <div class="text-center max-w-3xl mx-auto mb-14">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 mb-3">
-          <i data-lucide="camera" class="w-4 h-4 text-amber-600"></i>
-          <span>Campus Life</span>
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-extrabold text-[#002147] font-display tracking-tight">
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-[#002147] font-display">
           Campus Vibes
         </h2>
-        <div class="text-slate-600 mt-2 text-sm sm:text-base max-w-xl mx-auto">
-          Explore our vibrant journey, rich history, and world-class campus infrastructure that shapes future leaders.
+        <div class="mt-4 flex justify-center">
+          <div class="w-20 h-1 rounded-full bg-[#002147]"></div>
         </div>
+        <p class="text-slate-600 mt-4 text-sm sm:text-base">
+          Explore Our Journey that highlights our growth, innovation, and commitment to shaping future-ready engineers.
+        </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -407,8 +524,9 @@
             <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/modi-milestone.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Milestone 1" />
           </div>
           <div class="p-6">
-            <h4 class="font-display font-bold text-lg text-[#002147]">Leadership & Honor</h4>
-            <p class="text-xs text-slate-600 mt-1 leading-relaxed">High-level felicitation and recognition for national skilling initiatives.</p>
+            <span class="text-[11px] font-bold text-amber-600 uppercase tracking-widest block mb-1">HONOR & RECOGNITION</span>
+            <h4 class="font-display font-bold text-lg text-[#002147]">Leadership & Innovation</h4>
+            <p class="text-xs text-slate-600 mt-1">Felicitation for excellence in technical education and national skilling.</p>
           </div>
         </div>
 
@@ -417,8 +535,9 @@
             <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/1000162430%20(1).jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Milestone 2" />
           </div>
           <div class="p-6">
+            <span class="text-[11px] font-bold text-amber-600 uppercase tracking-widest block mb-1">STUDENT LIFE</span>
             <h4 class="font-display font-bold text-lg text-[#002147]">Cultural & Technical Fests</h4>
-            <p class="text-xs text-slate-600 mt-1 leading-relaxed">Annual national collegiate summits, innovation conclaves, and hackathons.</p>
+            <p class="text-xs text-slate-600 mt-1">Annual summits, robotics competitions, and collaborative workshops.</p>
           </div>
         </div>
 
@@ -427,8 +546,9 @@
             <img src="https://csip-image.blr1.digitaloceanspaces.com/csip-image/akg/WhatsApp%20Image%202026-03-25%20at%2019.04.15%20(1).jpeg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Milestone 3" />
           </div>
           <div class="p-6">
+            <span class="text-[11px] font-bold text-amber-600 uppercase tracking-widest block mb-1">GLOBAL REACH</span>
             <h4 class="font-display font-bold text-lg text-[#002147]">Global Academia Collaborations</h4>
-            <p class="text-xs text-slate-600 mt-1 leading-relaxed">MOU signings with international universities and industry conglomerates.</p>
+            <p class="text-xs text-slate-600 mt-1">Joint degree frameworks and industrial certifications with global institutions.</p>
           </div>
         </div>
       </div>
@@ -436,39 +556,115 @@
   </section>
 
   <!-- ========================================== -->
-  <!-- 7. RANKINGS & EXCEPTIONAL ACHIEVEMENTS     -->
+  <!-- 9. MOMENTS THAT MATTER (Exact gallery)     -->
+  <!-- ========================================== -->
+  <section id="gallery" class="relative py-16 bg-gradient-to-b from-white via-[#fafbfe] to-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12 sm:mb-14">
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-[#002147] font-display">
+          Moments That Matter
+        </h2>
+        <div class="mt-4 flex justify-center">
+          <div class="w-20 h-1 rounded-full bg-[#002147]"></div>
+        </div>
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+          A glimpse into our vibrant campus life, triumphs, sports, creativity, and unforgettable memories.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <span class="text-[10px] font-bold text-amber-600 uppercase tracking-wider block mb-1">SPORTS CHAMPIONS</span>
+          <h4 class="font-bold text-sm text-[#002147]">Championship Trophy & Victory Moment</h4>
+        </div>
+        <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <span class="text-[10px] font-bold text-amber-600 uppercase tracking-wider block mb-1">TECH INNOVATION</span>
+          <h4 class="font-bold text-sm text-[#002147]">National Hackathon First Prize</h4>
+        </div>
+        <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <span class="text-[10px] font-bold text-amber-600 uppercase tracking-wider block mb-1">VICTORY</span>
+          <h4 class="font-bold text-sm text-[#002147]">Medal Ceremony & Podium Champions</h4>
+        </div>
+        <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <span class="text-[10px] font-bold text-amber-600 uppercase tracking-wider block mb-1">CAMPUS LIFE</span>
+          <h4 class="font-bold text-sm text-[#002147]">Campus Amphitheatre & Student Hangouts</h4>
+        </div>
+        <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <span class="text-[10px] font-bold text-amber-600 uppercase tracking-wider block mb-1">TECHNICAL SOCIETY</span>
+          <h4 class="font-bold text-sm text-[#002147]">CSI Student Chapter & Technical Society</h4>
+        </div>
+        <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <span class="text-[10px] font-bold text-amber-600 uppercase tracking-wider block mb-1">SPORTS TEAM</span>
+          <h4 class="font-bold text-sm text-[#002147]">Inter-University Sports Triumph</h4>
+        </div>
+        <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <span class="text-[10px] font-bold text-amber-600 uppercase tracking-wider block mb-1">RESEARCH EXCELLENCE</span>
+          <h4 class="font-bold text-sm text-[#002147]">Research & Excellence Symposium</h4>
+        </div>
+        <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <span class="text-[10px] font-bold text-amber-600 uppercase tracking-wider block mb-1">STUDENT COMMUNITY</span>
+          <h4 class="font-bold text-sm text-[#002147]">Vibrant Student Community</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 10. RECRUITERS SLIDER (max-w-[1600px])     -->
+  <!-- ========================================== -->
+  <section class="bg-white py-12 px-4 border-t border-slate-200">
+    <div class="max-w-[1600px] mx-auto overflow-hidden">
+      <div class="flex w-max animate-ticker gap-6 hover:[animation-play-state:paused]">
+        <div class="flex justify-center items-center bg-white border border-gray-200/90 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-8 py-3 text-sm font-extrabold text-[#002147]">Google</div>
+        <div class="flex justify-center items-center bg-white border border-gray-200/90 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-8 py-3 text-sm font-extrabold text-[#002147]">Microsoft</div>
+        <div class="flex justify-center items-center bg-white border border-gray-200/90 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-8 py-3 text-sm font-extrabold text-[#002147]">Amazon AWS</div>
+        <div class="flex justify-center items-center bg-white border border-gray-200/90 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-8 py-3 text-sm font-extrabold text-[#002147]">Goldman Sachs</div>
+        <div class="flex justify-center items-center bg-white border border-gray-200/90 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-8 py-3 text-sm font-extrabold text-[#002147]">Adobe</div>
+        <div class="flex justify-center items-center bg-white border border-gray-200/90 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-8 py-3 text-sm font-extrabold text-[#002147]">Samsung R&D</div>
+        <div class="flex justify-center items-center bg-white border border-gray-200/90 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-8 py-3 text-sm font-extrabold text-[#002147]">Bosch Rexroth</div>
+        <div class="flex justify-center items-center bg-white border border-gray-200/90 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-8 py-3 text-sm font-extrabold text-[#002147]">KUKA Robotics</div>
+        <div class="flex justify-center items-center bg-white border border-gray-200/90 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-8 py-3 text-sm font-extrabold text-[#002147]">TCS Digital</div>
+        <div class="flex justify-center items-center bg-white border border-gray-200/90 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-8 py-3 text-sm font-extrabold text-[#002147]">Infosys</div>
+        <!-- Duplicate for loop -->
+        <div class="flex justify-center items-center bg-white border border-gray-200/90 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-8 py-3 text-sm font-extrabold text-[#002147]">Google</div>
+        <div class="flex justify-center items-center bg-white border border-gray-200/90 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-8 py-3 text-sm font-extrabold text-[#002147]">Microsoft</div>
+        <div class="flex justify-center items-center bg-white border border-gray-200/90 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-8 py-3 text-sm font-extrabold text-[#002147]">Amazon AWS</div>
+        <div class="flex justify-center items-center bg-white border border-gray-200/90 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-8 py-3 text-sm font-extrabold text-[#002147]">Goldman Sachs</div>
+        <div class="flex justify-center items-center bg-white border border-gray-200/90 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-8 py-3 text-sm font-extrabold text-[#002147]">Adobe</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 11. NATIONAL RANKINGS                      -->
   <!-- ========================================== -->
   <section id="rankings" class="py-20 px-4 bg-[#001630] text-white">
     <div class="max-w-7xl mx-auto">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-400/30 mb-3">
-          <i data-lucide="award" class="w-4 h-4"></i>
-          <span>National Rankings 2024</span>
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-extrabold text-white font-display tracking-tight">
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white font-display">
           A Journey of Exceptional Achievements!
         </h2>
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         <div class="p-6 rounded-3xl bg-white/5 border border-white/10 text-center hover:border-amber-400/60 transition-colors">
-          <span class="text-4xl sm:text-5xl font-black font-display text-amber-400 block">77th</span>
+          <span class="text-4xl sm:text-5xl font-black font-display text-[#ffab00] block">77th</span>
           <p class="text-xs text-slate-300 mt-3 font-medium leading-snug">Universities In India By INDIA TODAY Rankings 2024</p>
         </div>
         <div class="p-6 rounded-3xl bg-white/5 border border-white/10 text-center hover:border-amber-400/60 transition-colors">
-          <span class="text-4xl sm:text-5xl font-black font-display text-amber-400 block">80th</span>
+          <span class="text-4xl sm:text-5xl font-black font-display text-[#ffab00] block">80th</span>
           <p class="text-xs text-slate-300 mt-3 font-medium leading-snug">Universities In India By THE WEEK Rankings 2024</p>
         </div>
         <div class="p-6 rounded-3xl bg-white/5 border border-white/10 text-center hover:border-amber-400/60 transition-colors">
-          <span class="text-4xl sm:text-5xl font-black font-display text-amber-400 block">251th</span>
+          <span class="text-4xl sm:text-5xl font-black font-display text-[#ffab00] block">251th</span>
           <p class="text-xs text-slate-300 mt-3 font-medium leading-snug">Universities In India By THE WEEK Rankings 2024</p>
         </div>
         <div class="p-6 rounded-3xl bg-white/5 border border-white/10 text-center hover:border-amber-400/60 transition-colors">
-          <span class="text-4xl sm:text-5xl font-black font-display text-amber-400 block">44th</span>
+          <span class="text-4xl sm:text-5xl font-black font-display text-[#ffab00] block">44th</span>
           <p class="text-xs text-slate-300 mt-3 font-medium leading-snug">Universities In India By OUTLOOK Rankings 2024</p>
         </div>
         <div class="p-6 rounded-3xl bg-white/5 border border-white/10 text-center hover:border-amber-400/60 transition-colors">
-          <span class="text-4xl sm:text-5xl font-black font-display text-amber-400 block">61th</span>
+          <span class="text-4xl sm:text-5xl font-black font-display text-[#ffab00] block">61th</span>
           <p class="text-xs text-slate-300 mt-3 font-medium leading-snug">Universities In India By IIRF Rankings 2023</p>
         </div>
       </div>
@@ -476,84 +672,13 @@
   </section>
 
   <!-- ========================================== -->
-  <!-- 8. PLACEMENTS OVERVIEW (Exact stats)       -->
-  <!-- ========================================== -->
-  <section id="placements" class="py-20 px-4 bg-white overflow-hidden">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-800 mb-3">
-          <i data-lucide="trending-up" class="w-4 h-4"></i>
-          <span>Placements Records</span>
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-extrabold text-[#002147] font-display tracking-tight">
-          Placements Overview
-        </h2>
-        <p class="text-slate-600 mt-2 text-sm sm:text-base">
-          Record-Breaking Achievements and Industry-Driven Success
-        </p>
-      </div>
-
-      <!-- Placement Metrics Grid -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 text-center">
-          <div class="text-3xl sm:text-4xl font-black text-[#002147] font-display">1.13 CR</div>
-          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Highest International Package Offered in 2022</div>
-        </div>
-        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 text-center">
-          <div class="text-3xl sm:text-4xl font-black text-amber-500 font-display">33.80 LPA</div>
-          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Highest National Package Offered</div>
-        </div>
-        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 text-center">
-          <div class="text-3xl sm:text-4xl font-black text-[#002147] font-display">1406</div>
-          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Placement Offers</div>
-        </div>
-        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 text-center">
-          <div class="text-3xl sm:text-4xl font-black text-[#002147] font-display">282</div>
-          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Company Visits</div>
-        </div>
-      </div>
-
-      <!-- Marquee of top corporate recruiters -->
-      <div class="relative w-full overflow-hidden py-4 bg-slate-50 rounded-2xl border border-slate-200">
-        <div class="flex w-max animate-ticker gap-8 hover:[animation-play-state:paused]">
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">Google</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">Microsoft</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">Amazon AWS</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">Adobe</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">Samsung R&D</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">Bosch Rexroth</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">KUKA Robotics</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">TCS Digital</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">Infosys</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">Capgemini</div>
-          <!-- Repeat for loop -->
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">Google</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">Microsoft</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">Amazon AWS</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">Adobe</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">Samsung R&D</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">Bosch Rexroth</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">KUKA Robotics</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">TCS Digital</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">Infosys</div>
-          <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white shadow-sm font-bold text-xs text-[#002147]">Capgemini</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================== -->
-  <!-- 9. SCHOLARSHIP CALCULATOR                  -->
+  <!-- 12. SCHOLARSHIP CALCULATOR                 -->
   <!-- ========================================== -->
   <section id="calculator" class="py-20 px-4 bg-slate-50">
     <div class="max-w-5xl mx-auto">
       <div class="text-center max-w-2xl mx-auto mb-12">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 mb-3">
-          <i data-lucide="calculator" class="w-4 h-4 text-amber-600"></i>
-          <span>Financial Planning</span>
-        </div>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-[#002147] font-display">
-          Scholarship & Fee Calculator
+          Scholarship & Tuition Fee Calculator
         </h2>
         <p class="text-sm text-slate-600 mt-2">
           Calculate your tuition fee discount up to 100% under AKGU Super-30 and Academic Merit programs.
@@ -561,7 +686,6 @@
       </div>
 
       <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-200 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-        <!-- Controls -->
         <div class="md:col-span-7 space-y-6">
           <div>
             <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">1. Select Degree</label>
@@ -591,14 +715,13 @@
           </div>
         </div>
 
-        <!-- Result -->
         <div class="md:col-span-5 bg-gradient-to-br from-[#002147] to-[#001630] rounded-2xl p-6 text-white text-center space-y-4">
           <div id="tierBadge" class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-500 text-slate-950">
             🥇 Gold Merit Scholarship
           </div>
           <div>
             <span class="text-xs text-slate-300 block">Net Annual Payable</span>
-            <span id="netPayableText" class="text-3xl font-black font-display text-amber-400">₹38,750</span>
+            <span id="netPayableText" class="text-3xl font-black font-display text-[#ffab00]">₹38,750</span>
           </div>
           <div class="text-xs text-slate-300 border-t border-white/10 pt-3">
             <span>You save: </span>
@@ -613,7 +736,7 @@
   </section>
 
   <!-- ========================================== -->
-  <!-- 10. LEAD ENQUIRY MODAL                     -->
+  <!-- 13. LEAD ENQUIRY MODAL                     -->
   <!-- ========================================== -->
   <div id="enquiryModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 max-w-md w-full p-6 sm:p-8 relative">
@@ -622,9 +745,7 @@
       </button>
 
       <div class="text-center mb-6">
-        <span class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center mx-auto mb-2 font-display font-black">
-          AK
-        </span>
+        <img src="akg-logo.webp" alt="AKG Logo" class="h-10 mx-auto mb-2" />
         <h3 class="text-xl font-black text-[#002147] font-display">Admissions Enquiry 2026–27</h3>
         <p class="text-xs text-slate-500 mt-1">Fill out the details below to receive brochure & fee details.</p>
       </div>
@@ -664,26 +785,26 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- 11. SEARCH MODAL                           -->
+  <!-- 14. SEARCH MODAL                           -->
   <!-- ========================================== -->
   <div id="searchModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 max-w-xl w-full p-6 relative">
       <div class="relative mb-4">
         <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
-        <input id="searchInput" type="text" oninput="handleSearch(this.value)" placeholder="Search programs, robotics lab, scholarships..." class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm outline-none focus:ring-2 focus:ring-[#002147]" />
+        <input id="searchInput" type="text" placeholder="Search programs, robotics lab, scholarships..." class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm outline-none focus:ring-2 focus:ring-[#002147]" />
       </div>
-      <div id="searchResults" class="space-y-2 max-h-60 overflow-y-auto text-xs">
+      <div class="space-y-2 max-h-60 overflow-y-auto text-xs">
         <a href="#schools" onclick="closeSearchModal()" class="block p-3 rounded-xl hover:bg-slate-50">
           <span class="font-bold text-[#002147]">School of Computer Science & Engineering</span>
           <span class="text-slate-400 block mt-0.5">B.Tech, M.Tech, Ph.D. degrees</span>
         </a>
         <a href="#placements" onclick="closeSearchModal()" class="block p-3 rounded-xl hover:bg-slate-50">
-          <span class="font-bold text-[#002147]">Placements 2025</span>
-          <span class="text-slate-400 block mt-0.5">Highest ₹42 LPA / ₹1.13 CR international</span>
+          <span class="font-bold text-[#002147]">Top Placements @ AKGEC</span>
+          <span class="text-slate-400 block mt-0.5">Anshuman Nandan (35 LPA) & Archas Srivastava (21 LPA)</span>
         </a>
         <a href="#calculator" onclick="closeSearchModal()" class="block p-3 rounded-xl hover:bg-slate-50">
-          <span class="font-bold text-[#002147]">Super-30 Scholarships</span>
-          <span class="text-slate-400 block mt-0.5">Up to 100% tuition waiver calculator</span>
+          <span class="font-bold text-[#002147]">Scholarship Calculator</span>
+          <span class="text-slate-400 block mt-0.5">Up to 100% Super-30 tuition waiver</span>
         </a>
       </div>
       <div class="pt-3 border-t border-slate-100 flex justify-between text-[11px] text-slate-400">
@@ -694,56 +815,44 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- 12. FOOTER (Exact compliance & links)     -->
+  <!-- 15. FOOTER (Exact compliance & links)     -->
   <!-- ========================================== -->
   <footer class="bg-[#001630] text-slate-300 pt-16 pb-8 border-t border-white/10">
     <div class="max-w-7xl mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
-        <!-- Col 1 -->
         <div class="space-y-4">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center text-slate-950 font-black text-lg">
-              AK
-            </div>
-            <div>
-              <span class="font-display font-extrabold text-lg text-white">AKG University</span>
-              <span class="block text-[11px] text-amber-400 uppercase tracking-wider">Ajay Kumar Garg University</span>
-            </div>
-          </div>
+          <img src="akg-logo.webp" alt="AKG Logo" class="h-12 w-auto brightness-200" />
           <p class="text-xs text-slate-400 leading-relaxed">
             AKG University is a centre of academic excellence and innovation, proudly built on the strong foundation and laurels of Ajay Kumar Garg Engineering College (AKGEC).
           </p>
         </div>
 
-        <!-- Col 2 -->
         <div>
           <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-amber-400/40 pb-2 inline-block">
             Academic Schools
           </h4>
           <ul class="space-y-2 text-xs text-slate-400">
-            <li><a href="#schools" class="hover:text-amber-400 transition-colors">School of Computer Science & Engineering</a></li>
-            <li><a href="#schools" class="hover:text-amber-400 transition-colors">School of Engineering Sciences</a></li>
-            <li><a href="#schools" class="hover:text-amber-400 transition-colors">School of Computing (BCA/MCA)</a></li>
-            <li><a href="#schools" class="hover:text-amber-400 transition-colors">School of Management Studies (BBA/MBA)</a></li>
-            <li><a href="#schools" class="hover:text-amber-400 transition-colors">School of Artificial Intelligence</a></li>
+            <li><a href="#schools" class="hover:text-[#ffab00] transition-colors">School of Computer Science & Engineering</a></li>
+            <li><a href="#schools" class="hover:text-[#ffab00] transition-colors">School of Engineering Sciences</a></li>
+            <li><a href="#schools" class="hover:text-[#ffab00] transition-colors">School of Computing (BCA/MCA)</a></li>
+            <li><a href="#schools" class="hover:text-[#ffab00] transition-colors">School of Management Studies (BBA/MBA)</a></li>
+            <li><a href="#schools" class="hover:text-[#ffab00] transition-colors">School of Artificial Intelligence</a></li>
           </ul>
         </div>
 
-        <!-- Col 3 -->
         <div>
           <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-amber-400/40 pb-2 inline-block">
             Quick Links
           </h4>
           <ul class="space-y-2 text-xs text-slate-400">
-            <li><a href="#calculator" class="hover:text-amber-400 transition-colors">Fee & Scholarship Calculator</a></li>
-            <li><a href="#placements" class="hover:text-amber-400 transition-colors">Placements & Recruiters</a></li>
-            <li><a href="#rankings" class="hover:text-amber-400 transition-colors">Rankings & Awards</a></li>
-            <li><a href="#journey" class="hover:text-amber-400 transition-colors">Campus Life & Clubs</a></li>
-            <li><a href="https://akgu.edu.in/admin" target="_blank" class="hover:text-amber-400 transition-colors">Admin Portal</a></li>
+            <li><a href="#calculator" class="hover:text-[#ffab00] transition-colors">Fee & Scholarship Calculator</a></li>
+            <li><a href="#placements" class="hover:text-[#ffab00] transition-colors">Placements & Recruiters</a></li>
+            <li><a href="#faculty" class="hover:text-[#ffab00] transition-colors">World Class Faculty</a></li>
+            <li><a href="#journey" class="hover:text-[#ffab00] transition-colors">Campus Vibes & Clubs</a></li>
+            <li><a href="#gallery" class="hover:text-[#ffab00] transition-colors">Moments That Matter</a></li>
           </ul>
         </div>
 
-        <!-- Col 4 -->
         <div class="space-y-3">
           <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-amber-400/40 pb-2 inline-block">
             Contact Campus
@@ -752,7 +861,7 @@
           <p class="text-xs text-slate-400">Toll Free: 1800-AKGU-UNI</p>
           <p class="text-xs text-slate-400">Email: info@akgu.ac.in | admissions@akgu.ac.in</p>
           <div class="pt-2">
-            <span class="text-[11px] font-bold text-amber-400 block">Anti-Ragging Helpline (24x7):</span>
+            <span class="text-[11px] font-bold text-[#ffab00] block">Anti-Ragging Helpline (24x7):</span>
             <span class="text-xs text-slate-300">1800-180-5522 (Toll Free)</span>
           </div>
         </div>
