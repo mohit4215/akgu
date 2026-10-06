@@ -275,7 +275,13 @@ function handleHeroApplySubmit(e) {
   }, 4500);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function startHomeScripts() {
   initScrollAnimations();
   initHeroBgVideo();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startHomeScripts);
+} else {
+  startHomeScripts();
+}

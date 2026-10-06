@@ -216,10 +216,10 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Dynamic Counting Statistics Engine (IntersectionObserver with smooth easeOutExpo)
+// Dynamic Counting Statistics Engine (Dual Trigger: Viewport Check + Scroll Fallback + IntersectionObserver)
 function initDynamicCounters() {
   const counters = document.querySelectorAll('.stat-counter');
-  if (!counters.length) return;
+  if (!counters || !counters.length) return;
 
   const animateCounter = (el) => {
     if (el.dataset.animated === 'true') return;
@@ -261,25 +261,54 @@ function initDynamicCounters() {
     requestAnimationFrame(updateCount);
   };
 
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        obs.unobserve(entry.target);
+  const checkCountersInView = () => {
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    counters.forEach(counter => {
+      if (counter.dataset.animated === 'true') return;
+      const rect = counter.getBoundingClientRect();
+      if (rect.top <= windowHeight + 60 && rect.bottom >= -60) {
+        animateCounter(counter);
       }
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  };
 
-  counters.forEach(counter => {
-    observer.observe(counter);
-  });
+  // 1. Immediate viewport check
+  checkCountersInView();
+
+  // 2. Scroll and resize listeners as dependable fallbacks
+  window.addEventListener('scroll', checkCountersInView, { passive: true });
+  window.addEventListener('resize', checkCountersInView, { passive: true });
+
+  // 3. IntersectionObserver for high-performance viewport detection
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '60px 0px 60px 0px' });
+
+    counters.forEach(counter => {
+      if (counter.dataset.animated !== 'true') {
+        observer.observe(counter);
+      }
+    });
+  }
 }
 
-// Initialize Lucide icons, Auto Apply Modal, and Dynamic Counters on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
+// Ensure startup runs whether DOMContentLoaded is pending or already fired
+function startCommonScripts() {
   if (window.lucide && typeof window.lucide.createIcons === 'function') {
     window.lucide.createIcons();
   }
   initAutoApplyModal();
   initDynamicCounters();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startCommonScripts);
+} else {
+  startCommonScripts();
+}

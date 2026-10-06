@@ -176,3 +176,10 @@ h1, h2, h3, h4, h5, .font-serif { font-family: 'Source Serif 4', Georgia, serif;
   transform: scale(1.08);
 }
 
+/* Dynamic Statistics Counter Tabular Spacing */
+.stat-counter {
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  will-change: contents;
+}
+

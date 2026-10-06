@@ -1242,9 +1242,8 @@
   <script src="js/search-data.js"></script>
   <script src="js/home.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      filterSearchResults(false);
-    });
+    if (typeof filterSearchResults === 'function') filterSearchResults(false);
+    if (typeof initDynamicCounters === 'function') initDynamicCounters();
   </script>
 </body>
 </html>
