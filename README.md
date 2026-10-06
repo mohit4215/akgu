@@ -69,9 +69,52 @@ The codebase is organized into modular directories separating static assets, fro
 
 ```text
 AKGU/
-├── index.html                   # Production-ready static standalone portal (Tailwind CSS, Lucide icons, ES6)
-├── main.js                      # Core frontend interactive modules (modal controllers, sticky nav, mobile drawer)
-├── styles.css                   # Custom theme tokens, font utilities, and institutional color system
+├── index.html                   # Production-ready static standalone portal (Homepage)
+├── about.html                   # About AKGU Overview & Institutional Pillars hub
+├── academics.html               # Academics & Schools hub
+├── admissions.html              # Admissions 2026–27 & Aid hub
+├── placements.html              # Corporate Relations Centre (CRC) & Careers hub
+├── research.html                # Research, Patents & Industrial CoEs hub
+├── alumni.html                  # Global Alumni Network & Community hub
+│
+├── pages/                       # 30 dedicated standalone sub-page HTML files:
+│   ├── about-overview.html      # Who We Are & Stanford-Style Overview
+│   ├── about-legacy.html        # History & 28-Year Legacy
+│   ├── about-vision.html        # Vision & Mission Creed
+│   ├── about-leadership.html    # Leadership & Statutory Governance Councils
+│   ├── about-objectives.html    # Strategic Institutional Objectives
+│   ├── about-rankings.html      # Awards & Accreditations (NAAC A++, NIRF, NBA)
+│   ├── about-approvals.html     # UGC, AICTE & UP State Charter Approvals
+│   ├── about-isr.html           # Institutional Social Responsibility & UBA
+│   ├── about-calendar.html      # Academic Calendar 2026–27
+│   ├── programs-engineering.html# School of Engineering & Technology
+│   ├── programs-management.html # School of Management Studies (BBA/MBA)
+│   ├── programs-computing.html  # School of Computer Applications (BCA/MCA)
+│   ├── programs-humanities.html # School of Humanities & Applied Sciences
+│   ├── admissions-overview.html # Admissions 2026–27 Guide & Deadlines
+│   ├── admissions-fees.html     # Approved Tuition Fee Schedules
+│   ├── admissions-apply.html    # Step-by-Step 4-Stage Application Guide
+│   ├── admissions-eligibility.html# Standardized Qualifying Criteria
+│   ├── admissions-payment.html  # Official Fee Payment Gateways & Banking
+│   ├── admissions-refund.html   # UGC Statutory Fee Refund Policy
+│   ├── admissions-faqs.html     # Admissions FAQs
+│   ├── placements-overview.html # Corporate Relations Centre (CRC)
+│   ├── placements-highlights.html# Placement Statistics & Tier-1 Recruiters
+│   ├── placements-policy.html   # Placement Code & Dream Offer Norms
+│   ├── placements-internship.html# Semester Corporate Internship Policy
+│   ├── placements-testimonials.html# Placed Scholars Testimonials
+│   ├── research-overview.html   # Research & Innovation Cell Grants
+│   ├── research-patents.html    # Granted Patents & Scopus Publications
+│   ├── research-centres.html    # Centres of Research (COR)
+│   ├── research-coe.html        # KUKA, Siemens, Bosch & NI CoE Workcells
+│   └── alumni-network.html      # Global Alumni Directory & Registration
+│
+├── js/                          # Modular frontend scripts:
+│   ├── common.js                # Modals (Search, Enquiry, ERP, Video), drawer & keyboard shortcuts
+│   ├── home.js                  # Hero carousel, Campus in Motion scrollytelling & animations
+│   └── search-data.js           # Multi-page search engine & real-time filter index
+│
+├── styles.css                   # Custom theme tokens, font utilities, and institutional styles
 ├── akg-logo.webp                # Official high-resolution institution brandmark
 ├── favicon.png                  # University crest favicon
 │
