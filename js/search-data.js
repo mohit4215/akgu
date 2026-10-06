@@ -40,7 +40,7 @@ const SEARCH_DATA = [
   {
     "title": "Awards & National Rankings",
     "category": "About",
-    "desc": "NAAC A++ grade (3.42), NIRF Rank 101–150 band, NBA tier-1.",
+    "desc": "NAAC A++ grade, NIRF Rank 101–150 band, NBA tier-1.",
     "page": "about-rankings.html",
     "hub": "about.html"
   },
