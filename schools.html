@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Schools of Study | Ajay Kumar Garg University</title>
+  <meta name="description" content="Explore multidisciplinary schools at Ajay Kumar Garg University: Computer Science, Artificial Intelligence, Engineering, Management, Computer Applications, and Applied Sciences." />
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#003B73',
+              hover: '#002B54',
+              dark: '#071E3D',
+              deep: '#041226',
+              light: '#1D4ED8',
+              subtle: '#EFF6FF',
+              border: '#BFDBFE',
+            },
+            accent: {
+              DEFAULT: '#F59E0B',
+              bright: '#FACC15',
+              hover: '#D97706',
+              subtle: '#FEF9C3',
+              dark: '#B45309',
+            },
+            sandstone: {
+              DEFAULT: '#FFFFFF',
+              dark: '#F8FAFC',
+              border: '#E2E8F0',
+            },
+            charcoal: {
+              DEFAULT: '#1E293B',
+              dark: '#0F172A',
+              muted: '#64748B',
+            }
+          },
+          fontFamily: {
+            serif: ['"Source Serif 4"', '"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Source Sans 3"', '"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;0,8..60,900;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-white text-charcoal antialiased selection:bg-[#FACC15] selection:text-[#071E3D] flex flex-col min-h-screen">
+
+  <!-- AKGU MASTHEAD & NAVIGATION -->
+  <header class="w-full relative z-50">
+    <!-- Top Impact Micro-Bar (Deep Theme Blue with Yellow Highlight) -->
+    <div class="bg-[#071E3D] text-white text-xs border-b border-[#003B73]/60">
+      <div class="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-[#FACC15] shrink-0 mr-2 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-[#FACC15] animate-pulse"></span>
+            Our Impact
+          </span>
+          <a href="pages/programs-engineering.html" class="px-2.5 py-1 rounded bg-[#003B73] hover:bg-[#FACC15] hover:text-[#071E3D] text-white/90 text-[11px] font-semibold transition-colors">
+            Artificial Intelligence
+          </a>
+          <a href="pages/research-coe.html" class="hidden sm:inline-block px-2.5 py-1 rounded bg-[#003B73] hover:bg-[#FACC15] hover:text-[#071E3D] text-white/90 text-[11px] font-semibold transition-colors">
+            Robotics & Automation
+          </a>
+          <a href="pages/research-centres.html" class="hidden md:inline-block px-2.5 py-1 rounded bg-[#003B73] hover:bg-[#FACC15] hover:text-[#071E3D] text-white/90 text-[11px] font-semibold transition-colors">
+            Clean Energy
+          </a>
+          <a href="pages/about-isr.html" class="px-2.5 py-1 rounded bg-[#003B73] hover:bg-[#FACC15] hover:text-[#071E3D] text-white/90 text-[11px] font-semibold transition-colors">
+            Rural Transformation
+          </a>
+        </div>
+
+        <div class="flex items-center gap-4 ml-auto">
+          <div class="relative hidden sm:block">
+            <div class="flex items-center bg-[#003B73]/70 border border-white/20 rounded-full px-3 py-1 text-xs focus-within:border-[#FACC15] focus-within:bg-[#041226] transition-all">
+              <i data-lucide="search" class="w-3.5 h-3.5 text-[#FACC15] mr-2"></i>
+              <input type="text" onclick="openSearchModal()" placeholder="Search schools..." class="bg-transparent text-white placeholder:text-white/60 text-xs outline-none w-36 lg:w-44 cursor-pointer" readonly />
+            </div>
+          </div>
+          <button onclick="openStudentPortalModal()" class="text-[11px] text-white/90 hover:text-[#FACC15] font-semibold flex items-center gap-1.5 transition-colors">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-[#FACC15]"></i>
+            <span>ERP Portal</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar (Clean White Canvas) -->
+    <nav class="w-full bg-white border-b border-[#E2E8F0] shadow-sm sticky top-0 z-40 transition-all">
+      <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+        
+        <!-- Crest & Wordmark -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="akg-logo.webp" alt="AKGU Crest" class="h-12 sm:h-14 w-auto object-contain cursor-pointer" />
+          <div class="border-l border-slate-300 pl-3 py-0.5 hidden sm:block">
+            <span class="block font-serif text-lg sm:text-xl font-bold tracking-tight text-[#003B73] group-hover:text-[#071E3D] transition-colors leading-none">
+              Ajay Kumar Garg University
+            </span>
+            <span class="block text-[10px] uppercase font-sans tracking-widest text-[#64748B] mt-0.5 font-semibold">
+              Ghaziabad, National Capital Region
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Primary Menu Links -->
+        <div class="hidden xl:flex items-center gap-1 text-sm font-semibold text-[#1E293B]">
+          
+          <!-- 1. About -->
+          <div class="relative group">
+            <a href="about.html" class="px-3 py-2 rounded-lg hover:text-[#003B73] hover:bg-[#F8FAFC] transition-colors flex items-center gap-1">
+              <span>About</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-[#64748B] transition-transform group-hover:rotate-180"></i>
+            </a>
+            <div class="dropdown-menu absolute left-0 top-full pt-2 w-80 z-50">
+              <div class="bg-white rounded-2xl shadow-xl border border-[#E2E8F0] p-3 space-y-1">
+                <a href="pages/about-overview.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  About AKGU Overview
+                </a>
+                <a href="pages/about-legacy.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  History & 28-Year Legacy
+                </a>
+                <a href="pages/about-leadership.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  Leadership & Governance
+                </a>
+                <a href="pages/about-rankings.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  Awards & Rankings (NAAC A++, NIRF)
+                </a>
+                <a href="pages/about-approvals.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  Mandatory Approvals (UGC, AICTE)
+                </a>
+                <a href="pages/about-calendar.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors border-t border-[#E2E8F0] pt-2">
+                  University Academic Calendar
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Schools (Active Dedicated Link) -->
+          <a href="schools.html" class="px-3 py-2 rounded-lg text-[#003B73] bg-[#EFF6FF] font-bold transition-colors">
+            Our Schools
+          </a>
+
+          <!-- 3. Academics -->
+          <div class="relative group">
+            <a href="academics.html" class="px-3 py-2 rounded-lg hover:text-[#003B73] hover:bg-[#F8FAFC] transition-colors flex items-center gap-1">
+              <span>Academics</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-[#64748B] transition-transform group-hover:rotate-180"></i>
+            </a>
+            <div class="dropdown-menu absolute left-0 top-full pt-2 w-80 z-50">
+              <div class="bg-white rounded-2xl shadow-xl border border-[#E2E8F0] p-3 space-y-1">
+                <a href="pages/programs-engineering.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  <span class="font-bold block">School of Engineering & Technology</span>
+                  <span class="text-[11px] text-[#64748B]">B.Tech, M.Tech, Ph.D. in CSE, AI, ECE, ME</span>
+                </a>
+                <a href="pages/programs-management.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  <span class="font-bold block">School of Management Studies</span>
+                  <span class="text-[11px] text-[#64748B]">BBA, MBA with Dual Specializations</span>
+                </a>
+                <a href="pages/programs-computing.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  <span class="font-bold block">School of Computer Applications</span>
+                  <span class="text-[11px] text-[#64748B]">BCA, MCA Industry Full-Stack Tracks</span>
+                </a>
+                <a href="pages/programs-humanities.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  <span class="font-bold block">School of Humanities & Applied Sciences</span>
+                  <span class="text-[11px] text-[#64748B]">Foundational Sciences & Interdisciplinary</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Research -->
+          <div class="relative group">
+            <a href="research.html" class="px-3 py-2 rounded-lg hover:text-[#003B73] hover:bg-[#F8FAFC] transition-colors flex items-center gap-1">
+              <span>Research</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-[#64748B] transition-transform group-hover:rotate-180"></i>
+            </a>
+            <div class="dropdown-menu absolute left-0 top-full pt-2 w-80 z-50">
+              <div class="bg-white rounded-2xl shadow-xl border border-[#E2E8F0] p-3 space-y-1">
+                <a href="pages/research-overview.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  Research Overview & Grants
+                </a>
+                <a href="pages/research-patents.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  Patents & Scopus Publications
+                </a>
+                <a href="pages/research-centres.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  Centres of Research (COR)
+                </a>
+                <a href="pages/research-coe.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  Industry CoEs (KUKA, Siemens, Bosch, NI)
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Admissions & Aid -->
+          <div class="relative group">
+            <a href="admissions.html" class="px-3 py-2 rounded-lg hover:text-[#003B73] hover:bg-[#F8FAFC] transition-colors flex items-center gap-1">
+              <span>Admissions & Aid</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-[#64748B] transition-transform group-hover:rotate-180"></i>
+            </a>
+            <div class="dropdown-menu absolute left-0 top-full pt-2 w-80 z-50">
+              <div class="bg-white rounded-2xl shadow-xl border border-[#E2E8F0] p-3 space-y-1">
+                <a href="pages/admissions-overview.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  Admissions Overview 2026–27
+                </a>
+                <a href="pages/admissions-fees.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  Programs & Fee Structure
+                </a>
+                <a href="pages/admissions-apply.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  How to Apply (Step-by-Step)
+                </a>
+                <a href="pages/admissions-eligibility.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  Eligibility & Criteria
+                </a>
+                <a href="pages/admissions-refund.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  UGC Fee Refund Policy
+                </a>
+                <a href="pages/admissions-faqs.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors border-t border-[#E2E8F0] pt-2">
+                  Admissions FAQs
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Placements -->
+          <div class="relative group">
+            <a href="placements.html" class="px-3 py-2 rounded-lg hover:text-[#003B73] hover:bg-[#F8FAFC] transition-colors flex items-center gap-1">
+              <span>Placements</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-[#64748B] transition-transform group-hover:rotate-180"></i>
+            </a>
+            <div class="dropdown-menu absolute left-0 top-full pt-2 w-80 z-50">
+              <div class="bg-white rounded-2xl shadow-xl border border-[#E2E8F0] p-3 space-y-1">
+                <a href="pages/placements-overview.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  Corporate Relations Centre (CRC)
+                </a>
+                <a href="pages/placements-highlights.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  Highlights & Top Recruiters
+                </a>
+                <a href="pages/placements-policy.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  Placement Policy & Dream Offers
+                </a>
+                <a href="pages/placements-internship.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  Industrial Internship Policy
+                </a>
+                <a href="pages/placements-testimonials.html" class="block px-3 py-2 rounded-xl text-xs font-semibold text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#003B73] transition-colors">
+                  Student Testimonials & Outcomes
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Alumni -->
+          <a href="alumni.html" class="px-3 py-2 rounded-lg hover:text-[#003B73] hover:bg-[#F8FAFC] transition-colors">
+            Alumni
+          </a>
+        </div>
+
+        <!-- Right Quick Actions -->
+        <div class="flex items-center gap-2.5">
+          <button onclick="openSearchModal()" class="p-2 text-[#1E293B] hover:text-[#003B73] hover:bg-[#F8FAFC] rounded-xl" title="Search Portal (Ctrl+K)">
+            <i data-lucide="search" class="w-5 h-5"></i>
+          </button>
+          <button onclick="openEnquiryModal('Schools Application')" class="px-5 py-2.5 rounded-full bg-[#F59E0B] hover:bg-[#FACC15] text-[#071E3D] font-bold text-xs uppercase tracking-wider shadow-sm transition-all flex items-center gap-1.5">
+            <span>Apply Now</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-[#071E3D]"></i>
+          </button>
+          <button onclick="toggleMobileMenu()" class="xl:hidden p-2 text-[#1E293B] hover:bg-[#F8FAFC] rounded-xl" aria-label="Toggle Navigation">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION: DEEP BLUE WITH WARM GOLD HIGHLIGHTS -->
+  <section class="bg-[#071E3D] text-white py-16 lg:py-20 px-4 border-b border-[#003B73] relative overflow-hidden">
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-5">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#F59E0B] text-[#071E3D] shadow">
+            <i data-lucide="graduation-cap" class="w-4 h-4 text-[#071E3D]"></i>
+            <span>Centres of Academic & Scientific Excellence</span>
+          </div>
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif font-black tracking-tight text-white leading-tight">
+            Our Schools of Study
+          </h1>
+          <p class="text-white/80 text-sm sm:text-base leading-relaxed max-w-2xl">
+            Ajay Kumar Garg University delivers outcome-based higher education organized across specialized, multidisciplinary schools. Each school integrates rigorous theoretical pedagogy, cutting-edge corporate labs, and industry co-developed curricula.
+          </p>
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#schools-directory" class="px-6 py-3 rounded-full bg-[#F59E0B] hover:bg-[#FACC15] text-[#071E3D] font-bold text-xs uppercase tracking-wider transition-all shadow flex items-center gap-2">
+              <span>Browse All Schools</span>
+              <i data-lucide="arrow-down" class="w-4 h-4 text-[#071E3D]"></i>
+            </a>
+            <button onclick="openEnquiryModal('Admissions 2026-27')" class="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider backdrop-blur-md border border-white/30 transition-all flex items-center gap-2">
+              <span>Download Prospectus</span>
+              <i data-lucide="download" class="w-4 h-4 text-[#FACC15]"></i>
+            </button>
+          </div>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20 relative group bg-[#041226]">
+            <img src="images/campus-academic-block.jpg" alt="AKGU Academic Blocks" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-4 left-5 right-5 text-white">
+              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#FACC15] text-[#071E3D] uppercase tracking-wider mb-1">Central Academic Complex</span>
+              <p class="text-xs font-semibold text-white/90">Housing 6 Specialized Schools & 12+ Industry CoEs</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY METRICS BANNER (BLUE & YELLOW STATS) -->
+  <section class="bg-white border-b border-[#E2E8F0] py-8 px-4">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
+        <div class="text-2xl sm:text-4xl font-serif font-black text-[#003B73]">6+</div>
+        <div class="text-xs uppercase tracking-wider font-bold text-[#1E293B] mt-1">Specialized Schools</div>
+        <div class="text-[11px] text-[#64748B]">Multidisciplinary ecosystem</div>
+      </div>
+      <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
+        <div class="text-2xl sm:text-4xl font-serif font-black text-[#003B73]">12+</div>
+        <div class="text-xs uppercase tracking-wider font-bold text-[#1E293B] mt-1">Industry CoEs</div>
+        <div class="text-[11px] text-[#64748B]">KUKA, Siemens, Bosch, NI</div>
+      </div>
+      <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
+        <div class="text-2xl sm:text-4xl font-serif font-black text-[#003B73]">10,000+</div>
+        <div class="text-xs uppercase tracking-wider font-bold text-[#1E293B] mt-1">Active Scholars</div>
+        <div class="text-[11px] text-[#64748B]">Undergraduate to Doctoral</div>
+      </div>
+      <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
+        <div class="text-2xl sm:text-4xl font-serif font-black text-[#003B73]">A++</div>
+        <div class="text-xs uppercase tracking-wider font-bold text-[#1E293B] mt-1">NAAC Accredited</div>
+        <div class="text-[11px] text-[#64748B]">Apex quality standards</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILED SCHOOLS DIRECTORY -->
+  <main id="schools-directory" class="flex-grow py-16 px-4 bg-[#F8FAFC]">
+    <div class="max-w-7xl mx-auto space-y-12">
+
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="text-xs font-bold uppercase tracking-widest text-[#003B73]">Academic Architecture</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-[#0F172A] mt-2">
+          Explore Our Schools & Departments
+        </h2>
+        <p class="text-sm text-[#64748B] mt-3">
+          Discover programs, research specializations, cutting-edge labs, and career pathways curated within each school.
+        </p>
+      </div>
+
+      <!-- SCHOOL 1: Computer Science & Engineering -->
+      <section class="bg-white rounded-3xl p-8 lg:p-10 border border-[#E2E8F0] shadow-sm hover:shadow-md transition-shadow group">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-8 space-y-4">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-[#EFF6FF] text-[#003B73] border border-[#BFDBFE]">
+                NBA Tier-1 Accredited
+              </span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-[#FEF9C3] text-[#B45309] border border-[#FDE047]">
+                96% Placement Benchmark
+              </span>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-serif font-bold text-[#0F172A] group-hover:text-[#003B73] transition-colors">
+              School of Computer Science & Engineering (SCSE)
+            </h3>
+            <p class="text-sm text-[#475569] leading-relaxed">
+              The flagship computing school at AKGU prepares future systems architects, full-stack engineers, and cloud specialists through hands-on industry curricula, competitive coding leagues, and direct corporate projects.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider mb-2">Offered Degree Programs</h4>
+                <ul class="text-xs text-[#1E293B] space-y-1.5">
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>B.Tech in Computer Science & Engineering</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>B.Tech in CSE (Data Science)</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>B.Tech in CSE (Cyber Security)</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>M.Tech in CSE & Doctoral (Ph.D.) Fellowships</span></li>
+                </ul>
+              </div>
+              <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider mb-2">Key Laboratories & Alliances</h4>
+                <ul class="text-xs text-[#1E293B] space-y-1.5">
+                  <li class="flex items-center gap-2"><i data-lucide="server" class="w-3.5 h-3.5 text-[#003B73]"></i><span>AWS & Google Cloud Academic Center</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="shield" class="w-3.5 h-3.5 text-[#003B73]"></i><span>Advanced Cyber Defense & Network Security Lab</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="terminal" class="w-3.5 h-3.5 text-[#003B73]"></i><span>Big Data Analytics & High Performance Cluster</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-3.5 h-3.5 text-[#003B73]"></i><span>Open Source Software Development Studio</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-4 bg-[#F8FAFC] p-6 rounded-2xl border border-[#E2E8F0] space-y-4">
+            <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider">School Snapshot</h4>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Dean:</span><span class="font-bold text-[#1E293B]">Distinguished Faculty Chair</span></div>
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Duration:</span><span class="font-bold text-[#1E293B]">4 Years (UG) / 2 Years (PG)</span></div>
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Top Recruiters:</span><span class="font-bold text-[#1E293B]">Amazon, Microsoft, Google, TCS</span></div>
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Highest Package:</span><span class="font-bold text-[#F59E0B]">₹1.15 Crore / Year</span></div>
+            </div>
+            <div class="pt-3 flex flex-col gap-2">
+              <a href="pages/programs-engineering.html" class="w-full py-2.5 rounded-xl bg-[#003B73] hover:bg-[#071E3D] text-white font-bold text-xs text-center transition-colors">
+                View Detailed Curriculum
+              </a>
+              <button onclick="openEnquiryModal('School of Computer Science & Engineering')" class="w-full py-2.5 rounded-xl border border-[#003B73] text-[#003B73] hover:bg-[#EFF6FF] font-bold text-xs text-center transition-colors">
+                Apply for Admission
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCHOOL 2: Artificial Intelligence & Machine Learning -->
+      <section class="bg-white rounded-3xl p-8 lg:p-10 border border-[#E2E8F0] shadow-sm hover:shadow-md transition-shadow group">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-8 space-y-4">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-[#EFF6FF] text-[#003B73] border border-[#BFDBFE]">
+                Next-Gen Computing
+              </span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-[#FEF9C3] text-[#B45309] border border-[#FDE047]">
+                NVIDIA GPU Powered Labs
+              </span>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-serif font-bold text-[#0F172A] group-hover:text-[#003B73] transition-colors">
+              School of Artificial Intelligence & Machine Learning (SAIML)
+            </h3>
+            <p class="text-sm text-[#475569] leading-relaxed">
+              Spearheading research in machine perception, generative transformers, deep reinforcement learning, and cognitive computing. Students engineer production-grade AI solutions solving real-world healthcare, industrial, and financial challenges.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider mb-2">Offered Degree Programs</h4>
+                <ul class="text-xs text-[#1E293B] space-y-1.5">
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>B.Tech in Artificial Intelligence & Machine Learning</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>B.Tech in Computer Science & Engineering (AI)</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>M.Tech in Artificial Intelligence</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>Ph.D. in Generative AI & Deep Learning</span></li>
+                </ul>
+              </div>
+              <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider mb-2">Key Laboratories & Alliances</h4>
+                <ul class="text-xs text-[#1E293B] space-y-1.5">
+                  <li class="flex items-center gap-2"><i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#003B73]"></i><span>NVIDIA Deep Learning Supercomputing Suite</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="eye" class="w-3.5 h-3.5 text-[#003B73]"></i><span>Computer Vision & Drone Analytics Lab</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="message-square" class="w-3.5 h-3.5 text-[#003B73]"></i><span>Natural Language Processing & LLM Studio</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="bot" class="w-3.5 h-3.5 text-[#003B73]"></i><span>Autonomous Robotics Intelligence Center</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-4 bg-[#F8FAFC] p-6 rounded-2xl border border-[#E2E8F0] space-y-4">
+            <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider">School Snapshot</h4>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Industry Partner:</span><span class="font-bold text-[#1E293B]">Intel, NVIDIA, IBM</span></div>
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Duration:</span><span class="font-bold text-[#1E293B]">4 Years (UG) / 2 Years (PG)</span></div>
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Average Package:</span><span class="font-bold text-[#1E293B]">₹11.8 LPA</span></div>
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Top Offers:</span><span class="font-bold text-[#F59E0B]">₹35 LPA (Adobe / Atlassian)</span></div>
+            </div>
+            <div class="pt-3 flex flex-col gap-2">
+              <a href="pages/programs-engineering.html" class="w-full py-2.5 rounded-xl bg-[#003B73] hover:bg-[#071E3D] text-white font-bold text-xs text-center transition-colors">
+                View AI Program Details
+              </a>
+              <button onclick="openEnquiryModal('School of Artificial Intelligence')" class="w-full py-2.5 rounded-xl border border-[#003B73] text-[#003B73] hover:bg-[#EFF6FF] font-bold text-xs text-center transition-colors">
+                Apply for Admission
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCHOOL 3: Engineering & Technology (Core & Interdisciplinary) -->
+      <section class="bg-white rounded-3xl p-8 lg:p-10 border border-[#E2E8F0] shadow-sm hover:shadow-md transition-shadow group">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-8 space-y-4">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-[#EFF6FF] text-[#003B73] border border-[#BFDBFE]">
+                Washington Accord Compliant
+              </span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-[#FEF9C3] text-[#B45309] border border-[#FDE047]">
+                12+ World-Class Industry CoEs
+              </span>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-serif font-bold text-[#0F172A] group-hover:text-[#003B73] transition-colors">
+              School of Engineering & Technology (SET)
+            </h3>
+            <p class="text-sm text-[#475569] leading-relaxed">
+              Anchored by premier corporate infrastructure in Industrial Robotics, Smart Automation, and Embedded VLSI. Delivers interdisciplinary engineering education across Electronics, Electrical, Mechanical, and Civil disciplines.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider mb-2">Offered Degree Programs</h4>
+                <ul class="text-xs text-[#1E293B] space-y-1.5">
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>B.Tech in Electronics & Communication (ECE)</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>B.Tech in Electrical & Electronics Engineering (EN)</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>B.Tech in Mechanical Engineering (Smart Manufacturing)</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>B.Tech in Civil Engineering (Smart Infrastructure)</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>M.Tech & Ph.D. in Advanced Manufacturing & VLSI</span></li>
+                </ul>
+              </div>
+              <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider mb-2">Centres of Excellence (CoEs)</h4>
+                <ul class="text-xs text-[#1E293B] space-y-1.5">
+                  <li class="flex items-center gap-2"><i data-lucide="cog" class="w-3.5 h-3.5 text-[#003B73]"></i><span>KUKA Industrial Robotics Centre of Excellence</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-3.5 h-3.5 text-[#003B73]"></i><span>Siemens Automation & Drives Innovation Lab</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="activity" class="w-3.5 h-3.5 text-[#003B73]"></i><span>Bosch Rexroth Hydraulics & Pneumatics Lab</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="radio" class="w-3.5 h-3.5 text-[#003B73]"></i><span>National Instruments (NI) LabVIEW Academy</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-4 bg-[#F8FAFC] p-6 rounded-2xl border border-[#E2E8F0] space-y-4">
+            <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider">School Snapshot</h4>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Accreditation:</span><span class="font-bold text-[#1E293B]">NBA Tier-1 All Branches</span></div>
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">CoE Valuation:</span><span class="font-bold text-[#1E293B]">₹25+ Crores Equipment</span></div>
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Core Recruiters:</span><span class="font-bold text-[#1E293B]">Bosch, Siemens, L&T, Havells</span></div>
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Global Certifications:</span><span class="font-bold text-[#F59E0B]">German TUV & KUKA Certified</span></div>
+            </div>
+            <div class="pt-3 flex flex-col gap-2">
+              <a href="pages/research-coe.html" class="w-full py-2.5 rounded-xl bg-[#003B73] hover:bg-[#071E3D] text-white font-bold text-xs text-center transition-colors">
+                Explore 12+ Industry CoEs
+              </a>
+              <button onclick="openEnquiryModal('School of Engineering & Technology')" class="w-full py-2.5 rounded-xl border border-[#003B73] text-[#003B73] hover:bg-[#EFF6FF] font-bold text-xs text-center transition-colors">
+                Apply for Admission
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCHOOL 4: Computer Applications (BCA / MCA) -->
+      <section class="bg-white rounded-3xl p-8 lg:p-10 border border-[#E2E8F0] shadow-sm hover:shadow-md transition-shadow group">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-8 space-y-4">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-[#EFF6FF] text-[#003B73] border border-[#BFDBFE]">
+                Industry 4.0 Software Curriculum
+              </span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-[#FEF9C3] text-[#B45309] border border-[#FDE047]">
+                Full-Stack & Cloud Tracks
+              </span>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-serif font-bold text-[#0F172A] group-hover:text-[#003B73] transition-colors">
+              School of Computer Applications (SCA)
+            </h3>
+            <p class="text-sm text-[#475569] leading-relaxed">
+              Designed for dynamic, industry-ready application development. Focuses on full-stack web architectures, enterprise mobility, microservices, containerization, and modern database management systems.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider mb-2">Offered Degree Programs</h4>
+                <ul class="text-xs text-[#1E293B] space-y-1.5">
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>BCA (Bachelor of Computer Applications - 3 Years)</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>MCA (Master of Computer Applications - 2 Years)</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>MCA with Cloud & DevOps Specialization</span></li>
+                </ul>
+              </div>
+              <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider mb-2">Practical Learning Hubs</h4>
+                <ul class="text-xs text-[#1E293B] space-y-1.5">
+                  <li class="flex items-center gap-2"><i data-lucide="code-2" class="w-3.5 h-3.5 text-[#003B73]"></i><span>Modern MERN & Java Full-Stack Studio</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="smartphone" class="w-3.5 h-3.5 text-[#003B73]"></i><span>Android & Flutter Mobile App Development Lab</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="cloud" class="w-3.5 h-3.5 text-[#003B73]"></i><span>Cloud Deployment & Docker/Kubernetes Pipeline</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-4 bg-[#F8FAFC] p-6 rounded-2xl border border-[#E2E8F0] space-y-4">
+            <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider">School Snapshot</h4>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Format:</span><span class="font-bold text-[#1E293B]">Hands-on Project Based</span></div>
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Internships:</span><span class="font-bold text-[#1E293B]">Mandatory Final Semester</span></div>
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Top Recruiters:</span><span class="font-bold text-[#1E293B]">Infosys, Wipro, Cognizant, Accenture</span></div>
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Max Package:</span><span class="font-bold text-[#F59E0B]">₹18 LPA</span></div>
+            </div>
+            <div class="pt-3 flex flex-col gap-2">
+              <a href="pages/programs-computing.html" class="w-full py-2.5 rounded-xl bg-[#003B73] hover:bg-[#071E3D] text-white font-bold text-xs text-center transition-colors">
+                View Computing Program
+              </a>
+              <button onclick="openEnquiryModal('School of Computer Applications')" class="w-full py-2.5 rounded-xl border border-[#003B73] text-[#003B73] hover:bg-[#EFF6FF] font-bold text-xs text-center transition-colors">
+                Apply for Admission
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCHOOL 5: Management Studies (BBA / MBA) -->
+      <section class="bg-white rounded-3xl p-8 lg:p-10 border border-[#E2E8F0] shadow-sm hover:shadow-md transition-shadow group">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-8 space-y-4">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-[#EFF6FF] text-[#003B73] border border-[#BFDBFE]">
+                AICTE Approved Dual Specialization
+              </span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-[#FEF9C3] text-[#B45309] border border-[#FDE047]">
+                Business Analytics & Fintech
+              </span>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-serif font-bold text-[#0F172A] group-hover:text-[#003B73] transition-colors">
+              School of Management Studies (SMS)
+            </h3>
+            <p class="text-sm text-[#475569] leading-relaxed">
+              Fosters executive leadership, ethical decision making, and entrepreneurial venture creation. Offers dual specializations in Finance, Marketing, Human Resources, International Business, Operations, and Business Analytics.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider mb-2">Offered Degree Programs</h4>
+                <ul class="text-xs text-[#1E293B] space-y-1.5">
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>BBA (Bachelor of Business Administration - 3 Years)</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>MBA (Master of Business Administration - 2 Years)</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>Executive Dual Specializations in Fintech & Analytics</span></li>
+                </ul>
+              </div>
+              <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider mb-2">Business Leadership Labs</h4>
+                <ul class="text-xs text-[#1E293B] space-y-1.5">
+                  <li class="flex items-center gap-2"><i data-lucide="trending-up" class="w-3.5 h-3.5 text-[#003B73]"></i><span>Financial Market Simulation & Trading Suite</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="pie-chart" class="w-3.5 h-3.5 text-[#003B73]"></i><span>Consumer Behaviour & Digital Analytics Hub</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#003B73]"></i><span>Case Study Discussion & Corporate Boardroom</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-4 bg-[#F8FAFC] p-6 rounded-2xl border border-[#E2E8F0] space-y-4">
+            <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider">School Snapshot</h4>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Methodology:</span><span class="font-bold text-[#1E293B]">Harvard Case Method</span></div>
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Industry Projects:</span><span class="font-bold text-[#1E293B]">100% Student Placement Assistance</span></div>
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Recruiters:</span><span class="font-bold text-[#1E293B]">KPMG, Deloitte, HDFC, ICICI, EY</span></div>
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Highest Package:</span><span class="font-bold text-[#F59E0B]">₹16 LPA</span></div>
+            </div>
+            <div class="pt-3 flex flex-col gap-2">
+              <a href="pages/programs-management.html" class="w-full py-2.5 rounded-xl bg-[#003B73] hover:bg-[#071E3D] text-white font-bold text-xs text-center transition-colors">
+                View Management Programs
+              </a>
+              <button onclick="openEnquiryModal('School of Management Studies')" class="w-full py-2.5 rounded-xl border border-[#003B73] text-[#003B73] hover:bg-[#EFF6FF] font-bold text-xs text-center transition-colors">
+                Apply for Admission
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCHOOL 6: Humanities & Applied Sciences -->
+      <section class="bg-white rounded-3xl p-8 lg:p-10 border border-[#E2E8F0] shadow-sm hover:shadow-md transition-shadow group">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-8 space-y-4">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-[#EFF6FF] text-[#003B73] border border-[#BFDBFE]">
+                Foundational Rigor
+              </span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-[#FEF9C3] text-[#B45309] border border-[#FDE047]">
+                Interdisciplinary Sciences
+              </span>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-serif font-bold text-[#0F172A] group-hover:text-[#003B73] transition-colors">
+              School of Humanities & Applied Sciences (SHAS)
+            </h3>
+            <p class="text-sm text-[#475569] leading-relaxed">
+              Provides the scientific bedrock and behavioral foundation for engineering and technological disciplines. Focuses on advanced applied mathematics, engineering physics, smart materials chemistry, and professional linguistic competencies.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider mb-2">Academic Disciplines</h4>
+                <ul class="text-xs text-[#1E293B] space-y-1.5">
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>Department of Applied Mathematics & Computing</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>Department of Engineering Physics & Quantum Concepts</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>Department of Applied Chemistry & Materials Science</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i><span>Department of Professional Communication & Humanities</span></li>
+                </ul>
+              </div>
+              <div class="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider mb-2">Analytical Research Facilities</h4>
+                <ul class="text-xs text-[#1E293B] space-y-1.5">
+                  <li class="flex items-center gap-2"><i data-lucide="microscope" class="w-3.5 h-3.5 text-[#003B73]"></i><span>Optics, Laser & Nanotechnology Laboratory</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="flask-conical" class="w-3.5 h-3.5 text-[#003B73]"></i><span>Spectroscopy & Polymer Characterization Lab</span></li>
+                  <li class="flex items-center gap-2"><i data-lucide="mic" class="w-3.5 h-3.5 text-[#003B73]"></i><span>Digital Language Communication Simulation Lab</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-4 bg-[#F8FAFC] p-6 rounded-2xl border border-[#E2E8F0] space-y-4">
+            <h4 class="text-xs font-bold text-[#003B73] uppercase tracking-wider">School Snapshot</h4>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Publications:</span><span class="font-bold text-[#1E293B]">150+ SCI/Scopus Papers</span></div>
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Doctoral Faculty:</span><span class="font-bold text-[#1E293B]">100% Ph.D. Holders</span></div>
+              <div class="flex justify-between py-1 border-b border-[#E2E8F0]"><span class="text-[#64748B]">Role:</span><span class="font-bold text-[#1E293B]">Core Foundation for All Engineers</span></div>
+            </div>
+            <div class="pt-3">
+              <a href="pages/programs-humanities.html" class="block w-full py-2.5 rounded-xl bg-[#003B73] hover:bg-[#071E3D] text-white font-bold text-xs text-center transition-colors">
+                View Applied Sciences Details
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCHOOL 7: Doctoral Studies & Advanced Research -->
+      <section class="bg-[#071E3D] text-white rounded-3xl p-8 lg:p-10 shadow-xl border border-[#003B73] relative overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-8 space-y-4">
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#F59E0B] text-[#071E3D]">
+              Advanced Research & Fellowships
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white">
+              School of Doctoral Studies & Fellowships (Ph.D.)
+            </h3>
+            <p class="text-sm text-white/80 leading-relaxed">
+              Empowering doctoral candidates through AICTE, UGC, and university-funded fellowship stipends. Candidates work directly within state-of-the-art Centres of Research and the Technology Business Incubator (TBI-AKGEC) to publish high-impact papers and file commercial patents.
+            </p>
+            <div class="flex flex-wrap items-center gap-4 text-xs font-bold text-[#FACC15] pt-2">
+              <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> Full-Time & Part-Time Ph.D.</span>
+              <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> Monthly Fellowship Grants</span>
+              <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> DST & AICTE Research Labs</span>
+            </div>
+          </div>
+          <div class="lg:col-span-4 flex flex-col gap-3">
+            <button onclick="openEnquiryModal('Ph.D. Doctoral Fellowships')" class="w-full py-3.5 rounded-full bg-[#F59E0B] hover:bg-[#FACC15] text-[#071E3D] font-bold text-xs uppercase tracking-wider text-center shadow transition-all">
+              Apply for Doctoral Fellowship
+            </button>
+            <a href="pages/research-overview.html" class="w-full py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider text-center border border-white/30 transition-all">
+              Research Areas & Guidelines
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FINAL ADMISSIONS CALL TO ACTION -->
+  <section class="bg-[#071E3D] text-white py-16 px-4 border-t border-[#003B73]">
+    <div class="max-w-4xl mx-auto text-center space-y-6">
+      <span class="inline-block px-3.5 py-1 rounded-full text-xs font-bold bg-[#F59E0B] text-[#071E3D]">
+        Admissions Open for Session 2026–27
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-white">
+        Find Your Academic Path at AKGU
+      </h2>
+      <p class="text-white/80 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+        Join over 10,000 scholars building transformative careers in engineering, artificial intelligence, computing, and management.
+      </p>
+      <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
+        <button onclick="openEnquiryModal('Schools Final CTA')" class="px-8 py-4 rounded-full bg-[#F59E0B] hover:bg-[#FACC15] text-[#071E3D] font-bold text-xs uppercase tracking-wider shadow-lg transition-all flex items-center gap-2">
+          <span>Apply Online Now</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-[#071E3D]"></i>
+        </button>
+        <a href="admissions.html" class="px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider border border-white/30 transition-all flex items-center gap-2">
+          <span>Explore Admission Guidelines</span>
+          <i data-lucide="external-link" class="w-4 h-4 text-[#FACC15]"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#041226] text-white/80 border-t border-white/10 pt-16 pb-12 px-4 text-xs">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+      <div class="lg:col-span-2 space-y-4">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="akg-logo.webp" alt="AKGU Crest" class="h-12 w-auto object-contain brightness-0 invert" />
+          <div>
+            <span class="block font-serif text-lg font-bold text-white tracking-tight leading-none">Ajay Kumar Garg University</span>
+            <span class="block text-[10px] uppercase font-sans tracking-widest text-[#FACC15] mt-1 font-semibold">Ghaziabad, National Capital Region</span>
+          </div>
+        </a>
+        <p class="text-white/70 text-xs leading-relaxed max-w-sm">
+          A premier technological university rooted in 28 years of academic distinction, advanced research laboratories, and world-class industry Centres of Excellence.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-serif font-bold text-white text-sm mb-4">Our Schools</h4>
+        <ul class="space-y-2.5">
+          <li><a href="schools.html" class="hover:text-[#FACC15] transition-colors font-semibold text-white">All Schools Directory</a></li>
+          <li><a href="pages/programs-engineering.html" class="hover:text-[#FACC15] transition-colors">School of Engineering</a></li>
+          <li><a href="pages/programs-computing.html" class="hover:text-[#FACC15] transition-colors">School of Computing</a></li>
+          <li><a href="pages/programs-management.html" class="hover:text-[#FACC15] transition-colors">School of Management</a></li>
+          <li><a href="pages/programs-humanities.html" class="hover:text-[#FACC15] transition-colors">Applied Sciences</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-serif font-bold text-white text-sm mb-4">Admissions</h4>
+        <ul class="space-y-2.5">
+          <li><a href="pages/admissions-overview.html" class="hover:text-[#FACC15] transition-colors">Admissions 2026–27</a></li>
+          <li><a href="pages/admissions-fees.html" class="hover:text-[#FACC15] transition-colors">Fee Schedules</a></li>
+          <li><a href="pages/admissions-eligibility.html" class="hover:text-[#FACC15] transition-colors">Eligibility Norms</a></li>
+          <li><a href="pages/admissions-apply.html" class="hover:text-[#FACC15] transition-colors">Step-by-Step Guide</a></li>
+          <li><a href="pages/admissions-faqs.html" class="hover:text-[#FACC15] transition-colors">Admissions FAQs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-serif font-bold text-white text-sm mb-4">Connect</h4>
+        <p class="text-white/70 leading-relaxed">
+          NH-9 (27th Km Stone), Delhi-Meerut Expressway, Ghaziabad, UP 201009
+        </p>
+        <p class="text-[#FACC15] font-semibold mt-2">Toll Free: 1800-200-AKGU</p>
+        <p class="text-white/70 mt-1">admissions@akgu.ac.in</p>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-white/50 gap-4">
+      <p>© 2026 Ajay Kumar Garg University. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a href="pages/about-approvals.html" class="hover:text-white transition-colors">UGC Approval</a>
+        <a href="pages/about-rankings.html" class="hover:text-white transition-colors">NAAC A++ Accreditation</a>
+        <a href="pages/admissions-refund.html" class="hover:text-white transition-colors">Refund Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lead Enquiry Modal (Yellow Highlight Theme) -->
+  <div id="enquiryModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative max-h-[92vh] overflow-y-auto">
+      <button onclick="closeEnquiryModal()" class="absolute top-5 right-5 p-2 rounded-full hover:bg-slate-100 text-slate-500 hover:text-slate-800 transition-colors">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div class="text-center mb-6">
+        <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#EFF6FF] text-[#003B73] mb-3">
+          <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-serif font-bold text-2xl text-[#0F172A]" id="enquiryModalTitle">Admissions Enquiry 2026–27</h3>
+        <p class="text-xs text-[#64748B] mt-1">Connect directly with our academic admissions counselors.</p>
+      </div>
+      <form onsubmit="handleEnquirySubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-[#1E293B] mb-1">Student Full Name *</label>
+          <input type="text" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-[#003B73] focus:border-[#003B73] outline-none" />
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-[#1E293B] mb-1">Mobile Number *</label>
+            <input type="tel" required placeholder="10-digit number" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-[#003B73] focus:border-[#003B73] outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-[#1E293B] mb-1">Email Address *</label>
+            <input type="email" required placeholder="name@email.com" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-[#003B73] focus:border-[#003B73] outline-none" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-[#1E293B] mb-1">School / Program of Interest *</label>
+          <select id="enquiryProgramSelect" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-[#003B73] focus:border-[#003B73] outline-none bg-white">
+            <option value="School of Computer Science & Engineering">School of Computer Science & Engineering (B.Tech/M.Tech)</option>
+            <option value="School of Artificial Intelligence">School of Artificial Intelligence & ML (B.Tech/M.Tech)</option>
+            <option value="School of Engineering & Technology">School of Engineering & Technology (ECE/EN/ME/Civil)</option>
+            <option value="School of Computer Applications">School of Computer Applications (BCA/MCA)</option>
+            <option value="School of Management Studies">School of Management Studies (BBA/MBA)</option>
+            <option value="Doctoral Fellowships">School of Doctoral Studies & Fellowships (Ph.D.)</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-[#F59E0B] hover:bg-[#FACC15] text-[#071E3D] font-bold text-xs uppercase tracking-wider transition-all shadow-md mt-2">
+          Submit Admissions Enquiry
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Student Portal Modal -->
+  <div id="studentPortalModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center border border-slate-200">
+      <div class="w-12 h-12 rounded-2xl bg-[#EFF6FF] text-[#003B73] flex items-center justify-center mx-auto mb-3">
+        <i data-lucide="lock" class="w-6 h-6"></i>
+      </div>
+      <h3 class="font-serif font-bold text-xl text-[#0F172A]">University ERP SSO</h3>
+      <p class="text-xs text-[#64748B] mt-1 mb-4">Login using your official student or faculty credentials.</p>
+      <input type="text" placeholder="Admission / Roll No." class="w-full px-4 py-2 rounded-xl border border-slate-300 text-xs mb-2 outline-none" />
+      <input type="password" placeholder="Password" class="w-full px-4 py-2 rounded-xl border border-slate-300 text-xs mb-4 outline-none" />
+      <button onclick="closeStudentPortalModal()" class="w-full py-2.5 rounded-xl bg-[#003B73] text-white text-xs font-bold">Sign In to Portal</button>
+      <button onclick="closeStudentPortalModal()" class="mt-2 text-xs text-[#64748B] hover:underline">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div id="searchModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-start justify-center pt-20 p-4">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl border border-slate-200">
+      <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+        <i data-lucide="search" class="w-5 h-5 text-[#003B73]"></i>
+        <input type="text" id="searchInput" oninput="performSearch(this.value)" placeholder="Search schools, programs, fee structures..." class="w-full outline-none text-sm text-[#0F172A]" autofocus />
+        <button onclick="closeSearchModal()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <div id="searchResults" class="mt-4 max-h-64 overflow-y-auto space-y-2"></div>
+    </div>
+  </div>
+
+  <script src="js/common.js"></script>
+  <script src="js/search-data.js"></script>
+</body>
+</html>

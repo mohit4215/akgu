@@ -66,6 +66,13 @@ const SEARCH_DATA = [
     "hub": "about.html"
   },
   {
+    "title": "Our Schools of Study Directory",
+    "category": "Schools",
+    "desc": "Directory of all university schools: Computing, AI, Engineering, Applications, Management, and Applied Sciences.",
+    "page": "../schools.html",
+    "hub": "schools.html"
+  },
+  {
     "title": "School of Engineering & Technology",
     "category": "Academics",
     "desc": "B.Tech & M.Tech programs in CSE, AI/ML, ECE, Mechanical, Civil.",
