@@ -551,55 +551,87 @@
         <!-- 2-Column Scrollytelling Showcase -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
-          <!-- Left Sticky Frame (Authentic Photos) -->
+          <!-- Left Sticky Frame (Authentic Video & Photos) -->
           <div class="lg:col-span-7 lg:sticky lg:top-28">
             <div class="relative aspect-[16/10] sm:aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl border-4 border-white photo-flash-box" id="stickyCampusFrame">
-              <img src="images/campus-academic-block.jpg" class="sticky-campus-slide active" id="campusSlide0" alt="Central Administration & Heritage Quad" />
-              <img src="images/coe-common-facility-center.jpg" class="sticky-campus-slide" id="campusSlide1" alt="AKG Foundation Common Facility Center" />
-              <img src="images/coe-advanced-machining-lab.jpg" class="sticky-campus-slide" id="campusSlide2" alt="Industrial CNC Machining Center" />
-              <img src="images/campus-amphitheatre.jpg" class="sticky-campus-slide" id="campusSlide3" alt="Open-Air Cultural Amphitheatre" />
-              <img src="images/coe-material-testing-lab.jpg" class="sticky-campus-slide" id="campusSlide4" alt="Material Testing & Metallurgy Laboratory" />
+              <!-- Slide 0: Real Campus Tour Video (Loops and plays inside the frame) -->
+              <video id="campusSlide0" class="sticky-campus-slide active object-cover w-full h-full" autoplay muted loop playsinline preload="auto" poster="images/campus-academic-block.jpg">
+                <source src="videos/campus-tour.mp4" type="video/mp4" />
+              </video>
+              <img src="images/campus-academic-block.jpg" class="sticky-campus-slide" id="campusSlide1" alt="Central Administration & Heritage Quad" />
+              <img src="images/coe-common-facility-center.jpg" class="sticky-campus-slide" id="campusSlide2" alt="AKG Foundation Common Facility Center" />
+              <img src="images/coe-advanced-machining-lab.jpg" class="sticky-campus-slide" id="campusSlide3" alt="Industrial CNC Machining Center" />
+              <img src="images/campus-amphitheatre.jpg" class="sticky-campus-slide" id="campusSlide4" alt="Open-Air Cultural Amphitheatre" />
+              <img src="images/coe-material-testing-lab.jpg" class="sticky-campus-slide" id="campusSlide5" alt="Material Testing & Metallurgy Laboratory" />
 
               <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none"></div>
 
               <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between text-white z-10">
                 <div class="space-y-1">
                   <div class="flex items-center gap-2">
-                    <span class="px-2.5 py-0.5 rounded-full bg-[#F59E0B] text-[#071E3D] font-bold text-[10px] uppercase tracking-wider" id="campusSlideCounter">01 / 05</span>
-                    <span class="px-3 py-1 rounded-full bg-black/60 text-white/90 text-xs font-semibold backdrop-blur-md hidden sm:inline" id="campusSlideLabel">Academic Heritage Quad</span>
+                    <span class="px-2.5 py-0.5 rounded-full bg-[#F59E0B] text-[#071E3D] font-bold text-[10px] uppercase tracking-wider" id="campusSlideCounter">01 / 06</span>
+                    <span class="px-3 py-1 rounded-full bg-black/60 text-white/90 text-xs font-semibold backdrop-blur-md hidden sm:inline" id="campusSlideLabel">Cinematic Video Tour</span>
                   </div>
                   <h3 class="text-lg sm:text-2xl font-serif font-bold text-white drop-shadow-md" id="campusSlideTitle">
-                    The 40-Acre Monumental Smart Green Quad
+                    Campus in Motion: 4K Video Walkthrough
                   </h3>
                   <p class="text-[11px] text-white/80 hidden sm:block drop-shadow" id="campusSlideLocation">
-                    Adhyatmik Nagar • Delhi-Meerut Expressway
+                    40-Acre Smart Green Quad • Delhi-Meerut Expressway
                   </p>
                 </div>
-                <button onclick="openVideoTourModal()" class="px-4 py-2 rounded-full bg-[#F59E0B] hover:bg-[#FACC15] text-[#071E3D] text-xs font-bold shadow flex items-center gap-1.5 transition-all shrink-0">
-                  <i data-lucide="play" class="w-3.5 h-3.5 fill-[#071E3D]"></i>
-                  <span class="hidden sm:inline">Tour in 4K</span>
-                </button>
+                <div class="flex items-center gap-2 shrink-0">
+                  <button id="campusVideoMuteBtn" onclick="toggleCampusSlideVideoMute()" class="px-3 py-2 rounded-full bg-black/60 hover:bg-black/80 text-white text-xs font-semibold backdrop-blur-md flex items-center gap-1.5 transition-colors cursor-pointer border border-white/20" title="Toggle Sound">
+                    <i data-lucide="volume-x" id="campusVideoMuteIcon" class="w-3.5 h-3.5 text-[#FACC15]"></i>
+                    <span id="campusVideoMuteText" class="text-[11px]">Muted</span>
+                  </button>
+                  <button onclick="openVideoTourModal()" class="px-4 py-2 rounded-full bg-[#F59E0B] hover:bg-[#FACC15] text-[#071E3D] text-xs font-bold shadow flex items-center gap-1.5 transition-all">
+                    <i data-lucide="maximize" class="w-3.5 h-3.5"></i>
+                    <span class="hidden sm:inline">Full Screen</span>
+                  </button>
+                </div>
               </div>
             </div>
 
             <!-- Quick Progress Tabs -->
             <div class="mt-4 flex items-center gap-2 overflow-x-auto pb-2">
-              <button onclick="jumpToCampusChapter(0)" class="campus-tab px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#F59E0B] text-[#071E3D] shrink-0 transition-all shadow-sm" id="campusTab0">01. Heritage Quad</button>
-              <button onclick="jumpToCampusChapter(1)" class="campus-tab px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-[#64748B] hover:text-[#003B73] shrink-0 transition-all border border-[#E2E8F0]" id="campusTab1">02. Common Facility Center</button>
-              <button onclick="jumpToCampusChapter(2)" class="campus-tab px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-[#64748B] hover:text-[#003B73] shrink-0 transition-all border border-[#E2E8F0]" id="campusTab2">03. CNC & Machining Lab</button>
-              <button onclick="jumpToCampusChapter(3)" class="campus-tab px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-[#64748B] hover:text-[#003B73] shrink-0 transition-all border border-[#E2E8F0]" id="campusTab3">04. Amphitheatre</button>
-              <button onclick="jumpToCampusChapter(4)" class="campus-tab px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-[#64748B] hover:text-[#003B73] shrink-0 transition-all border border-[#E2E8F0]" id="campusTab4">05. Materials Lab</button>
+              <button onclick="jumpToCampusChapter(0)" class="campus-tab px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#F59E0B] text-[#071E3D] shrink-0 transition-all shadow-sm flex items-center gap-1.5" id="campusTab0"><i data-lucide="play" class="w-3 h-3 fill-[#071E3D]"></i><span>01. Video Tour</span></button>
+              <button onclick="jumpToCampusChapter(1)" class="campus-tab px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-[#64748B] hover:text-[#003B73] shrink-0 transition-all border border-[#E2E8F0]" id="campusTab1">02. Heritage Quad</button>
+              <button onclick="jumpToCampusChapter(2)" class="campus-tab px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-[#64748B] hover:text-[#003B73] shrink-0 transition-all border border-[#E2E8F0]" id="campusTab2">03. Common Facility Center</button>
+              <button onclick="jumpToCampusChapter(3)" class="campus-tab px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-[#64748B] hover:text-[#003B73] shrink-0 transition-all border border-[#E2E8F0]" id="campusTab3">04. CNC & Machining Lab</button>
+              <button onclick="jumpToCampusChapter(4)" class="campus-tab px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-[#64748B] hover:text-[#003B73] shrink-0 transition-all border border-[#E2E8F0]" id="campusTab4">05. Amphitheatre</button>
+              <button onclick="jumpToCampusChapter(5)" class="campus-tab px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-[#64748B] hover:text-[#003B73] shrink-0 transition-all border border-[#E2E8F0]" id="campusTab5">06. Materials Lab</button>
             </div>
           </div>
 
           <!-- Right Scrollable Story Chapters -->
           <div class="lg:col-span-5 space-y-8 py-4">
             
-            <!-- Chapter 0 -->
+            <!-- Chapter 0: Video Walkthrough -->
             <div class="story-chapter active-chapter p-8 rounded-3xl bg-white border border-[#E2E8F0]" data-chapter-idx="0" id="chapter0">
               <div class="flex items-center gap-2 mb-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B] animate-pulse"></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#003B73]">01 • Live Aerial & Ground Footage</span>
+              </div>
+              <h3 class="text-2xl font-serif font-bold text-[#0F172A] mb-3">
+                Campus in Motion: 4K Walkthrough
+              </h3>
+              <p class="text-sm text-[#1E293B] leading-relaxed">
+                Take an immersive aerial tour across Ajay Kumar Garg University's 40-acre technological haven along the Delhi-Meerut Expressway. Experience the architectural grandeur, academic complexes, and world-class industry laboratories in action.
+              </p>
+              <div class="mt-6 pt-4 border-t border-[#E2E8F0] flex items-center justify-between text-xs text-[#64748B]">
+                <span>4K Ultra HD • Drone Cinematography</span>
+                <button onclick="openVideoTourModal()" class="text-[#003B73] font-bold hover:underline flex items-center gap-1 cursor-pointer">
+                  <span>Watch in Full Screen</span>
+                  <i data-lucide="play-circle" class="w-3.5 h-3.5 text-[#F59E0B]"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Chapter 1 -->
+            <div class="story-chapter p-8 rounded-3xl bg-white/70 border border-[#E2E8F0]" data-chapter-idx="1" id="chapter1">
+              <div class="flex items-center gap-2 mb-3">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B]"></span>
-                <span class="text-xs font-bold uppercase tracking-wider text-[#003B73]">01 • Architectural Heritage</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#003B73]">02 • Architectural Heritage</span>
               </div>
               <h3 class="text-2xl font-serif font-bold text-[#0F172A] mb-3">
                 The 40-Acre Smart Green Quad
@@ -616,11 +648,11 @@
               </div>
             </div>
 
-            <!-- Chapter 1 -->
-            <div class="story-chapter p-8 rounded-3xl bg-white/70 border border-[#E2E8F0]" data-chapter-idx="1" id="chapter1">
+            <!-- Chapter 2 -->
+            <div class="story-chapter p-8 rounded-3xl bg-white/70 border border-[#E2E8F0]" data-chapter-idx="2" id="chapter2">
               <div class="flex items-center gap-2 mb-3">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B]"></span>
-                <span class="text-xs font-bold uppercase tracking-wider text-[#003B73]">02 • Common Facility Center (CFC)</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#003B73]">03 • Common Facility Center (CFC)</span>
               </div>
               <h3 class="text-2xl font-serif font-bold text-[#0F172A] mb-3">
                 AKG Foundation for Innovation & Product Development
@@ -637,11 +669,11 @@
               </div>
             </div>
 
-            <!-- Chapter 2 -->
-            <div class="story-chapter p-8 rounded-3xl bg-white/70 border border-[#E2E8F0]" data-chapter-idx="2" id="chapter2">
+            <!-- Chapter 3 -->
+            <div class="story-chapter p-8 rounded-3xl bg-white/70 border border-[#E2E8F0]" data-chapter-idx="3" id="chapter3">
               <div class="flex items-center gap-2 mb-3">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B]"></span>
-                <span class="text-xs font-bold uppercase tracking-wider text-[#003B73]">03 • Industrial Machining Center</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#003B73]">04 • Industrial Machining Center</span>
               </div>
               <h3 class="text-2xl font-serif font-bold text-[#0F172A] mb-3">
                 Advanced CNC Turning, Milling & Surface Grinding
@@ -658,11 +690,11 @@
               </div>
             </div>
 
-            <!-- Chapter 3 -->
-            <div class="story-chapter p-8 rounded-3xl bg-white/70 border border-[#E2E8F0]" data-chapter-idx="3" id="chapter3">
+            <!-- Chapter 4 -->
+            <div class="story-chapter p-8 rounded-3xl bg-white/70 border border-[#E2E8F0]" data-chapter-idx="4" id="chapter4">
               <div class="flex items-center gap-2 mb-3">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B]"></span>
-                <span class="text-xs font-bold uppercase tracking-wider text-[#003B73]">04 • Cultural Amphitheatre</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#003B73]">05 • Cultural Amphitheatre</span>
               </div>
               <h3 class="text-2xl font-serif font-bold text-[#0F172A] mb-3">
                 Monumental Open-Air Amphitheatre & Fest Arena
@@ -679,11 +711,11 @@
               </div>
             </div>
 
-            <!-- Chapter 4 -->
-            <div class="story-chapter p-8 rounded-3xl bg-white/70 border border-[#E2E8F0]" data-chapter-idx="4" id="chapter4">
+            <!-- Chapter 5 -->
+            <div class="story-chapter p-8 rounded-3xl bg-white/70 border border-[#E2E8F0]" data-chapter-idx="5" id="chapter5">
               <div class="flex items-center gap-2 mb-3">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B]"></span>
-                <span class="text-xs font-bold uppercase tracking-wider text-[#003B73]">05 • Metallurgy & Testing</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#003B73]">06 • Metallurgy & Testing</span>
               </div>
               <h3 class="text-2xl font-serif font-bold text-[#0F172A] mb-3">
                 Material Testing & Industrial Sand Blasting

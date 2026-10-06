@@ -5,31 +5,37 @@
 
 const CAMPUS_STORIES = [
   {
-    counter: '01 / 05',
+    counter: '01 / 06',
+    label: 'Cinematic Video Tour',
+    title: 'Campus in Motion: 4K Video Walkthrough',
+    location: '40-Acre Smart Green Quad • Delhi-Meerut Expressway'
+  },
+  {
+    counter: '02 / 06',
     label: 'Academic Heritage Quad',
     title: 'The 40-Acre Monumental Smart Green Quad',
     location: 'Adhyatmik Nagar • Delhi-Meerut Expressway'
   },
   {
-    counter: '02 / 05',
+    counter: '03 / 06',
     label: 'Innovation & Incubation CoE',
     title: 'AKG Foundation Common Facility Center (CFC)',
     location: 'Innovation, Tool Room & Product Development Center'
   },
   {
-    counter: '03 / 05',
+    counter: '04 / 06',
     label: 'Industrial Machining Workcell',
     title: 'Advanced CNC Machining & Automation CoE',
     location: 'High-Precision Surface Grinding & CNC Turning Labs'
   },
   {
-    counter: '04 / 05',
+    counter: '05 / 06',
     label: 'Open-Air Amphitheatre',
     title: 'Monumental Fest Arena & Cultural Amphitheatre',
     location: 'Tiered Stone Amphitheatre • Surabhi Festival Hub'
   },
   {
-    counter: '05 / 05',
+    counter: '06 / 06',
     label: 'Materials Inspection & R&D',
     title: 'Advanced Material Testing & Sand Blasting Facility',
     location: 'Industrial Metallurgy & Materials Characterization Lab'
@@ -41,12 +47,22 @@ let currentCampusStoryIndex = 0;
 function setCampusStorySlide(idx) {
   if (idx === currentCampusStoryIndex) return;
   currentCampusStoryIndex = idx;
+  const total = CAMPUS_STORIES.length;
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < total; i++) {
     const slide = document.getElementById('campusSlide' + i);
     if (slide) {
-      if (i === idx) slide.classList.add('active');
-      else slide.classList.remove('active');
+      if (i === idx) {
+        slide.classList.add('active');
+        if (slide.tagName === 'VIDEO') {
+          slide.play().catch(() => {});
+        }
+      } else {
+        slide.classList.remove('active');
+        if (slide.tagName === 'VIDEO') {
+          slide.pause();
+        }
+      }
     }
   }
 
@@ -69,16 +85,22 @@ function setCampusStorySlide(idx) {
     if (locEl) locEl.textContent = data.location;
   }
 
-  for (let i = 0; i < 5; i++) {
+  const muteBtn = document.getElementById('campusVideoMuteBtn');
+  if (muteBtn) {
+    if (idx === 0) muteBtn.classList.remove('hidden');
+    else muteBtn.classList.add('hidden');
+  }
+
+  for (let i = 0; i < total; i++) {
     const tab = document.getElementById('campusTab' + i);
     if (tab) {
       tab.className = (i === idx)
-        ? "campus-tab px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#F59E0B] text-[#071E3D] shrink-0 transition-all shadow-sm"
+        ? "campus-tab px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#F59E0B] text-[#071E3D] shrink-0 transition-all shadow-sm flex items-center gap-1.5"
         : "campus-tab px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-[#64748B] hover:text-[#003B73] shrink-0 transition-all border border-[#E2E8F0]";
     }
   }
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < total; i++) {
     const chap = document.getElementById('chapter' + i);
     if (chap) {
       if (i === idx) {
@@ -92,6 +114,23 @@ function setCampusStorySlide(idx) {
       }
     }
   }
+}
+
+function toggleCampusSlideVideoMute() {
+  const vid = document.getElementById('campusSlide0');
+  const icon = document.getElementById('campusVideoMuteIcon');
+  const text = document.getElementById('campusVideoMuteText');
+  if (!vid) return;
+
+  vid.muted = !vid.muted;
+  if (vid.muted) {
+    if (text) text.textContent = 'Muted';
+    if (icon) icon.setAttribute('data-lucide', 'volume-x');
+  } else {
+    if (text) text.textContent = 'Sound On';
+    if (icon) icon.setAttribute('data-lucide', 'volume-2');
+  }
+  if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons();
 }
 
 function jumpToCampusChapter(idx) {
