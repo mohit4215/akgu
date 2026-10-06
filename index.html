@@ -476,27 +476,13 @@
             </button>
           </div>
 
-          <!-- Hero Video Ambient Quick Controller & Dots -->
-          <div class="flex flex-wrap items-center justify-between max-w-xl gap-4 pt-4">
-            <div class="flex items-center gap-2">
-              <button onclick="setHeroSlide(0)" class="w-3 h-3 rounded-full bg-[#F59E0B] cursor-pointer hero-dot transition-all shadow" aria-label="Slide 1"></button>
-              <button onclick="setHeroSlide(1)" class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hero-dot transition-all" aria-label="Slide 2"></button>
-              <button onclick="setHeroSlide(2)" class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hero-dot transition-all" aria-label="Slide 3"></button>
-              <button onclick="setHeroSlide(3)" class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hero-dot transition-all" aria-label="Slide 4"></button>
-              <button onclick="setHeroSlide(4)" class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hero-dot transition-all" aria-label="Slide 5"></button>
-            </div>
-
-            <div class="inline-flex items-center gap-2 bg-[#071E3D]/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 text-xs text-white shadow-sm">
-              <button id="heroVideoPlayToggle" onclick="toggleHeroBgVideoPlay()" class="hover:text-[#FACC15] flex items-center gap-1.5 transition-colors cursor-pointer" title="Pause or Resume Background Video">
-                <i data-lucide="pause" id="heroVideoPlayIcon" class="w-3.5 h-3.5 text-[#FACC15]"></i>
-                <span id="heroVideoPlayText" class="text-[11px] font-semibold">Pause Video</span>
-              </button>
-              <span class="text-white/30">•</span>
-              <button id="heroVideoMuteToggle" onclick="toggleHeroBgVideoMute()" class="hover:text-[#FACC15] flex items-center gap-1.5 transition-colors cursor-pointer" title="Toggle Sound">
-                <i data-lucide="volume-x" id="heroVideoMuteIcon" class="w-3.5 h-3.5 text-[#FACC15]"></i>
-                <span id="heroVideoMuteText" class="text-[11px] font-semibold">Muted</span>
-              </button>
-            </div>
+          <!-- Hero Slide Dots -->
+          <div class="flex items-center gap-2 pt-4">
+            <button onclick="setHeroSlide(0)" class="w-3 h-3 rounded-full bg-[#F59E0B] cursor-pointer hero-dot transition-all shadow" aria-label="Slide 1"></button>
+            <button onclick="setHeroSlide(1)" class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hero-dot transition-all" aria-label="Slide 2"></button>
+            <button onclick="setHeroSlide(2)" class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hero-dot transition-all" aria-label="Slide 3"></button>
+            <button onclick="setHeroSlide(3)" class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hero-dot transition-all" aria-label="Slide 4"></button>
+            <button onclick="setHeroSlide(4)" class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hero-dot transition-all" aria-label="Slide 5"></button>
           </div>
 
         </div>
