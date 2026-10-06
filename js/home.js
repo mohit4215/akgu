@@ -167,6 +167,67 @@ function initScrollAnimations() {
   chapters.forEach(ch => chapterObserver.observe(ch));
 }
 
+// Hero Background Video Controller & Fallback (Methods 3 & 4 Combined)
+function initHeroBgVideo() {
+  const video = document.getElementById('heroBgVideo');
+  if (!video) return;
+
+  const source = video.querySelector('source');
+  const handleVideoMissing = () => {
+    // If no local video file exists yet, hide video smoothly so the photo carousel displays perfectly
+    video.style.opacity = '0';
+    video.style.pointerEvents = 'none';
+    const playToggle = document.getElementById('heroVideoPlayToggle');
+    if (playToggle) {
+      const parentPill = playToggle.closest('div');
+      if (parentPill) parentPill.classList.add('hidden');
+    }
+  };
+
+  if (source) {
+    source.addEventListener('error', handleVideoMissing);
+  }
+  video.addEventListener('error', handleVideoMissing);
+}
+
+function toggleHeroBgVideoPlay() {
+  const video = document.getElementById('heroBgVideo');
+  const icon = document.getElementById('heroVideoPlayIcon');
+  const text = document.getElementById('heroVideoPlayText');
+  if (!video) return;
+
+  if (video.paused) {
+    video.play().then(() => {
+      if (text) text.textContent = 'Pause Video';
+      if (icon) icon.setAttribute('data-lucide', 'pause');
+      if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons();
+    }).catch(() => {});
+  } else {
+    video.pause();
+    if (text) text.textContent = 'Play Video';
+    if (icon) icon.setAttribute('data-lucide', 'play');
+    if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons();
+  }
+}
+
+function toggleHeroBgVideoMute() {
+  const video = document.getElementById('heroBgVideo');
+  const icon = document.getElementById('heroVideoMuteIcon');
+  const text = document.getElementById('heroVideoMuteText');
+  if (!video) return;
+
+  video.muted = !video.muted;
+  if (video.muted) {
+    if (text) text.textContent = 'Muted';
+    if (icon) icon.setAttribute('data-lucide', 'volume-x');
+  } else {
+    if (text) text.textContent = 'Sound On';
+    if (icon) icon.setAttribute('data-lucide', 'volume-2');
+  }
+  if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
+  initHeroBgVideo();
 });

@@ -109,6 +109,72 @@ function closeSearchModal() {
   if (modal) modal.classList.add('hidden');
 }
 
+// Campus Video Tour Modal (Method 3 + 4 combined)
+function openVideoTourModal(videoSrc = "videos/campus-tour.mp4") {
+  const modal = document.getElementById('videoModal');
+  const modalVideo = document.getElementById('modalVideoPlayer');
+  const modalIframe = document.getElementById('videoModalIframe');
+  const heroVideo = document.getElementById('heroBgVideo');
+
+  // Pause background hero video when opening modal
+  if (heroVideo && !heroVideo.paused) {
+    heroVideo.pause();
+  }
+
+  if (!modal) return;
+  modal.classList.remove('hidden');
+
+  // Check if src is YouTube or external URL
+  if (videoSrc.includes('youtube.com') || videoSrc.includes('youtu.be')) {
+    if (modalVideo) {
+      modalVideo.pause();
+      modalVideo.classList.add('hidden');
+    }
+    if (modalIframe) {
+      modalIframe.classList.remove('hidden');
+      modalIframe.src = videoSrc.includes('autoplay') ? videoSrc : `${videoSrc}?autoplay=1&rel=0`;
+    }
+  } else {
+    // Local HTML5 Video (Method 3)
+    if (modalIframe) {
+      modalIframe.src = '';
+      modalIframe.classList.add('hidden');
+    }
+    if (modalVideo) {
+      modalVideo.classList.remove('hidden');
+      const source = modalVideo.querySelector('source');
+      if (source && !source.src.endsWith(videoSrc)) {
+        source.src = videoSrc;
+        modalVideo.load();
+      }
+      modalVideo.currentTime = 0;
+      modalVideo.play().catch(() => {});
+    }
+  }
+}
+
+function closeVideoTourModal() {
+  const modal = document.getElementById('videoModal');
+  const modalVideo = document.getElementById('modalVideoPlayer');
+  const modalIframe = document.getElementById('videoModalIframe');
+  const heroVideo = document.getElementById('heroBgVideo');
+
+  if (modalVideo) {
+    modalVideo.pause();
+  }
+  if (modalIframe) {
+    modalIframe.src = '';
+  }
+  if (modal) {
+    modal.classList.add('hidden');
+  }
+
+  // Resume background hero video if available
+  if (heroVideo) {
+    heroVideo.play().catch(() => {});
+  }
+}
+
 // Keyboard shortcuts
 document.addEventListener('keydown', (e) => {
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {

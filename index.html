@@ -428,17 +428,22 @@
     
     <!-- 1. HERO EDITORIAL FEATURE (Deep Theme Blue Background with Yellow Highlights) -->
     <section class="relative bg-[#041226] text-white min-h-[580px] lg:min-h-[660px] flex items-center overflow-hidden">
-      <!-- Ambient Campus Imagery Background (The 5 authentic campus photos) -->
+      <!-- Ambient Campus Imagery Background (The 5 authentic campus photos + Looping Video) -->
       <div class="absolute inset-0 z-0 photo-flash-box" id="heroPhotoFlash">
-        <img src="images/campus-academic-block.jpg" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000" id="heroImg0" alt="AKGU Campus Academic Quad" />
-        <img src="images/coe-common-facility-center.jpg" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" id="heroImg1" alt="AKG Foundation Common Facility Center" />
-        <img src="images/coe-advanced-machining-lab.jpg" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" id="heroImg2" alt="Advanced CNC Machining Workcell" />
-        <img src="images/campus-amphitheatre.jpg" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" id="heroImg3" alt="Open-Air Fest Amphitheatre" />
-        <img src="images/coe-material-testing-lab.jpg" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" id="heroImg4" alt="Material Testing & Metallurgy Lab" />
+        <!-- Background Looping Video (Method 4) -->
+        <video id="heroBgVideo" autoplay muted loop playsinline poster="images/campus-academic-block.jpg" class="absolute inset-0 w-full h-full object-cover opacity-50 z-0 transition-opacity duration-1000">
+          <source src="videos/campus-tour.mp4" type="video/mp4" />
+        </video>
+
+        <img src="images/campus-academic-block.jpg" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000 -z-10" id="heroImg0" alt="AKGU Campus Academic Quad" />
+        <img src="images/coe-common-facility-center.jpg" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 -z-10" id="heroImg1" alt="AKG Foundation Common Facility Center" />
+        <img src="images/coe-advanced-machining-lab.jpg" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 -z-10" id="heroImg2" alt="Advanced CNC Machining Workcell" />
+        <img src="images/campus-amphitheatre.jpg" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 -z-10" id="heroImg3" alt="Open-Air Fest Amphitheatre" />
+        <img src="images/coe-material-testing-lab.jpg" class="hero-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 -z-10" id="heroImg4" alt="Material Testing & Metallurgy Lab" />
         
         <!-- Dark Deep Blue Linear Overlay for text readability -->
-        <div class="absolute inset-0 bg-gradient-to-r from-[#041226]/95 via-[#071E3D]/80 to-transparent"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-[#041226] via-transparent to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#041226]/95 via-[#071E3D]/80 to-transparent pointer-events-none z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#041226] via-transparent to-transparent pointer-events-none z-10"></div>
       </div>
 
       <!-- Hero Content -->
@@ -472,13 +477,28 @@
             </button>
           </div>
 
-          <!-- Hero Slide Pagination Dots -->
-          <div class="flex items-center gap-2 pt-6">
-            <button onclick="setHeroSlide(0)" class="w-3 h-3 rounded-full bg-[#F59E0B] cursor-pointer hero-dot transition-all shadow" aria-label="Slide 1"></button>
-            <button onclick="setHeroSlide(1)" class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hero-dot transition-all" aria-label="Slide 2"></button>
-            <button onclick="setHeroSlide(2)" class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hero-dot transition-all" aria-label="Slide 3"></button>
-            <button onclick="setHeroSlide(3)" class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hero-dot transition-all" aria-label="Slide 4"></button>
-            <button onclick="setHeroSlide(4)" class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hero-dot transition-all" aria-label="Slide 5"></button>
+          <!-- Hero Slide Pagination Dots & Video Controller -->
+          <div class="flex flex-wrap items-center justify-between gap-4 pt-6">
+            <div class="flex items-center gap-2">
+              <button onclick="setHeroSlide(0)" class="w-3 h-3 rounded-full bg-[#F59E0B] cursor-pointer hero-dot transition-all shadow" aria-label="Slide 1"></button>
+              <button onclick="setHeroSlide(1)" class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hero-dot transition-all" aria-label="Slide 2"></button>
+              <button onclick="setHeroSlide(2)" class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hero-dot transition-all" aria-label="Slide 3"></button>
+              <button onclick="setHeroSlide(3)" class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hero-dot transition-all" aria-label="Slide 4"></button>
+              <button onclick="setHeroSlide(4)" class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hero-dot transition-all" aria-label="Slide 5"></button>
+            </div>
+
+            <!-- Hero Video Ambient Quick Controller (Play/Pause & Sound) -->
+            <div class="inline-flex items-center gap-2 bg-[#071E3D]/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 text-xs text-white shadow-sm">
+              <button id="heroVideoPlayToggle" onclick="toggleHeroBgVideoPlay()" class="hover:text-[#FACC15] flex items-center gap-1.5 transition-colors" title="Pause or Resume Background Video">
+                <i data-lucide="pause" id="heroVideoPlayIcon" class="w-3.5 h-3.5"></i>
+                <span id="heroVideoPlayText" class="text-[11px] font-semibold">Pause Video</span>
+              </button>
+              <span class="text-white/30">•</span>
+              <button id="heroVideoMuteToggle" onclick="toggleHeroBgVideoMute()" class="hover:text-[#FACC15] flex items-center gap-1.5 transition-colors" title="Toggle Sound">
+                <i data-lucide="volume-x" id="heroVideoMuteIcon" class="w-3.5 h-3.5"></i>
+                <span id="heroVideoMuteText" class="text-[11px] font-semibold">Muted</span>
+              </button>
+            </div>
           </div>
 
         </div>
@@ -1028,7 +1048,7 @@
   </footer>
 
   <!-- MODALS -->
-  <!-- 1. Authentic Campus Video Tour Modal -->
+  <!-- 1. Authentic Campus Video Tour Modal (Method 3: Full HTML5 Player with Controls) -->
   <div id="videoModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
     <div class="relative w-full max-w-4xl bg-black rounded-3xl overflow-hidden shadow-2xl border border-white/20">
       <div class="flex justify-between items-center px-6 py-4 border-b border-white/10 bg-[#071E3D]">
@@ -1040,8 +1060,14 @@
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
-      <div class="relative aspect-video w-full bg-black">
-        <iframe id="videoModalIframe" class="w-full h-full" src="" title="Campus Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="relative aspect-video w-full bg-black flex items-center justify-center">
+        <!-- Local HTML5 Video Player with Full Controls (Method 3) -->
+        <video id="modalVideoPlayer" controls playsinline preload="auto" poster="images/campus-academic-block.jpg" class="w-full h-full object-contain">
+          <source src="videos/campus-tour.mp4" type="video/mp4" />
+          Your browser does not support HTML5 video.
+        </video>
+        <!-- Optional YouTube/External iframe support -->
+        <iframe id="videoModalIframe" class="w-full h-full hidden" src="" title="Campus Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </div>
