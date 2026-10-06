@@ -122,3 +122,40 @@ h1, h2, h3, h4, h5, .font-serif { font-family: 'Source Serif 4', Georgia, serif;
   background-color: #FFFFFF;
   box-shadow: 0 4px 20px rgba(0, 59, 115, 0.08);
 }
+
+/* "28 Years of Excellence" White Boundary Stroke & Bold Hover Fill Animation */
+.excellence-boundary-text {
+  position: relative;
+  display: inline-block;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 2px #FFFFFF;
+  text-stroke: 2px #FFFFFF;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+/* When the arrow (mouse hover) is on that text: becomes completely bold solid white with animation */
+.excellence-boundary-text:hover {
+  color: #FFFFFF;
+  -webkit-text-stroke: 1.5px #FFFFFF;
+  text-stroke: 1.5px #FFFFFF;
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 50px rgba(245, 158, 11, 0.5);
+  transform: translateY(-2px) scale(1.03);
+  animation: excellencePulse 1.6s infinite alternate ease-in-out;
+}
+
+@keyframes excellencePulse {
+  0% {
+    color: #FFFFFF;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 35px rgba(250, 204, 21, 0.35);
+  }
+  100% {
+    color: #FFFFFF;
+    text-shadow: 0 0 32px rgba(255, 255, 255, 1), 0 0 60px rgba(245, 158, 11, 0.7);
+  }
+}
+
