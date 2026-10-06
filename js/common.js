@@ -46,7 +46,7 @@ function closeVideoTourModal() {
   if (modal) modal.classList.add('hidden');
 }
 
-// Lead Enquiry Modal
+// Lead Enquiry Modal (Yellow Highlight Theme)
 function openEnquiryModal(prog) {
   const modal = document.getElementById('enquiryModal');
   const form = document.getElementById('enquiryForm');
@@ -65,16 +65,43 @@ function openEnquiryModal(prog) {
     }
   }
 }
+
 function closeEnquiryModal() {
   const modal = document.getElementById('enquiryModal');
   if (modal) modal.classList.add('hidden');
+  try {
+    sessionStorage.setItem('akgu_apply_popup_dismissed', 'true');
+  } catch(e) {}
 }
+
 function handleEnquirySubmit(e) {
   e.preventDefault();
   const form = document.getElementById('enquiryForm');
   const success = document.getElementById('enquirySuccess');
   if (form) form.classList.add('hidden');
   if (success) success.classList.remove('hidden');
+  try {
+    sessionStorage.setItem('akgu_apply_popup_dismissed', 'true');
+  } catch(e) {}
+}
+
+// Auto Pop-up Apply Now form when opening the website
+function initAutoApplyModal() {
+  const modal = document.getElementById('enquiryModal');
+  if (!modal) return;
+
+  try {
+    const dismissed = sessionStorage.getItem('akgu_apply_popup_dismissed');
+    if (!dismissed) {
+      setTimeout(() => {
+        openEnquiryModal('Admissions 2026–27 Open');
+      }, 1400); // 1.4s delay for a smooth visitor experience
+    }
+  } catch(e) {
+    setTimeout(() => {
+      openEnquiryModal('Admissions 2026–27 Open');
+    }, 1400);
+  }
 }
 
 // Student Portal ERP Modal
@@ -189,9 +216,10 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Initialize Lucide icons on DOM ready
+// Initialize Lucide icons and Auto Apply Modal on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
   if (window.lucide && typeof window.lucide.createIcons === 'function') {
     window.lucide.createIcons();
   }
+  initAutoApplyModal();
 });

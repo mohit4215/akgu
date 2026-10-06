@@ -167,14 +167,45 @@ function initScrollAnimations() {
   chapters.forEach(ch => chapterObserver.observe(ch));
 }
 
-// Hero Background Video Controller & Fallback (Methods 3 & 4 Combined)
+// Hero Background Video Controller & Immediate Playback Start (Landing Page)
 function initHeroBgVideo() {
   const video = document.getElementById('heroBgVideo');
   if (!video) return;
 
-  const source = video.querySelector('source');
+  video.muted = true;
+  video.defaultMuted = true;
+
+  // Immediate start function
+  const startVideo = () => {
+    video.muted = true;
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        // Video playing successfully on landing page
+        video.style.opacity = '0.85';
+      }).catch((err) => {
+        console.log('Autoplay deferred for user gesture:', err);
+        // Start on first touch, scroll, or click
+        const playOnGesture = () => {
+          video.play().catch(() => {});
+          document.removeEventListener('click', playOnGesture);
+          document.removeEventListener('touchstart', playOnGesture);
+          document.removeEventListener('scroll', playOnGesture);
+        };
+        document.addEventListener('click', playOnGesture, { once: true, passive: true });
+        document.addEventListener('touchstart', playOnGesture, { once: true, passive: true });
+        document.addEventListener('scroll', playOnGesture, { once: true, passive: true });
+      });
+    }
+  };
+
+  // Attempt play immediately on initialization and metadata load
+  startVideo();
+  video.addEventListener('loadeddata', startVideo);
+  video.addEventListener('canplay', startVideo);
+
   const handleVideoMissing = () => {
-    // If no local video file exists yet, hide video smoothly so the photo carousel displays perfectly
+    // If no video file exists, fall back smoothly to the photos carousel
     video.style.opacity = '0';
     video.style.pointerEvents = 'none';
     const playToggle = document.getElementById('heroVideoPlayToggle');
@@ -184,6 +215,7 @@ function initHeroBgVideo() {
     }
   };
 
+  const source = video.querySelector('source');
   if (source) {
     source.addEventListener('error', handleVideoMissing);
   }
@@ -225,6 +257,22 @@ function toggleHeroBgVideoMute() {
     if (icon) icon.setAttribute('data-lucide', 'volume-2');
   }
   if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons();
+}
+
+// Hero Quick Apply Form Submission Handler
+function handleHeroApplySubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const success = document.getElementById('heroApplySuccess');
+  const btn = form.querySelector('button[type="submit"]');
+  if (btn) btn.classList.add('hidden');
+  if (success) success.classList.remove('hidden');
+
+  setTimeout(() => {
+    form.reset();
+    if (btn) btn.classList.remove('hidden');
+    if (success) success.classList.add('hidden');
+  }, 4500);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
