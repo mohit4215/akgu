@@ -216,10 +216,70 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Initialize Lucide icons and Auto Apply Modal on DOM ready
+// Dynamic Counting Statistics Engine (IntersectionObserver with smooth easeOutExpo)
+function initDynamicCounters() {
+  const counters = document.querySelectorAll('.stat-counter');
+  if (!counters.length) return;
+
+  const animateCounter = (el) => {
+    if (el.dataset.animated === 'true') return;
+    el.dataset.animated = 'true';
+
+    const target = parseFloat(el.getAttribute('data-target') || '0');
+    const prefix = el.getAttribute('data-prefix') || '';
+    const suffix = el.getAttribute('data-suffix') || '';
+    const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+    const duration = parseInt(el.getAttribute('data-duration') || '1800', 10);
+
+    const startTime = performance.now();
+    const startValue = 0;
+
+    const updateCount = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // easeOutExpo for energetic start and silky smooth deceleration
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const currentValue = startValue + (target - startValue) * easeProgress;
+
+      let formattedNumber = '';
+      if (decimals > 0) {
+        formattedNumber = currentValue.toFixed(decimals);
+      } else {
+        formattedNumber = Math.floor(currentValue).toLocaleString('en-IN');
+      }
+
+      el.textContent = `${prefix}${formattedNumber}${suffix}`;
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCount);
+      } else {
+        const finalFormatted = decimals > 0 ? target.toFixed(decimals) : Math.floor(target).toLocaleString('en-IN');
+        el.textContent = `${prefix}${finalFormatted}${suffix}`;
+      }
+    };
+
+    requestAnimationFrame(updateCount);
+  };
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  counters.forEach(counter => {
+    observer.observe(counter);
+  });
+}
+
+// Initialize Lucide icons, Auto Apply Modal, and Dynamic Counters on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
   if (window.lucide && typeof window.lucide.createIcons === 'function') {
     window.lucide.createIcons();
   }
   initAutoApplyModal();
+  initDynamicCounters();
 });
